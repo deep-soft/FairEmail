@@ -27,7 +27,6 @@ import android.net.LinkProperties;
 import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
-import android.net.TransportInfo;
 import android.os.Build;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
@@ -345,6 +344,7 @@ public class ConnectionHelper {
         Network[] networks = cm.getAllNetworks();
         if (standalone_vpn && networks != null && networks.length == 1) {
             // Internet not checked/validated
+            // Used for USB/Ethernet internet connection
             boolean metered = cm.isActiveNetworkMetered();
             Log.i("isMetered: active VPN metered=" + metered);
             return metered;
@@ -362,8 +362,21 @@ public class ConnectionHelper {
 
             Log.i("isMetered: underlying caps=" + caps);
 
+            if (!caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_NOT_VPN)) {
+                Log.i("isMetered: underlying VPN");
+                continue;
+            }
+
             if (!caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)) {
                 Log.i("isMetered: underlying no internet");
+                continue;
+            }
+
+            boolean captive = caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_CAPTIVE_PORTAL);
+            if ((require_validated || (require_validated_captive && captive)) &&
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
+                    !caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)) {
+                Log.i("isMetered: underlying not validated captive=" + captive);
                 continue;
             }
 
@@ -378,19 +391,12 @@ public class ConnectionHelper {
                 continue;
             }
 
-            if (caps.hasTransport(NetworkCapabilities.TRANSPORT_VPN)) {
-                Log.i("isMetered: underlying VPN transport");
-                continue;
-            }
+            underlying = true;
+            Log.i("isMetered: underlying is connected");
 
-            if (caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_NOT_VPN)) {
-                underlying = true;
-                Log.i("isMetered: underlying is connected");
-
-                if (caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_NOT_METERED)) {
-                    Log.i("isMetered: underlying is unmetered");
-                    return false;
-                }
+            if (caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_NOT_METERED)) {
+                Log.i("isMetered: underlying is unmetered");
+                return false;
             }
         }
 
@@ -533,13 +539,13 @@ public class ConnectionHelper {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
                 for (Network network : cm.getAllNetworks()) {
                     NetworkCapabilities caps = cm.getNetworkCapabilities(network);
-                    if (caps != null && caps.hasTransport(NetworkCapabilities.TRANSPORT_VPN))
+                    if (caps != null && !caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_NOT_VPN))
                         return true;
                 }
             } else {
                 Network active = cm.getActiveNetwork();
                 NetworkCapabilities caps = (active == null ? null : cm.getNetworkCapabilities(active));
-                if (caps != null && caps.hasTransport(NetworkCapabilities.TRANSPORT_VPN))
+                if (caps != null && !caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_NOT_VPN))
                     return true;
             }
         } catch (Throwable ex) {
