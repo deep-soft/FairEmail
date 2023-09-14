@@ -244,7 +244,7 @@ public class ActivityView extends ActivityBilling implements FragmentManager.OnB
         int layout = (config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK);
         Log.i("Orientation=" + config.orientation + " layout=" + layout +
                 " portrait rows=" + portrait2 + " cols=" + portrait2c + " min=" + portrait_min_size +
-                " landscape cols=" + landscape + " min=" + landscape);
+                " landscape cols=" + landscape + " min=" + landscape_min_size);
         boolean duo = Helper.isSurfaceDuo();
         boolean close_pane = prefs.getBoolean("close_pane", !duo);
         boolean open_pane = (!close_pane && prefs.getBoolean("open_pane", false));
@@ -696,9 +696,9 @@ public class ActivityView extends ActivityBilling implements FragmentManager.OnB
                 ibExpanderExtra.setImageLevel(minimal ? 1 /* more */ : 0 /* less */);
                 rvMenuExtra.setVisibility(minimal ? View.GONE : View.VISIBLE);
                 if (!minimal)
-                    getMainHandler().post(new Runnable() {
+                    getMainHandler().post(new RunnableEx("fullScroll") {
                         @Override
-                        public void run() {
+                        public void delegate() {
                             drawerContainer.fullScroll(View.FOCUS_DOWN);
                         }
                     });

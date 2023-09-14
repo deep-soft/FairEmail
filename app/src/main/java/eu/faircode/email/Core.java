@@ -161,7 +161,6 @@ class Core {
     private static final int FIND_RETRY_COUNT = 3; // times
     private static final long FIND_RETRY_DELAY = 5 * 1000L; // milliseconds
     private static final int POP3_KEEP_EXTRA = 100; // messages
-    private static final long POP3_KEEP_DELETED = 3 * 24 * 3600 * 1000L; // milliseconds
 
     private static final Map<Long, List<EntityIdentity>> accountIdentities = new HashMap<>();
 
@@ -2040,8 +2039,18 @@ class Core {
 
         // Get message
         Message imessage = ifolder.getMessageByUID(message.uid);
-        if (imessage == null)
-            throw new MessageRemovedException();
+        if (imessage == null) {
+            File file = message.getFile(context);
+            Helper.writeText(file, "");
+            db.message().setMessageContent(message.id,
+                    true,
+                    null,
+                    null,
+                    null,
+                    context.getString(R.string.title_not_existing));
+            return;
+            //throw new MessageRemovedException();
+        }
 
         MessageHelper helper = new MessageHelper((MimeMessage) imessage, context);
         MessageHelper.MessageParts parts = helper.getMessageParts();
@@ -2945,7 +2954,7 @@ class Core {
         for (String name : local.keySet()) {
             EntityFolder folder = local.get(name);
             if (EntityFolder.INBOX.equals(folder.type)) {
-                Log.e(account.host + " keep inbox");
+                Log.w(account.host + " keep inbox");
                 continue;
             }
             List<EntityFolder> childs = parentFolders.get(name);
@@ -3646,9 +3655,10 @@ class Core {
             }
 
             if (account.max_messages != null && !account.leave_on_device) {
-                int hidden = db.message().setMessagesUiHide(folder.id, Math.abs(account.max_messages));
+                int hidden = db.message().setMessagesUiHide(folder.id,
+                        Math.abs(account.max_messages) + flagged);
                 int deleted = db.message().deleteMessagesKeep(folder.id,
-                        Math.abs(account.max_messages) + flagged + POP3_KEEP_EXTRA, new Date().getTime() - POP3_KEEP_DELETED);
+                        Math.abs(account.max_messages) + flagged + POP3_KEEP_EXTRA);
                 EntityLog.log(context, account.name + " POP" +
                         " cleanup max=" + account.max_messages +
                         " hidden=" + hidden +
@@ -4466,7 +4476,7 @@ class Core {
                                 MimeMessage existing = (MimeMessage) ifolder.getMessageByUID(dup.uid);
                                 if (existing != null &&
                                         msgid.equals(existing.getHeader(MessageHelper.HEADER_CORRELATION_ID, null))) {
-                                    Log.e(folder.name + " late draft" +
+                                    Log.w(folder.name + " late draft" +
                                             " host=" + account.host + " uid=" + dup.uid + "<" + uid);
                                     existing.setFlag(Flags.Flag.DELETED, true);
                                     expunge(context, ifolder, Arrays.asList(existing));
@@ -4474,7 +4484,7 @@ class Core {
                                 }
                             } else if (dup.uid > uid) {
                                 if (msgid.equals(imessage.getHeader(MessageHelper.HEADER_CORRELATION_ID, null))) {
-                                    Log.e(folder.name + " late draft" +
+                                    Log.w(folder.name + " late draft" +
                                             " host=" + account.host + " uid=" + dup.uid + ">" + uid);
                                     imessage.setFlag(Flags.Flag.DELETED, true);
                                     expunge(context, ifolder, Arrays.asList(imessage));

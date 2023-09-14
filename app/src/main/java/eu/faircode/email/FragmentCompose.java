@@ -2002,7 +2002,10 @@ public class FragmentCompose extends FragmentBase {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
-        if (itemId == R.id.menu_encrypt) {
+        if (itemId == android.R.id.home) {
+            onExit();
+            return true;
+        } else if (itemId == R.id.menu_encrypt) {
             onMenuEncrypt();
             return true;
         } else if (itemId == R.id.menu_translate) {
@@ -2756,6 +2759,8 @@ public class FragmentCompose extends FragmentBase {
 
                         @Override
                         protected void onExecuted(Bundle args, DeepL.Translation translation) {
+                            if (etSubject == null)
+                                return;
                             etSubject.setText(translation.translated_text);
                         }
 
@@ -2763,7 +2768,7 @@ public class FragmentCompose extends FragmentBase {
                         protected void onException(Bundle args, Throwable ex) {
                             Log.unexpectedError(getParentFragmentManager(), ex, !(ex instanceof IOException));
                         }
-                    }.serial().execute(FragmentCompose.this, args, "compose:translate");
+                    }.execute(FragmentCompose.this, args, "compose:translate");
                 } else {
                     final Pair<Integer, Integer> paragraph = StyleHelper.getParagraph(etBody);
                     if (paragraph == null)
@@ -2890,7 +2895,7 @@ public class FragmentCompose extends FragmentBase {
                             etBody.setSelection(paragraph.second);
                             Log.unexpectedError(getParentFragmentManager(), ex, !(ex instanceof IOException));
                         }
-                    }.serial().execute(FragmentCompose.this, args, "compose:translate");
+                    }.execute(FragmentCompose.this, args, "compose:translate");
                 }
             }
         });
@@ -2970,7 +2975,7 @@ public class FragmentCompose extends FragmentBase {
                     Log.unexpectedError(getParentFragmentManager(), exex, false);
                 }
             }
-        }.serial().execute(this, args, "compose:lt");
+        }.execute(this, args, "compose:lt");
     }
 
     private void onActionRecordAudio() {
