@@ -79,7 +79,6 @@ import android.text.Layout;
 import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
-import android.text.format.Time;
 import android.text.method.PasswordTransformationMethod;
 import android.text.method.TransformationMethod;
 import android.util.DisplayMetrics;
@@ -191,7 +190,6 @@ public class Helper {
 
     static final float LOW_LIGHT = 0.6f;
 
-    static final int OPERATION_WORKERS = 3;
     static final int WAKELOCK_MAX = 30 * 60 * 1000; // milliseconds
     static final int BUFFER_SIZE = 8192; // Same as in Files class
     static final long MIN_REQUIRED_SPACE = 100 * 1000L * 1000L;
@@ -199,6 +197,7 @@ public class Helper {
     static final int AUTH_AUTOLOCK_GRACE = 15; // seconds
     static final int PIN_FAILURE_DELAY = 3; // seconds
     static final long PIN_FAILURE_DELAY_MAX = 20 * 60 * 1000L; // milliseconds
+    static final float BNV_LUMINANCE_THRESHOLD = 0.7f;
 
     static final String PGP_OPENKEYCHAIN_PACKAGE = "org.sufficientlysecure.keychain";
     static final String PGP_BEGIN_MESSAGE = "-----BEGIN PGP MESSAGE-----";

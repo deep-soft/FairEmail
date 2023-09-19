@@ -3427,7 +3427,7 @@ class Core {
                         message.dmarc = MessageHelper.getAuthentication("dmarc", authentication);
                         message.smtp_from = helper.getMailFrom(authentication);
                         message.return_path = helper.getReturnPath();
-                        message.submitter = helper.getSender();
+                        message.submitter = helper.getSubmitter();
                         message.from = helper.getFrom();
                         message.to = helper.getTo();
                         message.cc = helper.getCc();
@@ -4575,7 +4575,7 @@ class Core {
             message.dmarc = MessageHelper.getAuthentication("dmarc", authentication);
             message.smtp_from = helper.getMailFrom(authentication);
             message.return_path = helper.getReturnPath();
-            message.submitter = helper.getSender();
+            message.submitter = helper.getSubmitter();
             message.from = helper.getFrom();
             message.to = helper.getTo();
             message.cc = helper.getCc();
@@ -5780,8 +5780,8 @@ class Core {
         for (int m = 0; m < messages.size() && m < MAX_NOTIFICATION_DISPLAY; m++) {
             TupleMessageEx message = messages.get(m);
             ContactInfo[] info = ContactInfo.get(context,
-                    message.account, message.folderType,
-                    message.bimi_selector, message.from);
+                    message.account, message.folderType, message.bimi_selector,
+                    message.isForwarder() ? message.submitter : message.from);
 
             Address[] modified = (message.from == null
                     ? new InternetAddress[0]

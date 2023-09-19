@@ -77,7 +77,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.window.java.layout.WindowInfoTrackerCallbackAdapter;
-import androidx.window.layout.DisplayFeature;
 import androidx.window.layout.WindowInfoTracker;
 import androidx.window.layout.WindowLayoutInfo;
 
@@ -2476,11 +2475,21 @@ public class ActivityView extends ActivityBilling implements FragmentManager.OnB
     }
 
     private void onViewThread(Intent intent) {
+        boolean found = intent.getBooleanExtra("found", false);
+
         if (lastSnackbar != null && lastSnackbar.isShown())
             lastSnackbar.dismiss();
 
         if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED))
-            getSupportFragmentManager().popBackStack("thread", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            if (found) {
+                List<Fragment> fragments = getSupportFragmentManager().getFragments();
+                if (fragments.size() > 0) {
+                    Bundle args = fragments.get(fragments.size() - 1).getArguments();
+                    if (args != null && args.getBoolean("found"))
+                        getSupportFragmentManager().popBackStack();
+                }
+            } else
+                getSupportFragmentManager().popBackStack("thread", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
         Bundle args = new Bundle();
         args.putLong("account", intent.getLongExtra("account", -1));
@@ -2489,7 +2498,7 @@ public class ActivityView extends ActivityBilling implements FragmentManager.OnB
         args.putLong("id", intent.getLongExtra("id", -1));
         args.putInt("lpos", intent.getIntExtra("lpos", -1));
         args.putBoolean("filter_archive", intent.getBooleanExtra("filter_archive", true));
-        args.putBoolean("found", intent.getBooleanExtra("found", false));
+        args.putBoolean("found", found);
         args.putString("searched", intent.getStringExtra("searched"));
         args.putBoolean("pinned", intent.getBooleanExtra("pinned", false));
         args.putString("msgid", intent.getStringExtra("msgid"));
