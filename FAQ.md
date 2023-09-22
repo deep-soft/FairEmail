@@ -1824,11 +1824,11 @@ Equal addresses have precedence over partially matching addresses, except for *d
 
 The matched address will be shown as *via* in the addresses section of received messages (between the message header and message text).
 
-Note that identities needs to be enabled to be able to be matched
+Note that identities need to be enabled to be able to be matched
 and that identities of other accounts will not be considered.
 
 Matching will be done only once on receiving a message, so changing the configuration will not change existing messages.
-You could clear local messages by long pressing a folder in the folder list and synchronize the messages again though.
+You could clear local messages by long pressing a folder in the folder list and synchronize the messages again, though.
 
 It is possible to configure a [regex](https://en.wikipedia.org/wiki/Regular_expression) in the identity settings
 to match **the username** of an email address (the part before the @ sign).
@@ -3490,6 +3490,9 @@ When disabled the badge count will be the number of unread messages, independent
 This feature depends on support of your launcher.
 FairEmail merely 'broadcasts' the number of unread messages using the ShortcutBadger library.
 If it doesn't work, this cannot be fixed by changes in FairEmail.
+
+An alternative is to use the unread messages count home screen widget.
+You can add this widget by long pressing on an empty place on the home screen.
 
 If you are using Nova launcher and you want to show the number of notifications in the launcher icon (maximum 10; imposed by Nova launcher),
 you'll need to enable *Notification access* in the Android *Special app access* settings for Nova launcher on recent Android versions.

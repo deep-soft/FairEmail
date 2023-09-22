@@ -41,6 +41,7 @@ import android.webkit.CookieManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.ContextCompat;
 import androidx.core.os.LocaleListCompat;
 import androidx.emoji2.text.DefaultEmojiCompatConfig;
 import androidx.emoji2.text.EmojiCompat;
@@ -174,7 +175,7 @@ public class ApplicationEx extends Application
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         final boolean crash_reports = prefs.getBoolean("crash_reports", false);
         final boolean leak_canary = prefs.getBoolean("leak_canary", false);
-        final boolean load_emoji = prefs.getBoolean("load_emoji", false);
+        final boolean load_emoji = prefs.getBoolean("load_emoji", true);
 
         prev = Thread.getDefaultUncaughtExceptionHandler();
 
@@ -224,16 +225,17 @@ public class ApplicationEx extends Application
 
         // https://issuetracker.google.com/issues/233525229
         Log.i("Load emoji=" + load_emoji);
-        if (!load_emoji)
-            try {
-                FontRequestEmojiCompatConfig crying = DefaultEmojiCompatConfig.create(this);
-                if (crying != null) {
-                    crying.setMetadataLoadStrategy(EmojiCompat.LOAD_STRATEGY_MANUAL);
-                    EmojiCompat.init(crying);
-                }
-            } catch (Throwable ex) {
-                Log.e(ex);
+        try {
+            FontRequestEmojiCompatConfig crying = DefaultEmojiCompatConfig.create(this);
+            if (crying != null) {
+                crying.setMetadataLoadStrategy(EmojiCompat.LOAD_STRATEGY_MANUAL);
+                EmojiCompat.init(crying);
+                if (load_emoji)
+                    EmojiCompat.get().load();
             }
+        } catch (Throwable ex) {
+            Log.e(ex);
+        }
 
         EmailProvider.init(this);
         EncryptionHelper.init(this);
@@ -264,7 +266,10 @@ public class ApplicationEx extends Application
             }
         }
 
-        registerReceiver(onScreenOff, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+        ContextCompat.registerReceiver(this,
+                onScreenOff,
+                new IntentFilter(Intent.ACTION_SCREEN_OFF),
+                ContextCompat.RECEIVER_NOT_EXPORTED);
 
         long end = new Date().getTime();
         Log.i("App created " + (end - start) + " ms");
