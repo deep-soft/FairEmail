@@ -376,6 +376,7 @@ public class MessageHelper {
         }
 
         // Sensitivity
+        // https://datatracker.ietf.org/doc/html/rfc4021#section-2.1.55
         if (EntityMessage.SENSITIVITY_PERSONAL.equals(message.sensitivity))
             imessage.addHeader("Sensitivity", "Personal");
         else if (EntityMessage.SENSITIVITY_PRIVATE.equals(message.sensitivity))
@@ -2166,9 +2167,27 @@ public class MessageHelper {
                 continue;
             String[] val = v.split("\\s+");
             if (val.length > 0) {
-                if ("fail".equals(val[0]))
+                if ("fail".equals(val[0])) {
+                    if ("dmarc".equals(type)) {
+                        // dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=example.com
+                        int s = v.indexOf('(');
+                        int e = v.indexOf(')');
+                        if (s > 0 && e > s) {
+                            Boolean none = null;
+                            for (String p : v.substring(s + 1, e).split("\\s+")) {
+                                String[] kv = p.split("=");
+                                // Without getting the DMARC DNS record, it isn't possible to check the sub/domain
+                                if (kv.length == 2 &&
+                                        ("p".equalsIgnoreCase(kv[0]) || "sp".equalsIgnoreCase(kv[0])) &&
+                                        "none".equalsIgnoreCase(kv[1]))
+                                    none = (none == null || none) && "none".equalsIgnoreCase(kv[1]);
+                            }
+                            if (none != null && none)
+                                continue; // neutral
+                        }
+                    }
                     result = false;
-                else if ("pass".equals(val[0])) {
+                } else if ("pass".equals(val[0])) {
                     // https://www.rfc-editor.org/rfc/rfc7489#section-3.1.1
                     if ("dkim".equals(type))
                         return true;

@@ -1492,6 +1492,8 @@ public class FragmentCompose extends FragmentBase {
 
                 db.message().setMessageUiEncrypt(draft.id, draft.ui_encrypt);
 
+                db.message().setMessageSensitivity(draft.id, identity.sensitivity < 1 ? null : identity.sensitivity);
+
                 return draft.ui_encrypt;
             }
 
@@ -5449,6 +5451,8 @@ public class FragmentCompose extends FragmentBase {
                     if (receipt_default)
                         data.draft.receipt_request = true;
 
+                    data.draft.sensitivity = (selected.sensitivity < 1 ? null : selected.sensitivity);
+
                     Document document = Document.createShell("");
 
                     if (ref == null) {
@@ -5854,7 +5858,7 @@ public class FragmentCompose extends FragmentBase {
                             for (Element element : e.select("*")) {
                                 String tag = element.tagName();
                                 String clazz = element.attr("class");
-                                String style = HtmlHelper.processStyles(tag, clazz, null, sheets);
+                                String style = HtmlHelper.processStyles(context, tag, clazz, null, sheets);
                                 style = HtmlHelper.mergeStyles(style, element.attr("style"));
                                 if (!TextUtils.isEmpty(style))
                                     element.attr("style", style);
