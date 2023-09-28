@@ -2609,6 +2609,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                 } catch (UnsupportedEncodingException ignored) {
                 }
 
+            tvIdentityTitle.setTextColor(message.identityColor == null ? textColorTertiary : message.identityColor);
             tvIdentityTitle.setVisibility(show_addresses && via != null ? View.VISIBLE : View.GONE);
             tvIdentity.setVisibility(show_addresses && via != null ? View.VISIBLE : View.GONE);
             tvIdentity.setText(via == null ? null : formatAddresses(new Address[]{via}, true));
@@ -2709,7 +2710,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                     tvSizeEx.setTextIsSelectable(tvSizeEx.getVisibility() == View.VISIBLE);
                     tvLanguage.setTextIsSelectable(tvLanguage.getVisibility() == View.VISIBLE);
                     tvThread.setTextIsSelectable(tvThread.getVisibility() == View.VISIBLE);
-                    tvSubject.setTextIsSelectable(tvSubjectEx.getVisibility() == View.VISIBLE);
+                    tvSubjectEx.setTextIsSelectable(tvSubjectEx.getVisibility() == View.VISIBLE);
                     tvFlags.setTextIsSelectable(tvFlags.getVisibility() == View.VISIBLE);
                     tvKeywordsEx.setTextIsSelectable(tvKeywordsEx.getVisibility() == View.VISIBLE && keywords_header);
                 }
