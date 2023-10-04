@@ -2406,6 +2406,7 @@ class Core {
     static void onSynchronizeFolders(
             Context context, EntityAccount account, Store istore, State state,
             boolean keep_alive, boolean force) throws MessagingException {
+        // Folder names: https://datatracker.ietf.org/doc/html/rfc2060#section-5.1.3
         DB db = DB.getInstance(context);
 
         if (account.protocol != EntityAccount.TYPE_IMAP)
@@ -3099,7 +3100,7 @@ class Core {
         } while (count > 0);
     }
 
-    private static void onRule(Context context, JSONArray jargs, EntityMessage message) throws JSONException, MessagingException {
+    private static void onRule(Context context, JSONArray jargs, EntityMessage message) throws JSONException, MessagingException, IOException {
         // Deferred rule (download headers, body, etc)
         DB db = DB.getInstance(context);
 
@@ -5711,11 +5712,13 @@ class Core {
                     try {
                         if (NotificationHelper.areNotificationsEnabled(nm)) {
                             nm.notify(tag, NotificationHelper.NOTIFICATION_TAGGED, notification);
-                            try {
-                                Thread.sleep(NOTIFY_DELAY);
-                            } catch (InterruptedException ex) {
-                                Log.w(ex);
-                            }
+                            if (update.contains(id))
+                                try {
+                                    Log.i("Notify delay id=" + id);
+                                    Thread.sleep(NOTIFY_DELAY);
+                                } catch (InterruptedException ex) {
+                                    Log.w(ex);
+                                }
                         }
 
                         // https://github.com/leolin310148/ShortcutBadger/wiki/Xiaomi-Device-Support
