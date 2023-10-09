@@ -6,6 +6,13 @@ For support you can use the contact form.
 
 Vallibonavenatrix
 
+Next version
+
+* Added Montserrat font
+* Added Liberation Sans Narrow
+* Small improvements and minor bug fixes
+* Updated translations
+
 1.2107 - 2023-10-04
 
 * Added rule action to execute webhooks

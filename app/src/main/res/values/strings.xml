@@ -640,6 +640,7 @@
     <string name="title_advanced_navbar_colorize">Colorize the Android navigation bar</string>
     <string name="title_advanced_list_count">Show the number of messages or conversations in the top action bar</string>
     <string name="title_advanced_bundled_fonts">Use bundled fonts</string>
+    <string name="title_advanced_narrow_fonts">Use narrow fonts</string>
     <string name="title_advanced_parse_classes">Parse style sheets</string>
     <string name="title_advanced_authentication">Show authentication warnings</string>
     <string name="title_advanced_authentication_hint">The underlying checks can be configured in the receive settings</string>
@@ -1419,6 +1420,7 @@
     <string name="title_print_header">Print header</string>
     <string name="title_print_images">Print images</string>
     <string name="title_print_images_remark">Downloading images might take some time</string>
+    <string name="title_print_block_quotes">Print block quotes lines</string>
     <string name="title_show_headers">Show headers</string>
     <string name="title_share_as_html">Share as HTML</string>
     <string name="title_raw_save">Save raw message</string>
@@ -1906,6 +1908,7 @@
     <string name="title_answer_placeholder_firstname">Sender\'s first name</string>
     <string name="title_answer_placeholder_lastname">Sender\'s last name</string>
     <string name="title_answer_placeholder_date">Current date</string>
+    <string name="title_answer_placeholder_weekday">Day of week</string>
 
     <string name="title_rule_noop">No action</string>
     <string name="title_rule_seen">Mark read</string>
