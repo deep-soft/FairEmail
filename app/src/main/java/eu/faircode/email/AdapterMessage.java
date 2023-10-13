@@ -4430,7 +4430,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                 } else if (id == R.id.ibDownloading) {
                     Helper.viewFAQ(context, 15);
                 } else if (id == R.id.ibSeen || id == R.id.ibSeenBottom) {
-                    onMenuUnseen(message);
+                    onToggleSeen(message);
                 } else if (id == R.id.ibHide) {
                     onMenuHide(message);
                 } else if (id == R.id.ibImportance) {
@@ -6107,7 +6107,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                         buttons.show(parentFragment.getParentFragmentManager(), "dialog:buttons");
                         return true;
                     } else if (itemId == R.id.menu_unseen) {
-                        onMenuUnseen(message);
+                        onToggleSeen(message);
                         return true;
                     } else if (itemId == R.id.menu_snooze) {
                         onMenuSnooze(message);
@@ -6446,7 +6446,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                 Helper.reportNoViewer(context, uri, null);
         }
 
-        private void onMenuUnseen(final TupleMessageEx message) {
+        private void onToggleSeen(final TupleMessageEx message) {
             Bundle args = new Bundle();
             args.putLong("id", message.id);
             args.putBoolean("seen", !message.ui_seen);
@@ -7653,6 +7653,9 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                             context.getString(expanded ? R.string.title_accessibility_collapse : R.string.title_accessibility_expand)));
                 ibExpander.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
 
+                info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.ibSeen,
+                        context.getString(message.ui_seen ? R.string.title_unseen : R.string.title_seen)));
+
                 info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.ibAnswer,
                         context.getString(R.string.title_reply)));
 
@@ -7661,6 +7664,10 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
 
                 info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.ibTrash,
                         context.getString(R.string.title_trash)));
+
+                if (properties.getSelectionCount() > 0)
+                    info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.ibDelete,
+                            context.getString(R.string.title_trash_selection)));
 
                 if (ibAvatar.getVisibility() == View.VISIBLE && ibAvatar.isEnabled())
                     info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.ibAvatar,
@@ -7701,6 +7708,9 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                 if (action == R.id.ibExpander) {
                     onToggleMessage(message);
                     return true;
+                } else if (action == R.id.ibSeen) {
+                    onToggleSeen(message);
+                    return true;
                 } else if (action == R.id.ibAnswer) {
                     onActionAnswer(message, view);
                     return true;
@@ -7709,6 +7719,9 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                     return true;
                 } else if (action == R.id.ibTrash) {
                     onActionTrash(message, false);
+                    return true;
+                } else if (action == R.id.ibDelete) {
+                    properties.moveSelection(EntityFolder.TRASH, false);
                     return true;
                 } else if (action == R.id.ibAvatar) {
                     onViewContact(message);
@@ -8923,6 +8936,10 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
         void ready(long id);
 
         void move(long id, String type);
+
+        int getSelectionCount();
+
+        void moveSelection(String type, boolean block);
 
         void reply(TupleMessageEx message, CharSequence selected, View anchor);
 
