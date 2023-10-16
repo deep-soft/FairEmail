@@ -6,9 +6,28 @@ For support you can use [the contact form](https://contact.faircode.eu/?product=
 
 ### [Vallibonavenatrix](https://en.wikipedia.org/wiki/Vallibonavenatrix)
 
+### 1.2112 - 2023-10-16
+
+* Small improvements and minor bug fixes
+
+### 1.2111 - 2023-10-16
+
+* Added swipe to delete local contacts
+* Small improvements and minor bug fixes
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2110 - 2023-10-14
+
+* Added PDF thumbnail preview (mini gallery)
+* Small improvements and minor bug fixes
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2109 - 2023-10-14
+
+* Small improvements and minor bug fixes
+
 ### 1.2108 - 2023-10-12
 
-* Added [Montserrat](https://fonts.google.com/specimen/Montserrat) font
 * Added [Liberation Sans Narrow](https://github.com/liberationfonts/liberation-sans-narrow) font (advanced display options)
 * Added *$weekday$* placeholder for templates
 * Added option to disabling printing of block quotes lines
