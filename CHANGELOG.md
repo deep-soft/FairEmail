@@ -6,7 +6,14 @@ For support you can use [the contact form](https://contact.faircode.eu/?product=
 
 ### [Vallibonavenatrix](https://en.wikipedia.org/wiki/Vallibonavenatrix)
 
-### 1.2112 - 2023-10-16
+### Next version
+
+* Added option suggest local contacts for the current account only
+* Android 14: using Material You background color
+* Small improvements and minor bug fixes
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2112 - 2023-10-16 *
 
 * Small improvements and minor bug fixes
 
@@ -66,7 +73,7 @@ For support you can use [the contact form](https://contact.faircode.eu/?product=
 * Updated [Public Suffix List](https://github.com/publicsuffix/list)
 * Updated [translations](https://crowdin.com/project/open-source-email)
 
-### 1.2103 - 2023-09-18
+### 1.2103 - 2023-09-18 *
 
 * Small improvements and minor bug fixes
 * Updated [translations](https://crowdin.com/project/open-source-email)
