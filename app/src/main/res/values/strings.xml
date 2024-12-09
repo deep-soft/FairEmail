@@ -966,6 +966,7 @@
     <string name="title_advanced_range_size" translatable="false">Range size: %1$d</string>
     <string name="title_advanced_chunk_size" translatable="false">Chunk size: %1$d</string>
     <string name="title_advanced_thread_range" translatable="false">Thread range: %1$d days</string>
+    <string name="title_advanced_restart_interval" translatable="false">Restart interval: %1$d s</string>
     <string name="title_advanced_auto_scroll" translatable="false">Auto scroll editor</string>
     <string name="title_advanced_undo_manager" translatable="false">Use Android\'s undo manager</string>
     <string name="title_advanced_browser_zoom" translatable="false">Use browser zoom</string>
@@ -1564,7 +1565,7 @@
     <string name="title_print_margins">Add a margin</string>
     <string name="title_show_headers">Show headers</string>
     <string name="title_show_html">Show source</string>
-    <string name="title_raw_save">Save raw message</string>
+    <string name="title_raw_save">Save raw message (.eml)</string>
     <string name="title_raw_send">Send as attachment</string>
     <string name="title_raw_send_message">Message</string>
     <string name="title_raw_send_thread">Conversation</string>
@@ -1836,7 +1837,7 @@
     <string name="title_openai" translatable="false">OpenAI (ChatGPT)</string>
     <string name="title_translate_configure">Configure &#8230;</string>
     <string name="title_translate_key">Enter key</string>
-    <string name="title_translating">Translating &#8230;</string>
+    <string name="title_translating">Translating to %1$s &#8230;</string>
     <string name="title_translate_formal">Use formal form</string>
     <string name="title_translate_small">Use a small font for the source text</string>
     <string name="title_translate_replace">Replace source text by translated text</string>
@@ -2143,6 +2144,7 @@
     <string name="title_rule_resend">Resend</string>
     <string name="title_rule_attached">Attach raw message file</string>
     <string name="title_rule_cc">Reply to CC addresses</string>
+    <string name="title_rule_checks">Check for no-reply addresses, etc.</string>
     <string name="title_rule_with_attachments">With attachments</string>
     <string name="title_rule_answer_remark">Only one reply will be sent for any conversation, to avoid reply loops</string>
     <string name="title_rule_name_missing">Rule name missing</string>
@@ -2596,6 +2598,8 @@
 
     <string-array name="pollIntervalNames">
         <item>Always</item>
+        <item>Every minute</item>
+        <item>Every 2 minutes</item>
         <item>Every 5 minutes</item>
         <item>Every 10 minutes</item>
         <item>Every 15 minutes</item>
@@ -2609,6 +2613,8 @@
 
     <integer-array name="pollIntervalValues" translatable="false">
         <item>0</item>
+        <item>1</item>
+        <item>2</item>
         <item>5</item>
         <item>10</item>
         <item>15</item>

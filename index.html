@@ -2253,7 +2253,7 @@ $NotDisplayed</code></pre>
 <p><br /></p>
 <p><a name="faq129"></a> <strong>(129) Are ProtonMail, Tutanota, etc supported?</strong></p>
 <p>🌎 <a href="https://translate.google.com/translate?sl=en&amp;u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq129">Google Translate</a></p>
-<p><strong>ProtonMail</strong> uses a proprietary email protocol and <a href="https://protonmail.com/support/knowledge-base/imap-smtp-and-pop3-setup/">does not directly support IMAP</a>, so you cannot use FairEmail or any other Android email client to access ProtonMail.</p>
+<p><strong>ProtonMail</strong> uses a proprietary email protocol and <a href="https://protonmail.com/support/knowledge-base/imap-smtp-and-pop3-setup/">does not directly support IMAP</a>, so you cannot use FairEmail or any other Android email client to access ProtonMail. Unfortunately, Proton has no plans to add <a href="https://github.com/ProtonMail/proton-bridge/issues/427">a mail bridge for Android</a>.</p>
 <p><strong>Tutanota</strong> uses a proprietary email protocol and <a href="https://tutanota.com/faq/#imap">does not support IMAP</a>, so you cannot use FairEmail or any other email client to access Tutanota.</p>
 <p><strong>Cyberfear</strong> does not support IMAP, so you’ll need to manually configure a POP3 account.</p>
 <p><strong>Skiff</strong> uses a proprietary email protocol and <a href="https://www.skiff.com/blog/tutanota-alternatives-comparison">does not support IMAP</a> so you cannot use FairEmail or any other email client to access Skiff.</p>
@@ -2942,6 +2942,13 @@ adb install /path/to/FairEmail-xxx.apk</code></pre>
 <p>If you exceed <a href="https://platform.openai.com/docs/guides/rate-limits">your usage limit</a>, there will be an error message like this:</p>
 <p><em>Error 429: Too Many Requests insufficient_quota: You exceeded your current quota, please check your plan and billing details</em></p>
 <p>Note that you are required to switch to a <a href="https://openai.com/api/pricing/">paid plan</a> after the testing period.</p>
+<p><br></p>
+<p>An alternative to OpenAI is using <a href="https://groq.com/">Groq</a>.</p>
+<ul>
+<li>Endpoint: <strong>https://api.groq.com/openai/v1/</strong></li>
+<li>Suggested <a href="https://console.groq.com/docs/models">model</a>: <strong>gemma2-9b-it</strong> or <strong>llama-3.3-70b-versatile</strong></li>
+</ul>
+<p>It’s faster and free to use for now.</p>
 <p><br></p>
 <p>You can select the <a href="https://platform.openai.com/docs/models/overview">model</a>, and configure the <a href="https://platform.openai.com/docs/api-reference/chat/create#chat/create-temperature">temperature</a>.</p>
 <p>Please read the <a href="https://openai.com/policies/privacy-policy">privacy policy</a> of OpenAI, and perhaps <a href="https://katedowninglaw.com/2023/03/10/openais-massive-data-grab/">this article</a> and <a href="https://www.ncsc.gov.uk/blog-post/chatgpt-and-large-language-models-whats-the-risk">this article</a> too.</p>

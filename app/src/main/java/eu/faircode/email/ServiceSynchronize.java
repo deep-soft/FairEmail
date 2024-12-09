@@ -181,6 +181,7 @@ public class ServiceSynchronize extends ServiceBase implements SharedPreferences
             "tcp_keep_alive", // force reconnect
             "ssl_harden", "ssl_harden_strict", "cert_strict", "cert_transparency", "check_names", "bouncy_castle", "bc_fips", // force reconnect
             "experiments", "debug", "protocol", // force reconnect
+            //"restart_interval", // force reconnect
             "auth_plain", "auth_login", "auth_ntlm", "auth_sasl", "auth_apop", // force reconnect
             "keep_alive_poll", "empty_pool", "idle_done", // force reconnect
             "exact_alarms" // force schedule
@@ -1671,7 +1672,11 @@ public class ServiceSynchronize extends ServiceBase implements SharedPreferences
 
                 if (account.keep_alive_noop) {
                     int timeout = prefs.getInt("timeout", EmailService.DEFAULT_CONNECT_TIMEOUT);
-                    iservice.setRestartIdleInterval(timeout * 2 * 6); // 20 x 2 x 6 = 4 min
+                    int restart_interval = prefs.getInt("restart_interval", EmailService.DEFAULT_RESTART_INTERVAL);
+                    int factor = (timeout == 0 ? 0 : restart_interval / timeout);
+                    int idle_interval = timeout * factor;
+                    Log.i("Restart interval=" + restart_interval + " timeout=" + timeout + " factor=" + factor + " idle=" + idle_interval);
+                    iservice.setRestartIdleInterval(idle_interval);
                 }
 
                 final Date lastStillHere = new Date(0);

@@ -4348,6 +4348,7 @@ You can reset asked questions via the three dots overflow menu in the miscellane
 **ProtonMail** uses a proprietary email protocol
 and [does not directly support IMAP](https://protonmail.com/support/knowledge-base/imap-smtp-and-pop3-setup/),
 so you cannot use FairEmail or any other Android email client to access ProtonMail.
+Unfortunately, Proton has no plans to add [a mail bridge for Android](https://github.com/ProtonMail/proton-bridge/issues/427).
 
 **Tutanota** uses a proprietary email protocol
 and [does not support IMAP](https://tutanota.com/faq/#imap),
@@ -5859,6 +5860,15 @@ If you exceed [your usage limit](https://platform.openai.com/docs/guides/rate-li
 *Error 429: Too Many Requests insufficient_quota: You exceeded your current quota, please check your plan and billing details*
 
 Note that you are required to switch to a [paid plan](https://openai.com/api/pricing/) after the testing period.
+
+<br>
+
+An alternative to OpenAI is using [Groq](https://groq.com/).
+
+* Endpoint: **https://api.groq.com/openai/v1/**
+* Suggested [model](https://console.groq.com/docs/models): **gemma2-9b-it** or **llama-3.3-70b-versatile**
+
+It's faster and free to use for now.
 
 <br>
 
