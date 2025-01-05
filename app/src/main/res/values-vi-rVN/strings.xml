@@ -1003,7 +1003,6 @@
     <string name="title_print_images">In các hình ảnh</string>
     <string name="title_print_images_remark">Việc tải xuống các hình ảnh có thể mất một ít thời gian</string>
     <string name="title_show_headers">Hiện tiêu đề</string>
-    <string name="title_raw_save">Lưu thư thô</string>
     <string name="title_raw_send">Gửi làm tệp đính kèm</string>
     <string name="title_raw_send_message">Thư</string>
     <string name="title_raw_send_thread">Cuộc hội thoại</string>
@@ -1600,7 +1599,6 @@
     <string name="title_hint_junk">Việc lọc thư rác nên được làm bởi máy chủ email và không thể làm một cách đáng tin cậy trên một thiết bị chạy bằng pin có khả năng giới hạn.</string>
     <string name="title_hint_junk_learn">Bằng cách di chuyển thư đến và từ thư mục thư rác, máy chủ email sẽ \"học\" được thư rác là gì</string>
     <string name="title_hint_contact_actions">Nhấn giữ để xem các tuỳ chọn</string>
-    <string name="title_hint_eml">Đây là tóm tắt của nội dung của một tập tin thư thô. Lưu thư thô bằng biểu tượng lưu trong thanh hành động để xem tất cả nội dung.</string>
     <string name="title_open_link">Mở liên kết</string>
     <string name="title_image_link">Liên kết hình ảnh</string>
     <string name="title_different_link">Tiêu đề và địa chỉ liên kết khác nhau</string>

@@ -761,6 +761,7 @@
         Die Standardalgorithmen SHA256 und AES128 werden üblicherweise unterstützt.
     </string>
     <string name="title_advanced_check_certificate">Öffentlichen Schlüssel beim Senden überprüfen</string>
+    <string name="title_advanced_check_key_usage">Überprüfung der Schlüsselverwendungsangaben beim Senden</string>
     <string name="title_advanced_manage_certificates">Öffentliche Schlüssel verwalten</string>
     <string name="title_advanced_import_key">Privaten Schlüssel importieren</string>
     <string name="title_advanced_manage_keys">Private Schlüssel verwalten</string>
@@ -856,6 +857,7 @@
     <string name="title_advanced_send_reminders_hint">Eine Warnung anzeigen, wenn der Nachrichtentext oder der Betreff leer ist oder wenn ein Anhang zu fehlen scheint</string>
     <string name="title_advanced_reply_move_hint">Der E-Mail-Server könnte die Nachrichten trotzdem in den Ordner für gesendete Nachrichten hinzufügen</string>
     <string name="title_advanced_compose_color_hint">Sehr helle oder sehr dunkle Farben führen zu unleserlichen Nachrichten auf der Seite des Empfängers</string>
+    <string name="title_advanced_compose_font_hint">Standard bedeutet, dass die auf der Empfängerseite gewählte Schriftart beibehalten wird</string>
     <string name="title_advanced_template_reply_hint">HTML wird zugelassen. Verfügbare Platzhalter: %1$s</string>
     <string name="title_advanced_write_below_hint">Ein Empfänger könnte Ihre Antwort verpassen, wenn zum Beispiel eine längere Nachricht abgeschnitten wird</string>
     <string name="title_advanced_attach_new_hint">Anderenfalls dem aktuellen Nachrichtenentwurf freigegebene Adressen oder Dateien hinzufügen</string>
@@ -1269,7 +1271,7 @@
     <string name="title_print_margins">Einen Rand hinzufügen</string>
     <string name="title_show_headers">Kopfzeilen anzeigen</string>
     <string name="title_show_html">Quelltext anzeigen</string>
-    <string name="title_raw_save">Rohdaten speichern</string>
+    <string name="title_raw_save">Rohnachricht speichern (.eml)</string>
     <string name="title_raw_send">Als Anhang senden</string>
     <string name="title_raw_send_message">Nachricht</string>
     <string name="title_raw_send_thread">Unterhaltung</string>
@@ -1373,6 +1375,7 @@
     <string name="title_attachment_saved">Anhang gespeichert</string>
     <string name="title_attachments_saved">Anhänge gespeichert</string>
     <string name="title_attachments_incomplete">Einige Anhänge oder Bilder wurden nicht heruntergeladen und konnten nicht hinzugefügt werden</string>
+    <string name="title_report_remark" comment="title_report_remark&#10;Remark to explain what a non-delivery notification message is">Dieser Bericht, eine speziell formatierte E-Mail, wurde von einem E-Mail-Server gesendet, weil eine gesendete Nachricht nicht an den Empfänger zugestellt werden konnte, z. B. weil das Postfach voll ist oder weil die E-Mail-Adresse nicht (mehr) existiert.</string>
     <string name="title_ask_save">Änderungen speichern?</string>
     <string name="title_ask_delete">Nachricht dauerhaft löschen?</string>
     <string name="title_ask_delete_accept">Ich verstehe, dass das Löschen von Nachrichten unwiderruflich ist</string>
@@ -1513,7 +1516,7 @@
     <string name="title_summarize">Zusammenfassen</string>
     <string name="title_translate_configure">Konfigurieren &#8230;</string>
     <string name="title_translate_key">Schlüssel einfügen</string>
-    <string name="title_translating" comment="title_translating&#10;Translating to &lt;language&gt; ...&#10;Please leave the language marker (%1$s) in place as it is.">Übersetzen nach %1$s &#8230;</string>
+    <string name="title_translating">Wird nach %1$s &#8230; übersetzt</string>
     <string name="title_translate_formal">Förmliche Anrede verwenden</string>
     <string name="title_translate_small">Kleine Schrift für den Originaltext verwenden</string>
     <string name="title_translate_replace">Originaltext durch übersetzten Text ersetzen</string>
@@ -1602,6 +1605,7 @@
     <string name="title_signature_email">E-Mail-Adresse der Signatur</string>
     <string name="title_signature_mismatch">Die E-Mail-Adresse des Absenders und der Signatur stimmen nicht überein</string>
     <string name="title_signature_algorithm">Algorithmus</string>
+    <string name="title_signature_public_key">Öffentlicher Schlüssel</string>
     <string name="title_signature_subject">Betreff</string>
     <string name="title_signature_validity">Gültigkeit</string>
     <string name="title_signature_outdated">Dieser öffentliche Schlüssel ist derzeit nicht gültig</string>
@@ -1790,6 +1794,7 @@
     <string name="title_rule_resend">Umleiten</string>
     <string name="title_rule_attached">Nachricht-Quelltext anhängen</string>
     <string name="title_rule_cc">Den CC-Adressen antworten</string>
+    <string name="title_rule_checks">Auf automatisch gesendete Nachrichten, keine-Antwort-Adressen usw. prüfen.</string>
     <string name="title_rule_with_attachments">Mit Anhängen</string>
     <string name="title_rule_answer_remark">Für jede Unterhaltung wird per Antwortregel nur eine Antwort gesendet, um Antwortschleifen zu vermeiden</string>
     <string name="title_rule_name_missing">Regelname fehlt</string>
@@ -1978,7 +1983,9 @@
     <string name="title_hint_junk">Das Filtern von Spam sollte durch den E-Mail-Server erfolgen und kann auf einem akkubetriebenen Gerät mit begrenzten Kapazitäten nicht zuverlässig durchgeführt werden.</string>
     <string name="title_hint_junk_learn">Durch das Verschieben von Nachrichten in und aus dem Spam-Ordner „erlernt” der E-Mail-Server, welche Nachrichten Spam sind</string>
     <string name="title_hint_contact_actions">Gedrückt halten für weitere Optionen</string>
-    <string name="title_hint_eml">Das ist eine Zusammenfassung des Inhalts einer Rohnachrichtendatei. Speichern Sie die Rohnachricht mit dem Speichernsymbol in der Aktionsleiste, um alle Inhalte anzuzeigen.</string>
+    <string name="title_hint_eml">        Dies ist eine Zusammenfassung des Inhalts einer Rohnachrichtendatei.
+        Über die Schaltfläche unten rechts können Sie die Nachricht im Posteingang speichern, um den gesamten Inhalt anzuzeigen.
+    </string>
     <string name="title_open_link">Link öffnen</string>
     <string name="title_image_link">Bild-Link</string>
     <string name="title_different_link">Titel und Linkadresse sind unterschiedlich</string>
@@ -2066,7 +2073,7 @@
     <string name="title_pro_purchase">Kaufen</string>
     <string name="title_pro_one_time">%1$s (einmaliger Kauf)</string>
     <string name="title_pro_no_play">Play Store konnte nicht aufgerufen werden</string>
-    <string name="title_pro_info">        Die Entwicklung von FairEmail hat buchstäblich tausende Stunden gedauert und trotzdem sind die meisten Funktionen kostenlos nutzbar.
+    <string name="title_pro_info">        Die Entwicklung von FairEmail hat buchstäblich tausende Stunden gedauert, und trotzdem sind die meisten Funktionen kostenlos nutzbar.
         FairEmail nimmt Ihre Privatsphäre ernst, zeigt keine Werbung an und verwendet keine Verfolgungs- oder Analysefunktionen, um damit Geld zu verdienen.
         Um FairEmail auf lange Sicht zu erhalten und zu unterstützen, sind einige Komfort- und erweiterte Funktionen nicht kostenlos verwendbar.
         Zur Erinnerung daran zeigt FairEmail einen kleinen Hinweis an, dieser verschwindet beim Kauf der Pro-Funktionen.
@@ -2074,7 +2081,7 @@
     <string name="title_pro_whichever">Welche Funktionen auch immer als Pro-Funktionen ausgewählt werden, es gibt immer jemanden, der sich beschwert, dass eine Funktion frei sein sollte. Bitte seien Sie nicht diese Person.</string>
     <string name="title_pro_google">FairEmail initiiert einen Kauf im Play Store, aber letztendlich verwaltet Google den gesamten Kaufprozess. Bitte machen Sie nicht die App dafür verantwortlich, wenn es Probleme gibt!</string>
     <string name="title_pro_hide">Kleinen Hinweis für %1$d Wochen ausblenden</string>
-    <string name="title_pro_hint">Der Erwerb der Pro-Funktionen erlaubt es Ihnen, alle momentan und zukünftig verfügbaren Pro-Funktionen zu verwenden und ermöglicht die Weiterentwicklung und Pflege der App.</string>
+    <string name="title_pro_hint">Der Erwerb der Pro-Funktionen erlaubt es Ihnen, alle momentan und zukünftig verfügbaren Pro-Funktionen zu verwenden, und ermöglicht die Weiterentwicklung und Pflege der App.</string>
     <string name="title_pro_price">Warum sind die Pro-Funktionen so teuer?</string>
     <string name="title_pro_family">Kann ich die Google-Play-Familienmediathek verwenden?</string>
     <string name="title_pro_restore">Wie kann ich einen Kauf wiederherstellen (auf einem anderen Gerät)?</string>
@@ -2082,7 +2089,7 @@
     <string name="title_pro_activated">Alle Pro-Funktionen sind aktiviert</string>
     <string name="title_pro_valid">Alle Pro-Funktionen aktiviert</string>
     <string name="title_pro_invalid">Ungültige Antwort</string>
-    <string name="title_pro_support">FairEmail ist auf Ihre Hilfe angewiesen. Bitte tippen Sie auf Kaufen, um die Pro-Funktionen zu erwerben, damit das Projekt fortgeführt werden kann oder deaktivieren Sie diese Meldung.</string>
+    <string name="title_pro_support">FairEmail ist auf Ihre Hilfe angewiesen. Bitte tippen Sie auf Kaufen, um die Pro-Funktionen zu erwerben, damit das Projekt fortgeführt werden kann, oder deaktivieren Sie diese Meldung.</string>
     <string name="title_boundary_error">Fehler beim Herunterladen der Nachrichten vom E-Mail-Server</string>
     <string name="title_boundary_retry">Erneut versuchen</string>
     <string name="title_unexpected_error">Unerwarteter Fehler</string>

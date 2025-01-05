@@ -990,7 +990,6 @@
     <string name="title_print_images">Ispis slika</string>
     <string name="title_print_images_remark">Preuzimanje slika može malo potrajati</string>
     <string name="title_show_headers">Pokaži zaglavlje</string>
-    <string name="title_raw_save">Spremi sirovu poruku</string>
     <string name="title_raw_send">Pošalji kao prilog</string>
     <string name="title_raw_send_message">Poruka</string>
     <string name="title_raw_send_thread">Konverzacija</string>
@@ -1583,7 +1582,6 @@
     <string name="title_hint_junk">Filtriranje neželjene pošte trebao bi obavljati poslužitelj e-pošte i ne može se pouzdano obaviti na baterijom pogonjenom uređaju s ograničenim mogućnostima.</string>
     <string name="title_hint_junk_learn">Premještanjem poruka u i iz mape neželjene pošte, poslužitelj e-pošte \"uči\" što je neželjena pošta</string>
     <string name="title_hint_contact_actions">Dugo pritisni za opcije</string>
-    <string name="title_hint_eml">Ovo je sažetak sadržaja neobrađene datoteke poruke. Spremite neobrađenu poruku s ikonom za spremanje na radnoj traci da biste pregledali sav sadržaj.</string>
     <string name="title_open_link">Otvori link</string>
     <string name="title_image_link">Link slike</string>
     <string name="title_different_link">Naslov i adresa veze su različiti</string>

@@ -837,7 +837,6 @@
     <string name="title_print_header">Inprimatu goiburua</string>
     <string name="title_print_images_remark">Irudiak deskargatzea denbora hartu lezake</string>
     <string name="title_show_headers">Erakutsi goiburuak</string>
-    <string name="title_raw_save">Gorde mezu gordina</string>
     <string name="title_raw_send">Bidali eranskin gisa</string>
     <string name="title_raw_send_message">Mezua</string>
     <string name="title_raw_send_thread">Elkarrizketa</string>
@@ -1374,7 +1373,6 @@
     <string name="title_hint_design">Diseinuak ez du arreta galarazten, baina oso funtzionala da. Itxura pertsonalizatzeko aukera asko daude, baina, mesedez, uler ezazu ezinezkoa dela denak aldi berean zoriontsu egitea.</string>
     <string name="title_hint_junk_learn">Mezuak spam karpetara eta bertatik mugitzean, posta-zerbitzariak spama zer den \"ikasten\" du</string>
     <string name="title_hint_contact_actions">Sakatu luze aukeretarako</string>
-    <string name="title_hint_eml">Hau mezu gordin fitxategi baten edukiaren laburpena da. Gorde mezu gordina ekintza-barrako \'gorde\' ikonoarekin eduki osoa ikusteko.</string>
     <string name="title_open_link">Ireki esteka</string>
     <string name="title_image_link">Irudiaren esteka</string>
     <string name="title_different_link">Izenburua eta estekaren helbidea desberdinak dira</string>

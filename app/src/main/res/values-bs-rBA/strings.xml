@@ -774,6 +774,7 @@
         Zadani algoritmi SHA256 i AES128 su uobičajeno podržani.
     </string>
     <string name="title_advanced_check_certificate">Provjeri javni ključ pri slanju</string>
+    <string name="title_advanced_check_key_usage">Provjeri naznake upotrebe ključeva tokom slanja</string>
     <string name="title_advanced_manage_certificates">Upravljaj javnim ključevima</string>
     <string name="title_advanced_import_key">Uvezi privatni ključ</string>
     <string name="title_advanced_manage_keys">Upravljaj privatnim ključevima</string>
@@ -868,6 +869,7 @@
     <string name="title_advanced_send_reminders_hint">Prikazuje upozorenje kada su tekst poruke ili predmet prazni ili kada nedostaje prilog</string>
     <string name="title_advanced_reply_move_hint">E-mail server još može dodavati poruke u folder za poslane poruke</string>
     <string name="title_advanced_compose_color_hint">Presvijetle ili pretamne boje mogu prouzrokovati nečitke poruke s primaočeve strane</string>
+    <string name="title_advanced_compose_font_hint">Zadano znači da primaoc prihvata font kao izabrani font</string>
     <string name="title_advanced_template_reply_hint">HTML je dozvoljen. Dostupna mjesta za prikaz su: %1$s</string>
     <string name="title_advanced_write_below_hint">Primalac može propustiti vaš odgovor, npr. kada se duža poruka skrati</string>
     <string name="title_advanced_attach_new_hint">U suprotnom, dodaj dijeljene adrese ili datoteke u trenutni nacrt poruke</string>
@@ -1281,7 +1283,7 @@
     <string name="title_print_margins">Dodaj marginu</string>
     <string name="title_show_headers">Prikaži zaglavlja</string>
     <string name="title_show_html">Prikaži izvor</string>
-    <string name="title_raw_save">Sačuvaj raw poruku</string>
+    <string name="title_raw_save">Sačuvaj raw poruku (.eml)</string>
     <string name="title_raw_send">Pošalji kao prilog</string>
     <string name="title_raw_send_message">Poruka</string>
     <string name="title_raw_send_thread">Konverzacija</string>
@@ -1385,6 +1387,7 @@
     <string name="title_attachment_saved">Prilog je sačuvan</string>
     <string name="title_attachments_saved">Prilozi su sačuvani</string>
     <string name="title_attachments_incomplete">Neki prilozi ili slike nisu preuzete i ne mogu se dodati</string>
+    <string name="title_report_remark" comment="title_report_remark&#10;Remark to explain what a non-delivery notification message is">Ovaj izvještaj, kao posebno formatiranu e-mail poruku, poslao je e-mail server zato što se poslana poruka nije mogla dostaviti do primaoca, npr. jer je inbox pun ili e-mail adresa ne postoji (više).</string>
     <string name="title_ask_save">Sačuvati promjene?</string>
     <string name="title_ask_delete">Trajno izbrisati poruku?</string>
     <string name="title_ask_delete_accept">Razumijem da je trajno brisanje poruka nepovratno</string>
@@ -1525,7 +1528,7 @@
     <string name="title_summarize">Sažetak</string>
     <string name="title_translate_configure">Podesi &#8230;</string>
     <string name="title_translate_key">Unesite ključ</string>
-    <string name="title_translating" comment="title_translating&#10;Translating to &lt;language&gt; ...&#10;Please leave the language marker (%1$s) in place as it is.">Prevođenje na %1$s &#8230;</string>
+    <string name="title_translating">Prevođenje na %1$s &#8230;</string>
     <string name="title_translate_formal">Koristi formalni oblik</string>
     <string name="title_translate_small">Koristi mali font za izvorni tekst</string>
     <string name="title_translate_replace">Zamijeni izvorni tekst prevedenim tekstom</string>
@@ -1614,6 +1617,7 @@
     <string name="title_signature_email">Potpisna adresa</string>
     <string name="title_signature_mismatch">E-mail adresa pošiljaoca i potpisa se ne podudaraju</string>
     <string name="title_signature_algorithm">Algoritam</string>
+    <string name="title_signature_public_key">Javni ključ</string>
     <string name="title_signature_subject">Predmet</string>
     <string name="title_signature_validity">Valjanost</string>
     <string name="title_signature_outdated">Ovaj javni ključ trenutno nije važeći</string>
@@ -1802,6 +1806,7 @@
     <string name="title_rule_resend">Ponovljeno slanje</string>
     <string name="title_rule_attached">Priloži datoteku RAW poruke</string>
     <string name="title_rule_cc">Odgovori na CC adrese</string>
+    <string name="title_rule_checks">Provjeri ima li automatski poslanih poruka, no-reply adresa, itd.</string>
     <string name="title_rule_with_attachments">S prilozima</string>
     <string name="title_rule_answer_remark">Samo jedan odgovor će se poslati za bilo koju konverzaciju, radi sprječavanja zapetljavanja odgovora</string>
     <string name="title_rule_name_missing">Nedostaje naziv pravila</string>
@@ -1990,7 +1995,9 @@
     <string name="title_hint_junk">Filtriranje spama trebao bi rješavati e-mail server i ne može se pouzdano odvijati na uređajima koje pogone baterije s ograničenim mogućnostima.</string>
     <string name="title_hint_junk_learn">Premještanjem poruka u i iz spam foldera, e-mail server \'pamti\' šta je spam</string>
     <string name="title_hint_contact_actions">Dugi dodir za opcije</string>
-    <string name="title_hint_eml">Ovo je sažetak sadržaja datoteke raw poruke. Da bi mogli vidjeti cijeli sadržaj, sačuvajte raw poruku pritiskom na ikonicu sačuvaj na alatnoj traci.</string>
+    <string name="title_hint_eml">        Ovo je sažetak sadržaja raw poruke.
+        Možete koristiti dugme dolje-desno da sačuvate poruku u inbox i pregledate cijeli sadržaj.
+    </string>
     <string name="title_open_link">Otvori link</string>
     <string name="title_image_link">Link slike</string>
     <string name="title_different_link">Naslovna i adresa linkova su različite</string>

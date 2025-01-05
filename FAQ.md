@@ -140,7 +140,8 @@ Related questions:
 * Language detection [is not working anymore](https://issuetracker.google.com/issues/173337263) on Pixel devices with (upgraded to?) Android 11
 * A [bug in OpenKeychain](https://github.com/open-keychain/open-keychain/issues/2688) causes invalid PGP signatures when using a hardware token.
 * Search suggestions causes the keyboard losing focus on Android 12L.
-* [A bug](https://techcommunity.microsoft.com/t5/outlook/outlook-office-365-imap-idle-is-broken/m-p/3616242) in the Outlook IMAP server causes delayed new message notifications.
+* ~~[A bug](https://techcommunity.microsoft.com/t5/outlook/outlook-office-365-imap-idle-is-broken/m-p/3616242) in the Outlook IMAP server causes delayed new message notifications.~~
+* Updating the Material You colors sometimes require restarting the app / the device, which is caused by [a bug](https://issuetracker.google.com/issues/386671298) in the Android WebView.
 
 <a name="redmi"></a>
 <a name="realme"></a>
@@ -153,7 +154,8 @@ Related questions:
 
 &#x1F30E; [Google Translate](https://translate.google.com/translate?sl=en&u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23redmi)
 
-On some Xiaomi Redmi (Note) devices, some Realme devices, some OnePlus devices running Android 12 and some Oppo devices running Android 12 the database occasionally gets corrupted, especially after an update,
+On some Xiaomi Redmi (Note) devices, some Realme devices, some OnePlus devices, some Oppo devices, and some Samsung devices running Android 12,
+the database occasionally gets corrupted, especially after installing an update,
 resulting in total data loss (on the device only, unless you are using a POP3 account with the option *Leave messages on server* disabled).
 
 The cause of this problem are disk I/O errors due to an Android bug (more likely) or maybe a hardware issue (less likely),
@@ -161,7 +163,7 @@ please [see here](https://www.sqlite.org/rescode.html#ioerr_write).
 
 "*This error might result from a hardware malfunction or because a filesystem came unmounted while the file was open.*"
 
-This can't be fixed by the app and should be fixed by the device manufacturer.
+This can't be fixed by the app and must be fixed by the device manufacturer with an Android update.
 
 **Please do not blame the app for this!**
 
@@ -178,7 +180,8 @@ android.database.sqlite.SQLiteDiskIOException: disk I/O error (code 778)
 	at androidx.room.RoomDatabase.endTransaction(RoomDatabase:584)
 ```
 
-The cause might be [changes in Android 7 Nougat](https://ericsink.com/entries/sqlite_android_n.html), which is why sqlite isn't bundled anymore since version 1.1970.
+This will affect other apps which use a local database intensively too.
+Most apps store their data in the cloud instead of on the device, which is why this isn't occurring frequently.
 
 <br />
 
@@ -1033,10 +1036,11 @@ Signed-only messages are supported, and encrypted-only messages are supported si
 
 Common errors:
 
-* *No key*: there is no PGP key available for one of the listed email addresses
+* *No key*: there is no PGP key available for one of the listed email addresses.
 * *No key found!*: the PGP key stored in the identity probably doesn't exist anymore. Resetting the key (see above) will probably fix this problem.
 * *Missing key for encryption*: there is probably a key selected in FairEmail that does not exist in the OpenKeychain app anymore. Resetting the key (see above) will probably fix this problem.
 * *Key for signature verification is missing*: the public key for the sender is not available in the OpenKeychain app. This can also be caused by Autocrypt being disabled in the encryption settings or by the Autocrypt header not being sent.
+* *Message signature valid but not confirmed*: the signature is okay, but the public key still needs to be confirmed in the OpenKeychain app.
 * *OpenPgp error 0: null* / *OpenPgp error 0: General error*: please check the key in the OpenKeychain app and make sure there are no conflicting identities for the key and make sure the email address exactly matches the key, including lower/upper case. Also, make sure the key can be used to sign/encrypt and isn't for encrypting/signing only.
 * *OpenPgp error 0: Encountered an error reading input data!*: your public key has the [AEAD](https://en.wikipedia.org/wiki/Authenticated_encryption) flag set, but the message was encrypted in the older MDC (Modification Detection Code) mode by the sender. For example the Posteo email server does this erroneously. Workaround: [remove the AEAD flag](https://github.com/keybase/keybase-issues/issues/4025#issuecomment-853933127) from the key.
 
@@ -1888,6 +1892,8 @@ Note that downloading external images from a remote server can be used to record
 
 In the notification settings you'll find a button *Manage notifications* to directly navigate to the Android notifications settings for FairEmail.
 
+Samsung / One UI: you need to enable: Notification > Advanced settings > Manage notification categories for each app
+
 On Android 8.0 Oreo and later you can manage the properties of the individual notification channels,
 for example to set a specific notification sound or to show notifications on the lock screen.
 
@@ -2007,7 +2013,10 @@ It is possible to configure a [regex](https://en.wikipedia.org/wiki/Regular_expr
 to match **the username** of an email address (the part before the @ sign).
 
 Note that the domain name (the parts after the @ sign) always needs to be equal to the domain name of the identity.
-Since version 1.1640 it is possible to match the full email address with a regex, which can be useful for matching alias domain names.
+This also implies that the username will be copied from a received message only if it matches the domain name of the matched identity.
+Since version 1.1640, it is possible to match the full email address with a regex by including the @ character in the regex, which can be useful for matching alias domain names.
+The username will not be copied in this case because the domain name of the *from* address and the the domain name of the identity must be the same.
+If you want the username to be copied, you should define an identity for each domain, which will allow you to send new messages from a specific domain name too.
 
 If you want to match a catch-all email address, this regex is usually fine, provided all usernames for the domain are yours:
 
@@ -3108,7 +3117,7 @@ This website might be useful for testing webhooks:
 
 <br />
 
-<a name="autoanswer">
+<a name="autoanswer"></a>
 **Auto reply/answer**
 
 First, create a template with the text to reply/answer with via the navigation menu (left side menu).
@@ -3661,6 +3670,8 @@ see [here](https://developer.android.com/preview/privacy/scoped-storage) and [he
 If you use MIUI, please make sure [MIUI optimization](https://android.stackexchange.com/questions/191228/what-is-miui-optimization) is enabled in the developer settings.
 You can enable the developer options by tapping a few times on the MIUI version number in the settings, About phone.
 
+See also [this FAQ](#faq25).
+
 <br />
 
 <a name="faq96"></a>
@@ -4055,6 +4066,7 @@ Restarting the device might be necessary to let the Play store recognize the pur
 
 Note that:
 
+* If you did not yet configure an email account in the app, you can long press *About* in the navigation menu (left side menu) of the settings screen to go to the pro features screen
 * If you get *ITEM_ALREADY_OWNED*, the Play store app probably needs to be updated, please [see here](https://support.google.com/googleplay/answer/1050566?hl=en)
 * If you get *BILLING_UNAVAILABLE Google Play In-app Billing API version is less than 3*, the Play store app might not be logged into the account used to install the app
 * Purchases are stored in the Google cloud and cannot get lost
@@ -4278,6 +4290,12 @@ See [this FAQ](#faq71)
 
 Show (fast) *Forward to* in the answer menu, with addresses recently used for forwarding messages (if any).
 You can show the answer menu by tapping on the answer button at the bottom right of an opened/expanded message.
+
+<br />
+
+*Force light for reformatted message view (1.2254+)*
+
+Show force light menu item / button (when configured) to force a light theme for reformatted messages.
 
 <br />
 
@@ -4760,6 +4778,7 @@ the F-Droid build, but **only if** the version number of the F-Droid build is th
 
 F-Droid builds irregularly, which can be problematic if there is an important update.
 Therefore you are advised to switch to the GitHub release.
+F-Droid isn't as secure as you might think anyway, [see here](https://privsec.dev/posts/android/f-droid-security-issues/).
 
 Note that developers have no control over F-Droid builds and the F-Droid infrastructure (apps, forums, etc.).
 
@@ -5446,6 +5465,8 @@ _submission._tcp SRV 0 1 587 smtp.example.com.
 
 [Mozilla's autoconfiguration](https://wiki.mozilla.org/Thunderbird:Autoconfiguration) is supported too,
 but only if the configuration file is accessible via a secure (https) connection.
+The Play Store version of the app will query Mozilla's database only to comply with Play Store policies.
+If you want to query your own server on your own domain name, you should install or update to the GitHub version of the app.
 
 FairEmail will also check the [MX record](https://en.wikipedia.org/wiki/MX_record) and if common email ports (143/993, 465/587) are open.
 

@@ -758,6 +758,7 @@ https://en.wikipedia.org/wiki/ASCII</string>
         De standert algoritmen SHA256 en AES128 wurde meastentiids stipe.
     </string>
     <string name="title_advanced_check_certificate">Kontrolearje iepenbiere kaai by ferstjoeren</string>
+    <string name="title_advanced_check_key_usage">Yndikaasjes foar kaaigebrûk (key usage flags) by ferstjoeren kontrolearje</string>
     <string name="title_advanced_manage_certificates">Publike kaaien beheare</string>
     <string name="title_advanced_import_key">Priveekaai ymportearje</string>
     <string name="title_advanced_manage_keys">Priveekaaien beheare</string>
@@ -851,6 +852,7 @@ https://en.wikipedia.org/wiki/ASCII</string>
     <string name="title_advanced_send_reminders_hint">Toan in warskôging as de tekst fan it berjocht of it ûnderwerp leech is of as in bylage miskien mist</string>
     <string name="title_advanced_reply_move_hint">De e-mailserver koe de berjochten noch hieltyd tafoegje oan de map ferstjoerde berjochten</string>
     <string name="title_advanced_compose_color_hint">Bot ljochte of bot donkere kleuren liede ta net-lêsbere berjochten oan de kant fan de ûntfanger</string>
+    <string name="title_advanced_compose_font_hint">Standert betsjut dat it lettertype, lykas selektearre oan de kant fan de ûntfanger, respektearre wurdt</string>
     <string name="title_advanced_template_reply_hint">HTML is tastien. Beskikbere plakferfangers: %1$s</string>
     <string name="title_advanced_write_below_hint">In ûntfanger mist mooglik jo antwurd, bygelyks wannear’t in langer berjocht ynkoarte wurdt</string>
     <string name="title_advanced_attach_new_hint">Foegje oars dielde adressen of bestannen ta oan it aktuele konseptberjocht</string>
@@ -1261,7 +1263,7 @@ https://en.wikipedia.org/wiki/ASCII</string>
     <string name="title_print_margins">In marzje tafoegje</string>
     <string name="title_show_headers">Kopteksten toane</string>
     <string name="title_show_html">Bron toane</string>
-    <string name="title_raw_save">Rûch berjocht bewarje</string>
+    <string name="title_raw_save">Rûch berjocht bewarje (.eml)</string>
     <string name="title_raw_send">As bylage stjoere</string>
     <string name="title_raw_send_message">Berjocht</string>
     <string name="title_raw_send_thread">Konversaasje</string>
@@ -1365,6 +1367,7 @@ https://en.wikipedia.org/wiki/ASCII</string>
     <string name="title_attachment_saved">Bylage bewarre</string>
     <string name="title_attachments_saved">Bylagen bewarre</string>
     <string name="title_attachments_incomplete">Guon bylagen of ôfbyldingen waarden net download en koene net tafoege wurde</string>
+    <string name="title_report_remark" comment="title_report_remark&#10;Remark to explain what a non-delivery notification message is">Dit rapport, in spesjaal opmakke e-mailberjocht, waard ferstjoerd troch in mailserver, omdat in ferstjoerd berjocht net oan de ûntfanger ôflevere wurde koe, bygelyks omdat de mailbox fol is, of omdat it e-mailadres net (mear) bestiet.</string>
     <string name="title_ask_save">Wizigingen bewarje?</string>
     <string name="title_ask_delete">Berjocht permanint fuotsmite?</string>
     <string name="title_ask_delete_accept">Ik begryp dat permanint fuortsmiten fan berjochten net omkearber is</string>
@@ -1504,7 +1507,7 @@ https://en.wikipedia.org/wiki/ASCII</string>
     <string name="title_summarize">Gearfetsje</string>
     <string name="title_translate_configure">Konfigurearje&#8230;</string>
     <string name="title_translate_key">Kaai ynfiere</string>
-    <string name="title_translating" comment="title_translating&#10;Translating to &lt;language&gt; ...&#10;Please leave the language marker (%1$s) in place as it is.">Oersette nei %1$s &#8230;</string>
+    <string name="title_translating">Oersette nei %1$s &#8230;</string>
     <string name="title_translate_formal">Formele foarm brûke</string>
     <string name="title_translate_small">Brûk in lyts lettertype foar de boarnetekst</string>
     <string name="title_translate_replace">Boarnetekst ferfange troch oersette tekst</string>
@@ -1593,6 +1596,7 @@ https://en.wikipedia.org/wiki/ASCII</string>
     <string name="title_signature_email">Undertekeningsadres</string>
     <string name="title_signature_mismatch">It e-mailadres fan de ôfstjoerder en hantekening komme net oerien</string>
     <string name="title_signature_algorithm">Algoritme</string>
+    <string name="title_signature_public_key">Publike kaai</string>
     <string name="title_signature_subject">Underwerp</string>
     <string name="title_signature_validity">Jildichheid</string>
     <string name="title_signature_outdated">Dizze iepenbiere kaai is op dit stuit net jildich</string>
@@ -1780,6 +1784,7 @@ https://en.wikipedia.org/wiki/ASCII</string>
     <string name="title_rule_resend">Opnij ferstjoere</string>
     <string name="title_rule_attached">Rûch berjocht as bestân tafoegje</string>
     <string name="title_rule_cc">Cc-adressen beäntwurdzje</string>
+    <string name="title_rule_checks">Kontrolearje op automatysk ferstjoerde berjochten, gjin antwurdadressen, ensfh.</string>
     <string name="title_rule_with_attachments">Mei bylagen</string>
     <string name="title_rule_answer_remark">Mar ien antwurd sil ferstjoerd wurde foar elk petear, om antwurdlussen foar te kommen</string>
     <string name="title_rule_name_missing">Regelnamme ûntbrekt</string>
@@ -1968,7 +1973,8 @@ https://en.wikipedia.org/wiki/ASCII</string>
     <string name="title_hint_junk">Net-winske-berjochtenfiltering moat dien wurde troch de e-mailserver en kin net betrouber dien wurde op in batterij oandreaun apparaat mei beheinde mooglikheden.</string>
     <string name="title_hint_junk_learn">Troch berjochten te ferpleatsen fan en nei de net-winskemap ‘leart’ de e-mailserver wat net-winske is</string>
     <string name="title_hint_contact_actions">Lang drukke foar opsjes</string>
-    <string name="title_hint_eml">Dit is in gearfetting fan de ynhâld fan in rûch berjochtbestân. Bewarje it rûge berjocht mei it piktogram ‘Bewarje’ yn de aksjebalke om alle ynhâld te besjen.</string>
+    <string name="title_hint_eml">Dit is in gearfetting fan de ynhâld fan in rûch berjochtebestân.
+ Jo kinne de knop rjochtsûnder brûke om it berjocht te bewarjen yn it Postfek YN om alle ynhâld te besjen.    </string>
     <string name="title_open_link">Keppeling iepenje</string>
     <string name="title_image_link">Ofbyldingskeppeling</string>
     <string name="title_different_link">De titel en it keppelingsadres binne oars</string>

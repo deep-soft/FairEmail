@@ -359,7 +359,7 @@
     <string name="title_advanced_section_notifications">Notificações</string>
     <string name="title_advanced_section_misc">Diversos</string>
     <string name="title_advanced_section_backup">Cópia de segurança</string>
-    <string name="title_advanced_default">Os valores padrão de todas as opções são os mais usuais, que não precisam ser alterados para utilizar a aplicação</string>
+    <string name="title_advanced_default">Todas as opções têm valores padrão que são os mais utilizados, não precisam ser alterados para utilizar a aplicação</string>
     <string name="title_advanced_receive">Receber mensagens de todas as contas</string>
     <string name="title_advanced_when">Quando</string>
     <string name="title_advanced_optimize">Optimizar automaticamente</string>
@@ -760,6 +760,7 @@
         Os algoritmos padrão SHA256 e AES128 são comummente suportados.
     </string>
     <string name="title_advanced_check_certificate">Verificar a chave pública ao enviar</string>
+    <string name="title_advanced_check_key_usage">Verificar indicações key-usage no envio</string>
     <string name="title_advanced_manage_certificates">Gerir chaves públicas</string>
     <string name="title_advanced_import_key">Importar chave privada</string>
     <string name="title_advanced_manage_keys">Gerir chaves privadas</string>
@@ -854,6 +855,7 @@
     <string name="title_advanced_send_reminders_hint">Mostrar um aviso quando o texto da mensagem ou o assunto estiver vazio ou quando um anexo estar ausente</string>
     <string name="title_advanced_reply_move_hint">O servidor de correio electrónico ainda pode adicionar as mensagens à pasta de mensagens enviadas</string>
     <string name="title_advanced_compose_color_hint">Cores muito claras ou muito escuras resultarão em mensagens ilegíveis do lado dos destinatários</string>
+    <string name="title_advanced_compose_font_hint">Padrão significa respeitar a fonte como selecionada no lado do destinatário</string>
     <string name="title_advanced_template_reply_hint">HTML permitido. Espaços reservados disponíveis: %1$s</string>
     <string name="title_advanced_write_below_hint">Um destinatário pode perder a sua resposta, por exemplo, quando uma mensagem mais longa estiver sendo encurtada</string>
     <string name="title_advanced_attach_new_hint">Caso contrário, adicionar endereços ou arquivos partilhados à mensagem rascunho atual</string>
@@ -1267,7 +1269,7 @@ Portanto, este problema só pode ser resolvido pelo seu provedor de e-mail - a i
     <string name="title_print_margins">Adicionar margem</string>
     <string name="title_show_headers">Mostrar cabeçalhos</string>
     <string name="title_show_html">Mostrar código fonte</string>
-    <string name="title_raw_save">Guardar mensagem original (raw)</string>
+    <string name="title_raw_save">Guardar mensagem em bruto (.eml)</string>
     <string name="title_raw_send">Enviar como anexo</string>
     <string name="title_raw_send_message">Mensagem</string>
     <string name="title_raw_send_thread">Conversa</string>
@@ -1371,6 +1373,7 @@ Portanto, este problema só pode ser resolvido pelo seu provedor de e-mail - a i
     <string name="title_attachment_saved">Anexo guardado</string>
     <string name="title_attachments_saved">Anexos guardados</string>
     <string name="title_attachments_incomplete">Alguns anexos ou imagens não foram transferidos e não puderam ser adicionados</string>
+    <string name="title_report_remark" comment="title_report_remark&#10;Remark to explain what a non-delivery notification message is">Este relatório, um e-mail especialmente formatado, foi enviado por um servidor de e-mail porque uma mensagem não pôde ser enviada para o destinatário, porque a caixa de correio está cheia, ou porque o endereço de e-mail não existe.</string>
     <string name="title_ask_save">Guardar as alterações?</string>
     <string name="title_ask_delete">Eliminar mensagem permanentemente?</string>
     <string name="title_ask_delete_accept">Entendo que a eliminação permanente de mensagens é irreversível</string>
@@ -1511,7 +1514,7 @@ Portanto, este problema só pode ser resolvido pelo seu provedor de e-mail - a i
     <string name="title_summarize">Resumir</string>
     <string name="title_translate_configure">Configurar &#8230;</string>
     <string name="title_translate_key">Introduzir chave de acesso</string>
-    <string name="title_translating" comment="title_translating&#10;Translating to &lt;language&gt; ...&#10;Please leave the language marker (%1$s) in place as it is.">Traduzido para %1$s &#8230;</string>
+    <string name="title_translating">Traduzido para %1$s &#8230;</string>
     <string name="title_translate_formal">Utilizar o formulário formal</string>
     <string name="title_translate_small">Utilizar um tipo de letra pequeno para o texto original</string>
     <string name="title_translate_replace">Substituir texto original por texto traduzido</string>
@@ -1600,6 +1603,7 @@ Portanto, este problema só pode ser resolvido pelo seu provedor de e-mail - a i
     <string name="title_signature_email">Endereço da assinatura</string>
     <string name="title_signature_mismatch">O endereço de correio eletrónico do remetente e assinatura não corresponde</string>
     <string name="title_signature_algorithm">Algoritmo</string>
+    <string name="title_signature_public_key">Chave pública</string>
     <string name="title_signature_subject">Assunto</string>
     <string name="title_signature_validity">Validade</string>
     <string name="title_signature_outdated">Esta chave pública actualmente não é válida</string>
@@ -1788,6 +1792,7 @@ Portanto, este problema só pode ser resolvido pelo seu provedor de e-mail - a i
     <string name="title_rule_resend">Reenviar</string>
     <string name="title_rule_attached">Anexar o ficheiro de mensagem em bruto (raw)</string>
     <string name="title_rule_cc">Resposta para endereços CC</string>
+    <string name="title_rule_checks">Verificar mensagens enviadas automaticamente, endereços sem resposta, etc.</string>
     <string name="title_rule_with_attachments">Com anexos</string>
     <string name="title_rule_answer_remark">Apenas uma resposta será enviada em cada conversação, para evitar respostas repetidas</string>
     <string name="title_rule_name_missing">Nome da regra em falta</string>
@@ -1976,7 +1981,9 @@ Portanto, este problema só pode ser resolvido pelo seu provedor de e-mail - a i
     <string name="title_hint_junk">A filtragem de spam deve ser feita pelo servidor de correio electrónico e não pode ser feita de forma confiável num dispositivo ligado a uma bateria e com recursos limitados.</string>
     <string name="title_hint_junk_learn">Ao mover as mensagens para e a partir da pasta de spam, o servidor de correio electrónico \"aprende\" o que é spam</string>
     <string name="title_hint_contact_actions">Pressione longo para opções</string>
-    <string name="title_hint_eml">Este é um resumo do conteúdo de um ficheiro de mensagem em bruto. Guarde a mensagem em bruto com o ícone \'guardar\' na barra de acção para visualizar todo o conteúdo.</string>
+    <string name="title_hint_eml">Este é um resumo do conteúdo de um ficheiro de mensagem em bruto.
+        Pode utilizar o botão inferior direito para guardar a mensagem na caixa de entrada e visualizar todo o conteúdo.
+    </string>
     <string name="title_open_link">Abrir ligação</string>
     <string name="title_image_link">Hiperligação da imagem</string>
     <string name="title_different_link">O título e o endereço da hiperligação são diferentes</string>

@@ -788,6 +788,7 @@
         Типові алгоритми SHA256 і AES128 зазвичай підтримуються.
     </string>
     <string name="title_advanced_check_certificate">Перевіряти відкритий ключ при відправленні</string>
+    <string name="title_advanced_check_key_usage">Перевіряти тип призначення ключа при надсиланні</string>
     <string name="title_advanced_manage_certificates">Керування публічними ключами</string>
     <string name="title_advanced_import_key">Імпортувати особистий ключ</string>
     <string name="title_advanced_manage_keys">Керування особистими ключами</string>
@@ -881,6 +882,7 @@
     <string name="title_advanced_send_reminders_hint">Показувати попередження, коли відсутній текст повідомлення, або тема пуста, або якщо вкладення може бути відсутнє</string>
     <string name="title_advanced_reply_move_hint">Сервер електронної пошти все ще може додати повідомлення до теки надісланих повідомлень</string>
     <string name="title_advanced_compose_color_hint">Використання дуже світлих або дуже темних кольорів може призвести до того, що отримувач не зможе прочитати ваше повідомлення</string>
+    <string name="title_advanced_compose_font_hint">За замовчуванням означає дотримання шрифту, вибраного на стороні одержувача</string>
     <string name="title_advanced_template_reply_hint">Використання HTML дозволене. Доступні заповнювачі: %1$s</string>
     <string name="title_advanced_write_below_hint">Одержувач може пропустити вашу відповідь, наприклад, у разі скорочення довгого повідомлення</string>
     <string name="title_advanced_attach_new_hint">В іншому випадку додавати поширювані адреси чи файли до чернетки поточного повідомлення</string>
@@ -1294,7 +1296,7 @@
     <string name="title_print_margins">Додати відступ</string>
     <string name="title_show_headers">Показати заголовки</string>
     <string name="title_show_html">Показати джерело</string>
-    <string name="title_raw_save">Зберегти raw-повідомлення</string>
+    <string name="title_raw_save">Зберегти raw-повідомлення (.eml)</string>
     <string name="title_raw_send">Надіслати як вкладення</string>
     <string name="title_raw_send_message">Повідомлення</string>
     <string name="title_raw_send_thread">Розмова</string>
@@ -1398,6 +1400,7 @@
     <string name="title_attachment_saved">Вкладення збережено</string>
     <string name="title_attachments_saved">Вкладення збережені</string>
     <string name="title_attachments_incomplete">Деякі вкладення або зображення не були завантажені і не можуть бути додані</string>
+    <string name="title_report_remark" comment="title_report_remark&#10;Remark to explain what a non-delivery notification message is">Цей звіт, спеціально відформатований електронний лист, був надісланий поштовим сервером, оскільки надіслане повідомлення не може бути доставлене одержувачу, наприклад, через переповнення поштової скриньки або через те, що адреса електронної пошти не існує (більше не існує).</string>
     <string name="title_ask_save">Зберегти зміни?</string>
     <string name="title_ask_delete">Видалити повідомлення остаточно?</string>
     <string name="title_ask_delete_accept">Я розумію, що назавжди видалені повідомлення не можуть бути відновленні</string>
@@ -1537,7 +1540,7 @@
     <string name="title_summarize">Підсумувати</string>
     <string name="title_translate_configure">Налаштувати &#8230;</string>
     <string name="title_translate_key">Введіть ключ</string>
-    <string name="title_translating" comment="title_translating&#10;Translating to &lt;language&gt; ...&#10;Please leave the language marker (%1$s) in place as it is.">Переклад на: %1$s &#8230;</string>
+    <string name="title_translating">Переклад на: %1$s &#8230;</string>
     <string name="title_translate_formal">Використовувати формальний стиль</string>
     <string name="title_translate_small">Використовувати малий шрифт для початкового тексту</string>
     <string name="title_translate_replace">Замінити вихідний текст на перекладений текст</string>
@@ -1626,6 +1629,7 @@
     <string name="title_signature_email">Адреса підпису</string>
     <string name="title_signature_mismatch">Електронні адреси відправника і підпису не збігаються</string>
     <string name="title_signature_algorithm">Алгоритм</string>
+    <string name="title_signature_public_key">Відкритий ключ</string>
     <string name="title_signature_subject">Тема</string>
     <string name="title_signature_validity">Чинність</string>
     <string name="title_signature_outdated">Цей відкритий ключ наразі є нечинним</string>
@@ -1814,6 +1818,7 @@
     <string name="title_rule_resend">Надіслати повторно</string>
     <string name="title_rule_attached">Прикріпити файл raw-повідомлення</string>
     <string name="title_rule_cc">Відповісти на адреси CC</string>
+    <string name="title_rule_checks">Перевіряти наявність автоматично надісланих повідомлень, адрес, на які неможливо відповісти тощо.</string>
     <string name="title_rule_with_attachments">З вкладеннями</string>
     <string name="title_rule_answer_remark">Для будь-якої розмови буде надіслано тільки одна відповідь, щоб уникнути циклів відповіді</string>
     <string name="title_rule_name_missing">Не вказано назву правила</string>
@@ -2002,7 +2007,9 @@
     <string name="title_hint_junk">Фільтрування на спам потрібно робити за допомогою сервера електронної пошти і не можна надійно робити це на пристрої з обмеженими можливостями.</string>
     <string name="title_hint_junk_learn">Переміщення повідомлення до та з теки спаму дозволяє навчити сервер електронної пошти що є спам, а що ні</string>
     <string name="title_hint_contact_actions">Довге натискання для параметрів</string>
-    <string name="title_hint_eml">Це короткий виклад вмісту raw-повідомлення. Для перегляду всього вмісту збережіть raw-повідомлення за допомогою значка збереження, що знаходиться на панелі дій.</string>
+    <string name="title_hint_eml">        Це короткий опис вмісту raw-файлу повідомлення.
+        Ви можете скористатися правою нижньою кнопкою, щоб зберегти повідомлення у вхідну теку і переглянути весь вміст.
+    </string>
     <string name="title_open_link">Відкрити посилання</string>
     <string name="title_image_link">Посилання на зображення</string>
     <string name="title_different_link">Назва та адреса посилання відрізняються</string>

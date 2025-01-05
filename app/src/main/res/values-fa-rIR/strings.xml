@@ -650,6 +650,7 @@
     <string name="title_advanced_pull_all_hint">همزمان با پایین کشیدن لیست حساب‌ها یا پرونده‌ها</string>
     <string name="title_advanced_auto_identity_hint">این گزینه، آخرین هویت استفاده شده را به عنوان گیرنده پیام‌های جدید انتخاب خواهد کرد</string>
     <string name="title_advanced_send_reminders_hint">هنگامی که موضوع یا متن پیام خالی است یا یک پیوست ممکن است وجود نداشته باشد، یک هشدار نشان بده</string>
+    <string name="title_advanced_compose_font_hint">پیش‌فرض به معنای احترام به فونت انتخاب شده در سمت گیرنده است</string>
     <string name="title_advanced_template_reply_hint">HTML مجاز است. جایبان‌های موجود: %1$s</string>
     <string name="title_advanced_usenet_hint">بین متن و امضا \'-- \' درج کنید</string>
     <string name="title_advanced_metered_hint">اتصال‌های حجمی عموما شبکه‌های موبایل یا یک هات اسپات غیر رایگان می‌باشند</string>
@@ -890,7 +891,7 @@
     <string name="title_print_margins">افزودن حاشیه</string>
     <string name="title_show_headers">نمایش سرصفحه</string>
     <string name="title_show_html">نمایش مبدا</string>
-    <string name="title_raw_save">ذخیره پیام خام</string>
+    <string name="title_raw_save">ذخیره پیام خام (.eml)</string>
     <string name="title_raw_send">ارسال به‌عنوان پیوست</string>
     <string name="title_raw_send_message">پیام</string>
     <string name="title_raw_send_thread">گفتگو</string>
@@ -963,6 +964,7 @@
     <string name="title_raw_saved">پیام خام ذخیره شد</string>
     <string name="title_attachment_saved">پیوست ذخیره شد</string>
     <string name="title_attachments_saved">پیوست ها ذخیره شدند</string>
+    <string name="title_report_remark" comment="title_report_remark&#10;Remark to explain what a non-delivery notification message is">این گزارش، یک ایمیل با فرمت خاص، به این دلیل توسط یک سرور ایمیل ارسال شده است که یک پیام فرستاده شده نمی‌تواند به گیرنده تحویل داده شود، به عنوان مثال برای اینکه صندوق پستی پر است، یا زیرا نشانی ایمیل (دیگر) وجود ندارد.</string>
     <string name="title_ask_save">تغییرات ذخیره شود؟</string>
     <string name="title_ask_delete">پیام به صورت همیشگی حذف شود؟</string>
     <string name="title_ask_delete_answer">الگوی پاسخ به صورت همیشگی حذف شود؟</string>
@@ -1116,6 +1118,7 @@
     <string name="title_signature_sender">نشانی فرستنده</string>
     <string name="title_signature_email">نشانی امضا</string>
     <string name="title_signature_mismatch">نشانی ایمیل فرستنده و امضا همخوانی ندارد</string>
+    <string name="title_signature_public_key">کلید عمومی</string>
     <string name="title_signature_subject">موضوع</string>
     <string name="title_signature_validity">اعتبار</string>
     <string name="title_signature_outdated">این کلید عمومی در حال حاضر معتبر نیست</string>
@@ -1386,6 +1389,9 @@
     <string name="title_hint_important">مهم</string>
     <string name="title_hint_sync">دریافت پیامها می تواند زمانی بسته به سرعت سرویس دهنده، اتصال به اینترنت، دستگاه و تعداد پیام‌ها طول بکشد. هنگام دریافت پیامها ممکن است عملکرد برنامه کند شود.</string>
     <string name="title_hint_contact_actions">لمس طولانی برای گزینه‌ها</string>
+    <string name="title_hint_eml">        این خلاصه‌ای از محتویات یک فایل پیام خام است.
+        می‌توانید از دکمه پایین سمت راست برای ذخیره پیام در صندوق ورودی استفاده کنید تا همه محتوا را مشاهده کنید.
+    </string>
     <string name="title_open_link">بازکردن لینک</string>
     <string name="title_tracking_link">این وبسایت شاید شما را ردیابی کند</string>
     <string name="title_link_http">ترافیک رمزگذاری نخواهد شد</string>

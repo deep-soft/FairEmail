@@ -16,7 +16,7 @@ package eu.faircode.email;
     You should have received a copy of the GNU General Public License
     along with FairEmail.  If not, see <http://www.gnu.org/licenses/>.
 
-    Copyright 2018-2024 by Marcel Bokhorst (M66B)
+    Copyright 2018-2025 by Marcel Bokhorst (M66B)
 */
 
 import static android.app.Activity.RESULT_FIRST_USER;
@@ -128,6 +128,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.preference.PreferenceManager;
@@ -3426,7 +3427,7 @@ public class FragmentCompose extends FragmentBase {
                     break;
                 case REQUEST_SELECT_IDENTITY:
                     if (resultCode == RESULT_OK && data != null)
-                        onSelectIdentity(data.getBundleExtra("args"));
+                        onSelectIdentity(getContext(), getViewLifecycleOwner(), getParentFragmentManager(), data.getBundleExtra("args"));
                     break;
                 case REQUEST_PRINT:
                     if (resultCode == RESULT_OK && data != null)
@@ -4462,22 +4463,16 @@ public class FragmentCompose extends FragmentBase {
                             // Encrypting Key: Key Usage: Key Encipherment, Data Encipherment
 
                             boolean[] usage = chain[0].getKeyUsage();
-                            if (usage != null && usage.length > 3) {
+                            if (usage != null && usage.length > 0) {
                                 // https://datatracker.ietf.org/doc/html/rfc3280#section-4.2.1.3
                                 // https://datatracker.ietf.org/doc/html/rfc3850#section-4.4.2
                                 boolean digitalSignature = usage[0];
-                                boolean keyEncipherment = usage[2];
 
-                                if (EntityMessage.SMIME_SIGNONLY.equals(type)) {
-                                    if (!digitalSignature)
-                                        throw new IllegalAccessException("Invalid key usage:" +
-                                                " digitalSignature=" + digitalSignature);
-                                } else if (EntityMessage.SMIME_SIGNENCRYPT.equals(type)) {
-                                    if (!digitalSignature || !keyEncipherment)
-                                        throw new IllegalAccessException("Invalid key usage:" +
-                                                " digitalSignature=" + digitalSignature +
-                                                " keyEncipherment=" + keyEncipherment);
-                                }
+                                if (!digitalSignature &&
+                                        (EntityMessage.SMIME_SIGNONLY.equals(type) ||
+                                                EntityMessage.SMIME_SIGNENCRYPT.equals(type)))
+                                    throw new IllegalAccessException("Invalid key usage:" +
+                                            " digitalSignature=" + digitalSignature);
                             }
                         }
                     } catch (CertificateException ex) {
@@ -4740,8 +4735,11 @@ public class FragmentCompose extends FragmentBase {
                 if (ex instanceof IllegalArgumentException) {
                     Log.i(ex);
                     String msg = new ThrowableWrapper(ex).getSafeMessage();
-                    if (ex.getCause() != null)
-                        msg += " " + new ThrowableWrapper(ex.getCause()).getSafeMessage();
+                    if (ex.getCause() != null) {
+                        String cause = new ThrowableWrapper(ex.getCause()).getSafeMessage();
+                        if (cause != null)
+                            msg += " " + cause;
+                    }
                     Snackbar snackbar = Helper.setSnackbarOptions(
                             Snackbar.make(view, msg, Snackbar.LENGTH_INDEFINITE));
                     Helper.setSnackbarLines(snackbar, 7);
@@ -5006,10 +5004,11 @@ public class FragmentCompose extends FragmentBase {
         }.serial().execute(this, args, "compose:picked");
     }
 
-    private void onSelectIdentity(Bundle args) {
+    static void onSelectIdentity(Context context, LifecycleOwner owner, FragmentManager fm, Bundle args) {
         long id = args.getLong("id");
+        Log.i("MMM id="+id);
         if (id < 0) {
-            getContext().startActivity(new Intent(getContext(), ActivitySetup.class)
+            context.startActivity(new Intent(context, ActivitySetup.class)
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     .putExtra("manual", true)
                     .putExtra("scroll", true));
@@ -5044,14 +5043,14 @@ public class FragmentCompose extends FragmentBase {
 
             @Override
             protected void onExecuted(Bundle args, EntityIdentity identity) {
-                ToastEx.makeText(getContext(), R.string.title_completed, Toast.LENGTH_LONG).show();
+                ToastEx.makeText(context, R.string.title_completed, Toast.LENGTH_LONG).show();
             }
 
             @Override
             protected void onException(Bundle args, Throwable ex) {
-                Log.unexpectedError(getParentFragmentManager(), ex);
+                Log.unexpectedError(fm, ex);
             }
-        }.serial().execute(this, args, "select:identity");
+        }.serial().execute(context, owner, args, "select:identity");
     }
 
     private void onPrint(Bundle args) {

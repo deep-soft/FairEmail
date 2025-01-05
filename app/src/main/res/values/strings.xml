@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">FairEmail</string>
-    <string name="app_copyright" translatable="false">Copyright &#x24B8; 2018–2024 by M. Bokhorst</string>
+    <string name="app_copyright" translatable="false">Copyright &#x24B8; 2018–2025 by M. Bokhorst</string>
     <string name="app_search">FairEmail search</string>
     <string name="app_send_self">Send to self</string>
     <string name="app_answer" translatable="false">FairEmail template</string>
@@ -971,7 +971,6 @@
     <string name="title_advanced_auto_scroll" translatable="false">Auto scroll editor</string>
     <string name="title_advanced_undo_manager" translatable="false">Use Android\'s undo manager</string>
     <string name="title_advanced_browser_zoom" translatable="false">Use browser zoom</string>
-    <string name="title_advanced_fake_dark" translatable="false">Fake dark</string>
     <string name="title_advanced_viewport_height" translatable="false">Viewport height</string>
     <string name="title_advanced_ignore_formatted_size" translatable="false">Ignore formatted size</string>
     <string name="title_advanced_show_recent" translatable="false">Show recent flag</string>
@@ -999,6 +998,7 @@
     <string name="title_advanced_native_dkim" translatable="false">Native DKIM verification</string>
     <string name="title_advanced_native_arc" translatable="false">Native ARC verification</string>
     <string name="title_advanced_strict_alignment" translatable="false">Strict alignment</string>
+    <string name="title_advanced_svg" translatable="false">SVG</string>
     <string name="title_advanced_webp" translatable="false">WebP</string>
     <string name="title_advanced_animate" translatable="false">Animate images (GIF, etc.)</string>
     <string name="title_advanced_preview_hidden" translatable="false">Preview hidden</string>
@@ -1008,6 +1008,7 @@
     <string name="title_advanced_paste_quote" translatable="false">Add paste as quote</string>
     <string name="title_advanced_favicon_uri" translatable="false">Favicon alternative URI</string>
     <string name="title_advanced_favicon_uri_hint" translatable="false">{domain} will be replaced</string>
+    <string name="title_advanced_email_junk" translatable="false">Show full \'from\' address for spam messages</string>
     <string name="title_advanced_infra" translatable="false">Show infrastructure</string>
     <string name="title_advanced_tld_flags" translatable="false">Show TLD flags</string>
     <string name="title_advanced_json_ld" translatable="false">Show Linked Data (JSON-LD)</string>
@@ -1079,6 +1080,7 @@
     <string name="title_advanced_send_reminders_hint">Show a warning when the message text or the subject is empty or when an attachment might be missing</string>
     <string name="title_advanced_reply_move_hint">The email server could still add the messages to the sent message folder</string>
     <string name="title_advanced_compose_color_hint">Very light or very dark colors will result in illegible messages on the recipients\' side</string>
+    <string name="title_advanced_compose_font_hint">Default means respecting the font as selected on the receiver side</string>
     <string name="title_advanced_template_reply_hint">HTML is allowed. Available placeholders: %1$s</string>
     <string name="title_advanced_write_below_hint">A recipient might miss your reply, for example when a longer message is being truncated</string>
     <string name="title_advanced_attach_new_hint">Otherwise, add shared addresses or files to the current draft message</string>
@@ -1551,6 +1553,7 @@
     <string name="title_force_light">Force light theme</string>
     <string name="title_rename">Rename</string>
     <string name="title_share">Share</string>
+    <string name="title_analyze">Analyze</string>
     <string name="title_share_link" translatable="false">Share link</string>
     <string name="title_share_link_open" translatable="false">Open message</string>
     <string name="title_zip" translatable="false">ZIP</string>
@@ -1680,6 +1683,7 @@
     <string name="title_attachment_saved">Attachment saved</string>
     <string name="title_attachments_saved">Attachments saved</string>
     <string name="title_attachments_incomplete">Some attachments or images were not downloaded and could not be added</string>
+    <string name="title_report_remark">This report, a specially formatted email, was sent by an email server because a sent message could not be delivered to the recipient, for example because the mailbox is full, or because the email address does not exist (anymore).</string>
     <string name="title_ask_save">Save changes?</string>
     <string name="title_ask_delete">Delete message permanently?</string>
     <string name="title_ask_delete_accept">I understand that permanently deleting messages is irreversible</string>
@@ -1932,6 +1936,7 @@
     <string name="title_signature_email">Signature\'s address</string>
     <string name="title_signature_mismatch">The email address of the sender and signature do not match</string>
     <string name="title_signature_algorithm">Algorithm</string>
+    <string name="title_signature_public_key">Public key</string>
     <string name="title_signature_subject">Subject</string>
     <string name="title_signature_validity">Validity</string>
     <string name="title_signature_outdated">This public key is currently not valid</string>
@@ -2003,6 +2008,7 @@
     <string name="title_sort_on_starred_unread">Starred, unread</string>
     <string name="title_sort_on_priority">Priority</string>
     <string name="title_sort_on_sender">Sender</string>
+    <string name="title_sort_on_sender_name">Sender name</string>
     <string name="title_sort_on_subject">Subject</string>
     <string name="title_sort_on_size">Size</string>
     <string name="title_sort_on_attachments">Attachments</string>
@@ -2351,7 +2357,10 @@
     <string name="title_hint_junk">Spam filtering should be done by the email server and cannot be done reliably on a battery powered device with limited capabilities.</string>
     <string name="title_hint_junk_learn">By moving messages to and from the spam folder, the email server "learns" what spam is</string>
     <string name="title_hint_contact_actions">Long press for options</string>
-    <string name="title_hint_eml">This is a summary of the content of a raw message file. Save the raw message with the save icon in the action bar to view all content.</string>
+    <string name="title_hint_eml">
+        This is a summary of the contents of a raw message file.
+        You can use the bottom-right button to save the message to the inbox to view all content.
+    </string>
 
     <string name="title_open_link">Open link</string>
     <string name="title_image_link">Image link</string>

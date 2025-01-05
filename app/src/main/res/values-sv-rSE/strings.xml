@@ -211,6 +211,7 @@
     <string name="title_setup_oauth_updated">Kontoauktorisering har uppdaterats</string>
     <string name="title_setup_oauth_edge">När du använder Edge webbläsare, se till att \"Blockera öppna externa appar\" i inställningarna \"Sekretess, säkerhet och tjänster\" är \"Av\"</string>
     <string name="title_setup_oauth_brave">När du använder webbläsaren Brave så måste du aktivera alternativet i Braves inställningar för att tillåta att applänkar öppnas i appar utanför Brave</string>
+    <string name="title_setup_oauth_browser">Auktorisering kräver en fungerande webbläsare som gör det möjligt att öppna applänkar (ofta en säkerhetsinställning), så att auktoriseringstoken i slutet kan överföras till appen</string>
     <string name="title_setup_oauth_authorize">Auktorisera</string>
     <string name="title_setup_select_account">Välj konto</string>
     <string name="title_setup_instructions">Inställningsinstruktioner</string>
@@ -752,6 +753,7 @@
         Standardalgoritmerna SHA256 och AES128 stöds ofta.
     </string>
     <string name="title_advanced_check_certificate">Kontrollera offentlig nyckel när du skickar</string>
+    <string name="title_advanced_check_key_usage">Kontrollera nyckelanvändnings-indikationer när du skickar</string>
     <string name="title_advanced_manage_certificates">Hantera publika nycklar</string>
     <string name="title_advanced_import_key">Importera privat nyckel</string>
     <string name="title_advanced_manage_keys">Hantera privata nycklar</string>
@@ -1253,7 +1255,7 @@
     <string name="title_print_margins">Lägg till marginal</string>
     <string name="title_show_headers">Visa sidhuvuden</string>
     <string name="title_show_html">Visa källa</string>
-    <string name="title_raw_save">Spara rent meddelande</string>
+    <string name="title_raw_save">Spara oformaterat meddelande (.eml)</string>
     <string name="title_raw_send">Skicka som bilaga</string>
     <string name="title_raw_send_message">Meddelande</string>
     <string name="title_raw_send_thread">Konversation</string>
@@ -1491,6 +1493,7 @@
     <string name="title_summarize">Sammanfatta</string>
     <string name="title_translate_configure">Konfigurera &#8230;</string>
     <string name="title_translate_key">Ange nyckel</string>
+    <string name="title_translating">Översätter till %1$s &#8230;</string>
     <string name="title_translate_formal">Använd formell form</string>
     <string name="title_translate_small">Använd ett litet typsnitt för källtexten</string>
     <string name="title_translate_replace">Ersätt ursprunglig text med översatt text</string>
@@ -1579,6 +1582,7 @@
     <string name="title_signature_email">Signaturens adress</string>
     <string name="title_signature_mismatch">Avsändarens och signaturens e-postadress matchar inte</string>
     <string name="title_signature_algorithm">Algoritm</string>
+    <string name="title_signature_public_key">Offentlig nyckel</string>
     <string name="title_signature_subject">Ämne</string>
     <string name="title_signature_validity">Giltighet</string>
     <string name="title_signature_outdated">Denna publika nyckel är för närvarande inte giltig</string>
@@ -1681,6 +1685,7 @@
     <string name="title_edit_signature_image_hint">        När du skickar ett meddelande kopieras bilden till meddelandet från den valda platsen.
         Ta alltså inte bort bildfilen!
     </string>
+    <string name="title_edit_signature_delete">Ta bort signatur?</string>
     <string name="title_answer_define_name">Namn</string>
     <string name="title_answer_define_value">Värde</string>
     <string name="title_answer_caption">Redigera mall</string>
@@ -1765,6 +1770,7 @@
     <string name="title_rule_resend">Skicka igen</string>
     <string name="title_rule_attached">Bifoga meddelandefil i källformat</string>
     <string name="title_rule_cc">Svar till CC-adresser</string>
+    <string name="title_rule_checks">Sök efter automatiskt skickade meddelanden, svara-ej-adresser, etc.</string>
     <string name="title_rule_with_attachments">Med bilagor</string>
     <string name="title_rule_answer_remark">Endast ett svar kommer att skickas för någon konversation, för att undvika svarsloopar</string>
     <string name="title_rule_name_missing">Regelnamn saknas</string>
@@ -1953,7 +1959,6 @@
     <string name="title_hint_junk">Spamfiltrering bör göras via e-postservern och kan inte göras tillförlitligt på en batteridriven enhet med begränsad kapacitet.</string>
     <string name="title_hint_junk_learn">Genom att flytta meddelanden till och från skräppostmappen \"lär\" sig e-postservern vad skräppost är</string>
     <string name="title_hint_contact_actions">Långt tryck för alternativ</string>
-    <string name="title_hint_eml">Detta är en sammanfattning av innehållet i en raw-meddelandefil. Spara raw-meddelandet med ikonen spara i åtgärdsfältet för att visa allt innehåll.</string>
     <string name="title_open_link">Öppna länken</string>
     <string name="title_image_link">Bildlänk</string>
     <string name="title_different_link">Titeln och länkadressen är olika</string>

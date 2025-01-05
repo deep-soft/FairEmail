@@ -16,7 +16,7 @@ package eu.faircode.email;
     You should have received a copy of the GNU General Public License
     along with FairEmail.  If not, see <http://www.gnu.org/licenses/>.
 
-    Copyright 2018-2024 by Marcel Bokhorst (M66B)
+    Copyright 2018-2025 by Marcel Bokhorst (M66B)
 */
 
 import android.app.Activity;
@@ -37,7 +37,6 @@ import android.os.strictmode.Violation;
 import android.text.TextUtils;
 import android.util.Printer;
 import android.view.ContextThemeWrapper;
-import android.webkit.CookieManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -272,9 +271,6 @@ public class ApplicationEx extends Application
         // https://developer.android.com/guide/navigation/custom-back/support-animations#fragments
         // https://developer.android.com/guide/navigation/custom-back/predictive-back-gesture#opt-predictive
         FragmentManager.enablePredictiveBack(false);
-
-        if (Helper.hasWebView(this))
-            CookieManager.getInstance().setAcceptCookie(false);
 
         // https://issuetracker.google.com/issues/233525229
         Log.i("Load emoji=" + load_emoji);

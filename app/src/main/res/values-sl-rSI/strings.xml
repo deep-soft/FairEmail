@@ -1101,7 +1101,6 @@
     <string name="title_print_images">Natisni slike</string>
     <string name="title_print_images_remark">Prejem slik lahko traja nekaj časa</string>
     <string name="title_show_headers">Prikaži glave</string>
-    <string name="title_raw_save">Shrani izvorno sporočilo</string>
     <string name="title_raw_send">Shrani kot prilogo</string>
     <string name="title_raw_send_message">Sporočilo</string>
     <string name="title_raw_send_thread">Pogovor</string>
@@ -1732,7 +1731,6 @@
     <string name="title_hint_junk">Vsiljeno pošto bi moral filtrirati strežnik in je ni mogoče zanesljivo filtrirati na napravi z omejeno zmogljivostjo, ki jo napaja baterija.</string>
     <string name="title_hint_junk_learn">S premikanjem sporočil v in iz mape z vsiljeno pošto se e-poštni strežnik nauči, kaj je vsiljena pošta.</string>
     <string name="title_hint_contact_actions">Dolg pritisk za možnosti</string>
-    <string name="title_hint_eml">To je povzetek vsebine datoteke izvornega sporočila.  Shranite izvorno sporočilo z ikono za shranjevanje v vrstici dejanj za ogled celotne vsebine.</string>
     <string name="title_open_link">Odpri povezavo</string>
     <string name="title_image_link">Povezava do slike</string>
     <string name="title_different_link">Naziv in naslov povezave se razlikujeta.</string>

@@ -788,6 +788,7 @@ v prohlížeči ze všech Google účtů.</string>
         Běžně jsou podporovány výchozí algoritmy SHA256 a AES128.
     </string>
     <string name="title_advanced_check_certificate">Zkontrolovat veřejný klíč při odesílání</string>
+    <string name="title_advanced_check_key_usage">Zkontrolovat údaje o použití klíče při odesílání</string>
     <string name="title_advanced_manage_certificates">Spravovat veřejné klíče</string>
     <string name="title_advanced_import_key">Importovat privátní klíč</string>
     <string name="title_advanced_manage_keys">Spravovat privátní klíče</string>
@@ -882,6 +883,7 @@ v prohlížeči ze všech Google účtů.</string>
     <string name="title_advanced_send_reminders_hint">Zobrazí upozornění, je-li text zprávy či předmět prázdný nebo chybí-li pravděpodobně příloha</string>
     <string name="title_advanced_reply_move_hint">E-mailový server stále může zprávy ukládat i do složky odeslané</string>
     <string name="title_advanced_compose_color_hint">Velmi světlá nebo tmavá barva povede k nečitelným zprávám na straně příjemců</string>
+    <string name="title_advanced_compose_font_hint">Výchozí znamená dodržování písma vybraného na straně příjemce</string>
     <string name="title_advanced_template_reply_hint">HTML je povoleno. Dostupné zástupné symboly: %1$s</string>
     <string name="title_advanced_write_below_hint">Příjemce může ztratit vaši odpověď, například když je delší zpráva zkrácena</string>
     <string name="title_advanced_attach_new_hint">V opačném případě přidat sdílené adresy nebo soubory do aktuálního konceptu zprávy</string>
@@ -1294,7 +1296,7 @@ v prohlížeči ze všech Google účtů.</string>
     <string name="title_print_margins">Přidat okraje</string>
     <string name="title_show_headers">Zobrazit hlavičky</string>
     <string name="title_show_html">Zobraz zdroj</string>
-    <string name="title_raw_save">Uložit zdrojovou zprávu</string>
+    <string name="title_raw_save">Uložit zprávu (.eml)</string>
     <string name="title_raw_send">Odeslat jako přílohu</string>
     <string name="title_raw_send_message">Zpráva</string>
     <string name="title_raw_send_thread">Konverzace</string>
@@ -1398,6 +1400,7 @@ v prohlížeči ze všech Google účtů.</string>
     <string name="title_attachment_saved">Příloha uložena</string>
     <string name="title_attachments_saved">Přílohy uloženy</string>
     <string name="title_attachments_incomplete">Některé přílohy nebo obrázky nebyly staženy a nemohly být proto přidány</string>
+    <string name="title_report_remark" comment="title_report_remark&#10;Remark to explain what a non-delivery notification message is">Toto hlášení, zvlášť formátovaný e-mail, byla odeslán e-mailovým serverem, protože odeslaná zpráva nemohla být doručena příjemci, například proto, že e-mailová schránka je plná nebo protože e-mailová adresa (již) neexistuje.</string>
     <string name="title_ask_save">Uložit změny?</string>
     <string name="title_ask_delete">Trvale smazat zprávu?</string>
     <string name="title_ask_delete_accept">Beru na vědomí, že trvalé smazání zpráv je nevratné</string>
@@ -1537,7 +1540,7 @@ v prohlížeči ze všech Google účtů.</string>
     <string name="title_summarize">Shrnout</string>
     <string name="title_translate_configure">Nastavit &#8230;</string>
     <string name="title_translate_key">Zadejte klíč</string>
-    <string name="title_translating" comment="title_translating&#10;Translating to &lt;language&gt; ...&#10;Please leave the language marker (%1$s) in place as it is.">Překlad do %1$s &#8230;</string>
+    <string name="title_translating">Překlad do %1$s &#8230;</string>
     <string name="title_translate_formal">Použít formální jazyk</string>
     <string name="title_translate_small">Použít malé písmo pro zdrojový text</string>
     <string name="title_translate_replace">Nahradit zdrojový text přeloženým textem</string>
@@ -1626,6 +1629,7 @@ v prohlížeči ze všech Google účtů.</string>
     <string name="title_signature_email">Adresa podpisu</string>
     <string name="title_signature_mismatch">E-mailová adresa odesílatele a podpis se neshodují</string>
     <string name="title_signature_algorithm">Algoritmus</string>
+    <string name="title_signature_public_key">Veřejný klíč</string>
     <string name="title_signature_subject">Subjekt</string>
     <string name="title_signature_validity">Platnost</string>
     <string name="title_signature_outdated">Tento veřejný klíč není v současné době platný</string>
@@ -1814,6 +1818,7 @@ v prohlížeči ze všech Google účtů.</string>
     <string name="title_rule_resend">Odeslat znovu</string>
     <string name="title_rule_attached">Připojit soubor zdrojové zprávy</string>
     <string name="title_rule_cc">Odpovědět na adresy kopie</string>
+    <string name="title_rule_checks">Kontrolovat automatické odesílání zpráv, adresy bez odpovědi atd.</string>
     <string name="title_rule_with_attachments">S přílohami</string>
     <string name="title_rule_answer_remark">Aby se zabránilo smyčkám odpovědí, bude na každou konverzaci odeslána pouze jedna odpověď</string>
     <string name="title_rule_name_missing">Chybí název pravidla</string>
@@ -2002,7 +2007,9 @@ v prohlížeči ze všech Google účtů.</string>
     <string name="title_hint_junk">Filtrování nevyžádané pošty by měl zprostředkovávat e-mailový server, neb na baterií napájeném zařízení s omezenými prostředky jej nelze provádět spolehlivě.</string>
     <string name="title_hint_junk_learn">Přesunutím zpráv do a ze složky nevyžádané pošty se e-mailový server \"naučí\", co je spam</string>
     <string name="title_hint_contact_actions">Dlouze podržet pro možnosti</string>
-    <string name="title_hint_eml">Toto je souhrn obsahu souboru zdrojové zprávy. Pro zobrazení celého obsahu uložte zdrojovou zprávu pomocí ikony uložit v panelu akcí.</string>
+    <string name="title_hint_eml">        Toto je shrnutí obsahu souboru pro nezpracovanou zprávu.
+        Můžete použít tlačítko vpravo nahoře pro uložení zprávy do složky Doručená pošta pro zobrazení celého obsahu.
+    </string>
     <string name="title_open_link">Otevřít odkaz</string>
     <string name="title_image_link">Odkaz obrázku</string>
     <string name="title_different_link">Název a adresa odkazu jsou odlišné</string>

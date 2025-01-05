@@ -16,7 +16,7 @@ package eu.faircode.email;
     You should have received a copy of the GNU General Public License
     along with FairEmail.  If not, see <http://www.gnu.org/licenses/>.
 
-    Copyright 2018-2024 by Marcel Bokhorst (M66B)
+    Copyright 2018-2025 by Marcel Bokhorst (M66B)
 */
 
 import static android.system.OsConstants.ENOSPC;
@@ -1009,6 +1009,7 @@ public class MessageHelper {
         boolean format_flowed = prefs.getBoolean("format_flowed", false);
         int compose_color = prefs.getInt("compose_color", Color.TRANSPARENT);
         String compose_font = prefs.getString("compose_font", "");
+        String compose_text_size = prefs.getString("compose_text_size", "");
         boolean auto_link = prefs.getBoolean("auto_link", false);
 
         // Build html body
@@ -1032,6 +1033,11 @@ public class MessageHelper {
             if (message.language != null)
                 document.body().attr("lang", message.language);
 
+            String defaultStyles = document.body().attr("style");
+            //defaultStyles = HtmlHelper.mergeStyles(defaultStyles, "font-size: medium;");
+            if (!TextUtils.isEmpty(defaultStyles))
+                document.body().attr("style", defaultStyles);
+
             // When sending message
             if (identity != null && send) {
                 if (auto_link) {
@@ -1039,7 +1045,9 @@ public class MessageHelper {
                     HtmlHelper.autoLink(document, true);
                 }
 
-                if (!TextUtils.isEmpty(compose_font) || compose_color != Color.TRANSPARENT) {
+                if (compose_color != Color.TRANSPARENT ||
+                        !TextUtils.isEmpty(compose_font) ||
+                        !TextUtils.isEmpty(compose_text_size)) {
                     List<Node> childs = new ArrayList<>();
                     for (Node child : document.body().childNodes())
                         if (TextUtils.isEmpty(child.attr("fairemail"))) {
@@ -1049,10 +1057,12 @@ public class MessageHelper {
                             break;
 
                     StringBuilder style = new StringBuilder();
-                    if (!TextUtils.isEmpty(compose_font))
-                        style.append("font-family: ").append(StyleHelper.getFamily(compose_font)).append(';');
                     if (compose_color != Color.TRANSPARENT)
                         style.append("color: ").append(HtmlHelper.encodeWebColor(compose_color)).append(';');
+                    if (!TextUtils.isEmpty(compose_font))
+                        style.append("font-family: ").append(StyleHelper.getFamily(compose_font)).append(';');
+                    if (!TextUtils.isEmpty(compose_text_size))
+                        style.append("font-size: ").append(compose_text_size).append(';');
 
                     Element div = document.createElement("div").attr("style", style.toString());
 
@@ -4234,7 +4244,7 @@ public class MessageHelper {
                             HtmlHelper.formatPlainText(result) +
                             "</pre>";
                 } else if (h.isReport()) {
-                    Report report = new Report(h.contentType.getBaseType(), result);
+                    Report report = new Report(h.contentType.getBaseType(), result, context);
                     result = report.html;
 
                     StringBuilder w = new StringBuilder();
@@ -4276,7 +4286,7 @@ public class MessageHelper {
             return sb.toString();
         }
 
-        Report getReport() throws MessagingException, IOException {
+        Report getReport(Context context) throws MessagingException, IOException {
             for (PartHolder h : extra)
                 if (h.isReport()) {
                     String result;
@@ -4287,7 +4297,7 @@ public class MessageHelper {
                         result = Helper.readStream((InputStream) content);
                     else
                         result = content.toString();
-                    return new Report(h.contentType.getBaseType(), result);
+                    return new Report(h.contentType.getBaseType(), result, context);
                 }
             return null;
         }
@@ -6052,7 +6062,7 @@ public class MessageHelper {
         String feedback;
         String html;
 
-        Report(String type, String content) {
+        Report(String type, String content, Context context) {
             this.type = type;
             StringBuilder report = new StringBuilder();
             report.append("<hr><div style=\"font-family: monospace; font-size: small;\">");
@@ -6128,7 +6138,14 @@ public class MessageHelper {
                 Log.e(ex);
                 report.append(TextUtils.htmlEncode(new ThrowableWrapper(ex).toSafeString()));
             }
+
             report.append("</div>");
+
+            if (isDeliveryStatus() && !isDelivered())
+                report.append("<br><div style=\"font-size: small; font-style: italic;\">")
+                        .append(TextUtils.htmlEncode(context.getString(R.string.title_report_remark)))
+                        .append("</div>");
+
             this.html = report.toString();
         }
 

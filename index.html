@@ -152,16 +152,17 @@
 <li>Language detection <a href="https://issuetracker.google.com/issues/173337263">is not working anymore</a> on Pixel devices with (upgraded to?) Android 11</li>
 <li>A <a href="https://github.com/open-keychain/open-keychain/issues/2688">bug in OpenKeychain</a> causes invalid PGP signatures when using a hardware token.</li>
 <li>Search suggestions causes the keyboard losing focus on Android 12L.</li>
-<li><a href="https://techcommunity.microsoft.com/t5/outlook/outlook-office-365-imap-idle-is-broken/m-p/3616242">A bug</a> in the Outlook IMAP server causes delayed new message notifications.</li>
+<li><del><a href="https://techcommunity.microsoft.com/t5/outlook/outlook-office-365-imap-idle-is-broken/m-p/3616242">A bug</a> in the Outlook IMAP server causes delayed new message notifications.</del></li>
+<li>Updating the Material You colors sometimes require restarting the app / the device, which is caused by <a href="https://issuetracker.google.com/issues/386671298">a bug</a> in the Android WebView.</li>
 </ul>
 <p><a name="redmi"></a> <a name="realme"></a> <a name="oneplus"></a> <a name="oppo"></a></p>
 <p><br /></p>
 <p><strong>Xiaomi Redmi / Realme / OnePlus / Oppo</strong></p>
 <p>🌎 <a href="https://translate.google.com/translate?sl=en&amp;u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23redmi">Google Translate</a></p>
-<p>On some Xiaomi Redmi (Note) devices, some Realme devices, some OnePlus devices running Android 12 and some Oppo devices running Android 12 the database occasionally gets corrupted, especially after an update, resulting in total data loss (on the device only, unless you are using a POP3 account with the option <em>Leave messages on server</em> disabled).</p>
+<p>On some Xiaomi Redmi (Note) devices, some Realme devices, some OnePlus devices, some Oppo devices, and some Samsung devices running Android 12, the database occasionally gets corrupted, especially after installing an update, resulting in total data loss (on the device only, unless you are using a POP3 account with the option <em>Leave messages on server</em> disabled).</p>
 <p>The cause of this problem are disk I/O errors due to an Android bug (more likely) or maybe a hardware issue (less likely), please <a href="https://www.sqlite.org/rescode.html#ioerr_write">see here</a>.</p>
 <p>“<em>This error might result from a hardware malfunction or because a filesystem came unmounted while the file was open.</em>”</p>
-<p>This can’t be fixed by the app and should be fixed by the device manufacturer.</p>
+<p>This can’t be fixed by the app and must be fixed by the device manufacturer with an Android update.</p>
 <p><strong>Please do not blame the app for this!</strong></p>
 <p>For the record, the stack trace:</p>
 <pre><code>android.database.sqlite.SQLiteDiskIOException: disk I/O error (code 778)
@@ -172,7 +173,7 @@
     at io.requery.android.database.sqlite.SQLiteDatabase.endTransaction(SQLiteDatabase:551)
     at androidx.room.RoomDatabase.internalEndTransaction(RoomDatabase:594)
     at androidx.room.RoomDatabase.endTransaction(RoomDatabase:584)</code></pre>
-<p>The cause might be <a href="https://ericsink.com/entries/sqlite_android_n.html">changes in Android 7 Nougat</a>, which is why sqlite isn’t bundled anymore since version 1.1970.</p>
+<p>This will affect other apps which use a local database intensively too. Most apps store their data in the cloud instead of on the device, which is why this isn’t occurring frequently.</p>
 <p><br /></p>
 <h2>
 <a name="planned-features"></a>Planned features
@@ -739,10 +740,11 @@
 <p>Signed-only messages are supported, and encrypted-only messages are supported since version 1.2053.</p>
 <p>Common errors:</p>
 <ul>
-<li><em>No key</em>: there is no PGP key available for one of the listed email addresses</li>
+<li><em>No key</em>: there is no PGP key available for one of the listed email addresses.</li>
 <li><em>No key found!</em>: the PGP key stored in the identity probably doesn’t exist anymore. Resetting the key (see above) will probably fix this problem.</li>
 <li><em>Missing key for encryption</em>: there is probably a key selected in FairEmail that does not exist in the OpenKeychain app anymore. Resetting the key (see above) will probably fix this problem.</li>
 <li><em>Key for signature verification is missing</em>: the public key for the sender is not available in the OpenKeychain app. This can also be caused by Autocrypt being disabled in the encryption settings or by the Autocrypt header not being sent.</li>
+<li><em>Message signature valid but not confirmed</em>: the signature is okay, but the public key still needs to be confirmed in the OpenKeychain app.</li>
 <li><em>OpenPgp error 0: null</em> / <em>OpenPgp error 0: General error</em>: please check the key in the OpenKeychain app and make sure there are no conflicting identities for the key and make sure the email address exactly matches the key, including lower/upper case. Also, make sure the key can be used to sign/encrypt and isn’t for encrypting/signing only.</li>
 <li><em>OpenPgp error 0: Encountered an error reading input data!</em>: your public key has the <a href="https://en.wikipedia.org/wiki/Authenticated_encryption">AEAD</a> flag set, but the message was encrypted in the older MDC (Modification Detection Code) mode by the sender. For example the Posteo email server does this erroneously. Workaround: <a href="https://github.com/keybase/keybase-issues/issues/4025#issuecomment-853933127">remove the AEAD flag</a> from the key.</li>
 </ul>
@@ -1130,6 +1132,7 @@ Visit https://aka.ms/smtp_auth_disabled for more information.</code></pre>
 <p><a name="faq28"></a> <strong>(28) How can I manage status bar notifications?</strong></p>
 <p>🌎 <a href="https://translate.google.com/translate?sl=en&amp;u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq28">Google Translate</a></p>
 <p>In the notification settings you’ll find a button <em>Manage notifications</em> to directly navigate to the Android notifications settings for FairEmail.</p>
+<p>Samsung / One UI: you need to enable: Notification &gt; Advanced settings &gt; Manage notification categories for each app</p>
 <p>On Android 8.0 Oreo and later you can manage the properties of the individual notification channels, for example to set a specific notification sound or to show notifications on the lock screen.</p>
 <p>FairEmail has the following notification channels:</p>
 <ul>
@@ -1185,7 +1188,7 @@ X-Google-Original-From: Somebody &lt;somebody+extra@example.org&gt;</code></pre>
 <p>Note that identities need to be enabled to be able to be matched and that identities of other accounts will not be considered.</p>
 <p>Matching will be done only once on receiving a message, so changing the configuration will not change existing messages. You could clear local messages by long pressing a folder in the folder list and synchronize the messages again, though.</p>
 <p>It is possible to configure a <a href="https://en.wikipedia.org/wiki/Regular_expression">regex</a> in the advanced identity settings (Navigation menu &gt; Settings &gt; Manual setup and account options &gt; Identities &gt; tap the identity &gt; Advanced) to match <strong>the username</strong> of an email address (the part before the @ sign).</p>
-<p>Note that the domain name (the parts after the @ sign) always needs to be equal to the domain name of the identity. Since version 1.1640 it is possible to match the full email address with a regex, which can be useful for matching alias domain names.</p>
+<p>Note that the domain name (the parts after the @ sign) always needs to be equal to the domain name of the identity. This also implies that the username will be copied from a received message only if it matches the domain name of the matched identity. Since version 1.1640, it is possible to match the full email address with a regex by including the @ character in the regex, which can be useful for matching alias domain names. The username will not be copied in this case because the domain name of the <em>from</em> address and the the domain name of the identity must be the same. If you want the username to be copied, you should define an identity for each domain, which will allow you to send new messages from a specific domain name too.</p>
 <p>If you want to match a catch-all email address, this regex is usually fine, provided all usernames for the domain are yours:</p>
 <pre><code>.*</code></pre>
 <p>The username of a message being replied to will be used as the default username when editing of usernames is enabled in the advanced identity settings.</p>
@@ -1718,7 +1721,7 @@ $$aligned$ (since version 1.2049)</code></pre>
 <p>This website might be useful for testing webhooks:</p>
 <p><a href="https://webhook.site/">https://webhook.site/</a></p>
 <p><br /></p>
-<p><a name="autoanswer"> <strong>Auto reply/answer</strong></p>
+<p><a name="autoanswer"></a> <strong>Auto reply/answer</strong></p>
 <p>First, create a template with the text to reply/answer with via the navigation menu (left side menu).</p>
 <p>After creating a template text, go to the rules via the navigation menu (left side menu), and create a rule for the inbox like this:</p>
 <ul>
@@ -1949,6 +1952,7 @@ Y1 OK CAPABILITY completed</code></pre>
 <p>If an app is listed depends on if the app implements a <a href="https://developer.android.com/guide/topics/providers/document-provider">document provider</a>. If the app is not listed, you might need to ask the developer of the app to add support for the Storage Access Framework.</p>
 <p>Android Q will make it harder and maybe even impossible to directly access files, see <a href="https://developer.android.com/preview/privacy/scoped-storage">here</a> and <a href="https://www.xda-developers.com/android-q-storage-access-framework-scoped-storage/">here</a> for more details.</p>
 <p>If you use MIUI, please make sure <a href="https://android.stackexchange.com/questions/191228/what-is-miui-optimization">MIUI optimization</a> is enabled in the developer settings. You can enable the developer options by tapping a few times on the MIUI version number in the settings, About phone.</p>
+<p>See also <a href="#faq25">this FAQ</a>.</p>
 <p><br /></p>
 <p><a name="faq96"></a> <strong>(96) Where can I find the IMAP and SMTP settings?</strong></p>
 <p>🌎 <a href="https://translate.google.com/translate?sl=en&amp;u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq96">Google Translate</a></p>
@@ -2121,6 +2125,7 @@ category:promotions</code></pre>
 <p>You can also try to clear the cache of the Play store app via the Android apps settings. Restarting the device might be necessary to let the Play store recognize the purchase correctly.</p>
 <p>Note that:</p>
 <ul>
+<li>If you did not yet configure an email account in the app, you can long press <em>About</em> in the navigation menu (left side menu) of the settings screen to go to the pro features screen</li>
 <li>If you get <em>ITEM_ALREADY_OWNED</em>, the Play store app probably needs to be updated, please <a href="https://support.google.com/googleplay/answer/1050566?hl=en">see here</a></li>
 <li>If you get <em>BILLING_UNAVAILABLE Google Play In-app Billing API version is less than 3</em>, the Play store app might not be logged into the account used to install the app</li>
 <li>Purchases are stored in the Google cloud and cannot get lost</li>
@@ -2226,6 +2231,9 @@ $NotDisplayed</code></pre>
 <p><br /></p>
 <p><em>Fast forward to (1.2226+)</em></p>
 <p>Show (fast) <em>Forward to</em> in the answer menu, with addresses recently used for forwarding messages (if any). You can show the answer menu by tapping on the answer button at the bottom right of an opened/expanded message.</p>
+<p><br /></p>
+<p><em>Force light for reformatted message view (1.2254+)</em></p>
+<p>Show force light menu item / button (when configured) to force a light theme for reformatted messages.</p>
 <p><br /></p>
 <p><a name="faq126"></a> <strong>(126) Can message previews be sent to my smartwatch?</strong></p>
 <p>🌎 <a href="https://translate.google.com/translate?sl=en&amp;u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq126">Google Translate</a></p>
@@ -2444,7 +2452,7 @@ $NotDisplayed</code></pre>
 <p>🌎 <a href="https://translate.google.com/translate?sl=en&amp;u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq147">Google Translate</a></p>
 <p>You likely came here because you are using a third party build of FairEmail.</p>
 <p>There is <strong>only support</strong> on the latest Play store version, the latest GitHub release and the F-Droid build, but <strong>only if</strong> the version number of the F-Droid build is the same as the version number of the latest GitHub release.</p>
-<p>F-Droid builds irregularly, which can be problematic if there is an important update. Therefore you are advised to switch to the GitHub release.</p>
+<p>F-Droid builds irregularly, which can be problematic if there is an important update. Therefore you are advised to switch to the GitHub release. F-Droid isn’t as secure as you might think anyway, <a href="https://privsec.dev/posts/android/f-droid-security-issues/">see here</a>.</p>
 <p>Note that developers have no control over F-Droid builds and the F-Droid infrastructure (apps, forums, etc.).</p>
 <p>OAuth access is available only for Play Store and Github releases because email providers permitted the use of OAuth for these releases only. The responsible for a release, for the F-Droid build this is the F-Droid organization, needs to ask for OAuth permissions, which mostly involves signing a contract with binding terms and conditions, often with the clause that the use of OAuth is exclusive.</p>
 <p>Note that you’ll need to uninstall the F-Droid build first before you can install a GitHub release because Android refuses to install (“<em>App was not installed</em>”) the same app with a different signature for security reasons.</p>
@@ -2753,7 +2761,7 @@ DNS lookup 108.27.250.142.zen.spamhaus.org -&gt;
 <p>Example DNS records (SRV=record type, 0=priority, 1=weight, 993/587=port number):</p>
 <pre><code>_imaps._tcp SRV 0 1 993 imap.example.com.
 _submission._tcp SRV 0 1 587 smtp.example.com.</code></pre>
-<p><a href="https://wiki.mozilla.org/Thunderbird:Autoconfiguration">Mozilla’s autoconfiguration</a> is supported too, but only if the configuration file is accessible via a secure (https) connection.</p>
+<p><a href="https://wiki.mozilla.org/Thunderbird:Autoconfiguration">Mozilla’s autoconfiguration</a> is supported too, but only if the configuration file is accessible via a secure (https) connection. The Play Store version of the app will query Mozilla’s database only to comply with Play Store policies. If you want to query your own server on your own domain name, you should install or update to the GitHub version of the app.</p>
 <p>FairEmail will also check the <a href="https://en.wikipedia.org/wiki/MX_record">MX record</a> and if common email ports (143/993, 465/587) are open.</p>
 <p>There is no auto discovery for POP3.</p>
 <p><br /></p>

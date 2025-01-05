@@ -787,6 +787,7 @@
         Powszechnie obsługiwane są domyślne algorytmy SHA256 i AES128.
     </string>
     <string name="title_advanced_check_certificate">Sprawdź klucz publiczny podczas wysyłania</string>
+    <string name="title_advanced_check_key_usage">Sprawdź wskazania użycia klucza przy wysyłaniu</string>
     <string name="title_advanced_manage_certificates">Zarządzaj kluczami publicznymi</string>
     <string name="title_advanced_import_key">Importuj klucz prywatny</string>
     <string name="title_advanced_manage_keys">Zarządzaj kluczami prywatnymi</string>
@@ -881,6 +882,7 @@
     <string name="title_advanced_send_reminders_hint">Pokaż ostrzeżenie, gdy tekst wiadomości lub temat jest pusty lub gdy może brakować załącznika</string>
     <string name="title_advanced_reply_move_hint">Serwer e-mail może nadal dodawać wiadomości do folderu wysłanych wiadomości</string>
     <string name="title_advanced_compose_color_hint">Bardzo jasne lub bardzo ciemne kolory spowodują, że wiadomości po stronie odbiorcy będą nieczytelne</string>
+    <string name="title_advanced_compose_font_hint">Domyślny oznacza przestrzeganie czcionki wybranej po stronie odbiorcy</string>
     <string name="title_advanced_template_reply_hint">HTML jest dozwolony. Dostępne symbole zastępcze: %1$s</string>
     <string name="title_advanced_write_below_hint">Odbiorca może przegapić Twoją odpowiedź, np. gdy dłuższa wiadomość zostanie skrócona</string>
     <string name="title_advanced_attach_new_hint">W innym przypadku dodaj udostępniane adresy lub pliki do aktualnej wersji roboczej wiadomości</string>
@@ -1293,7 +1295,7 @@
     <string name="title_print_margins">Dodaj margines</string>
     <string name="title_show_headers">Pokaż nagłówki</string>
     <string name="title_show_html">Pokaż źródło</string>
-    <string name="title_raw_save">Zapisz nieprzetworzoną wiadomość</string>
+    <string name="title_raw_save">Zapisz nieprzetworzony plik wiadomości (.eml)</string>
     <string name="title_raw_send">Wyślij jako załącznik</string>
     <string name="title_raw_send_message">Wiadomość</string>
     <string name="title_raw_send_thread">Konwersacja</string>
@@ -1397,6 +1399,7 @@
     <string name="title_attachment_saved">Załącznik zapisany</string>
     <string name="title_attachments_saved">Załączniki zapisane</string>
     <string name="title_attachments_incomplete">Niektóre załączniki lub obrazy nie zostały pobrane i nie można ich dodać</string>
+    <string name="title_report_remark" comment="title_report_remark&#10;Remark to explain what a non-delivery notification message is">Ten raport, specjalnie sformatowana wiadomość e-mail, został wysłany przez serwer poczty e-mail, ponieważ wysłana wiadomość nie mogła zostać dostarczona do odbiorcy, na przykład z powodu zapełnienia skrzynki pocztowej lub dlatego, że adres e-mail już nie istnieje.</string>
     <string name="title_ask_save">Zapisać zmiany?</string>
     <string name="title_ask_delete">Usunąć wiadomość bezpowrotnie?</string>
     <string name="title_ask_delete_accept">Rozumiem, że trwałe usuwanie wiadomości jest nieodwracalne</string>
@@ -1536,7 +1539,7 @@
     <string name="title_summarize">Podsumowanie</string>
     <string name="title_translate_configure">Konfiguruj &#8230;</string>
     <string name="title_translate_key">Wprowadź klucz</string>
-    <string name="title_translating" comment="title_translating&#10;Translating to &lt;language&gt; ...&#10;Please leave the language marker (%1$s) in place as it is.">Tłumaczenie na %1$s &#8230;</string>
+    <string name="title_translating">Tłumaczenie na %1$s &#8230;</string>
     <string name="title_translate_formal">Użyj stylu formalnego</string>
     <string name="title_translate_small">Użyj małej czcionki dla tekstu źródłowego</string>
     <string name="title_translate_replace">Zastąp tekst źródłowy przetłumaczonym tekstem</string>
@@ -1625,6 +1628,7 @@
     <string name="title_signature_email">Adres podpisu</string>
     <string name="title_signature_mismatch">Adres e-mail nadawcy i podpis nie są zgodne</string>
     <string name="title_signature_algorithm">Algorytm</string>
+    <string name="title_signature_public_key">Klucz publiczny</string>
     <string name="title_signature_subject">Temat</string>
     <string name="title_signature_validity">Ważność</string>
     <string name="title_signature_outdated">Ten klucz publiczny jest obecnie nieprawidłowy</string>
@@ -1814,6 +1818,7 @@
     <string name="title_rule_resend">Wyślij ponownie</string>
     <string name="title_rule_attached">Dołącz nieprzetworzony plik wiadomości</string>
     <string name="title_rule_cc">Odpowiedz na adresy CC</string>
+    <string name="title_rule_checks">Sprawdzaj automatycznie wysyłane wiadomości, adresy bez odpowiedzi itp.</string>
     <string name="title_rule_with_attachments">Z załącznikami</string>
     <string name="title_rule_answer_remark">Dla każdej konwersacji zostanie wysłana tylko jedna odpowiedź, aby uniknąć zapętlenia odpowiedzi</string>
     <string name="title_rule_name_missing">Brak nazwy reguły</string>
@@ -2002,7 +2007,9 @@
     <string name="title_hint_junk">Filtrowanie spamu powinno być wykonywane przez serwer poczty e-mail i nie może być wykonywane niezawodnie na urządzeniu o ograniczonych możliwościach i zasilanym z baterii.</string>
     <string name="title_hint_junk_learn">Przesyłając wiadomości do i z folderu spam, serwer e-mail \"uczy się\" czym jest spam</string>
     <string name="title_hint_contact_actions">Przytrzymaj, aby uzyskać więcej opcji</string>
-    <string name="title_hint_eml">To jest podsumowanie zawartości nieprzetworzonego pliku wiadomości. Zapisz nieprzetworzoną wiadomość używając ikony zapisu na pasku akcji, aby wyświetlić całą zawartość.</string>
+    <string name="title_hint_eml">        To jest podsumowanie zawartości nieprzetworzonego pliku wiadomości.
+        Możesz użyć prawego dolnego przycisku, aby zapisać wiadomość w skrzynce odbiorczej i wyświetlić całą zawartość.
+    </string>
     <string name="title_open_link">Otwórz link</string>
     <string name="title_image_link">Link do obrazu</string>
     <string name="title_different_link">Tytuł i adres linku są różne</string>

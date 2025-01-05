@@ -4,6 +4,8 @@
 
 ### Notices
 
+Happy new Year &#x1F386;
+
 Google requires FairEmail to undergo an annual [CASA](https://appdefensealliance.dev/casa) security audit,
 which must be conducted by an authorized assessor (this year [TAC Security](https://casa.tacsecurity.com/site/home)).
 Besides being time-consuming, this is no longer free as of this year.
@@ -30,8 +32,39 @@ For support you can use [the contact form](https://contact.faircode.eu/?product=
 
 ### [Barsboldia](https://en.wikipedia.org/wiki/Barsboldia)
 
-### Next version
+### 1.2256 2025-01-01 *
 
+* Happy New Year
+* Fixed force light of reformatted message view
+* Small improvements and minor bug fixes
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2254 2024-12-31
+
+* Added experimental force light for reformatted message view
+* Updated libraries, including [Jsoup](https://jsoup.org/news/) and [BouncyCastle](https://www.bouncycastle.org/news/)
+* Small improvements and minor bug fixes
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2253 2024-12-23 *
+
+* Fixed showing S/MIME digest algorithm
+* Added option to select default font size for sending
+* Small improvements and minor bug fixes
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2252 2024-12-18
+
+* Fixed in-app changelog
+* Small improvements and minor bug fixes
+* Updated [Public Suffix List](https://github.com/publicsuffix/list)
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2251 2024-12-14
+
+* Added S/MIME UTF-8 support
+* Updated Brave's debounce list
+* Improved internationalized email address support
 * Small improvements and minor bug fixes
 * Updated [Public Suffix List](https://github.com/publicsuffix/list)
 * Updated [translations](https://crowdin.com/project/open-source-email)
