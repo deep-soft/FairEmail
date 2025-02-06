@@ -548,7 +548,7 @@ public class ContactInfo {
                                         "." + info.type +
                                         (info.verified ? "_verified" : ""));
                         try (OutputStream os = new BufferedOutputStream(new FileOutputStream(output))) {
-                            info.bitmap.compress(Bitmap.CompressFormat.PNG, 90, os);
+                            info.bitmap.compress(Bitmap.CompressFormat.PNG, ImageHelper.DEFAULT_PNG_COMPRESSION, os);
                         }
                         Log.i("Avatar to cache=" + output.getName());
                     }
@@ -614,7 +614,7 @@ public class ContactInfo {
                 // Add to cache
                 File output = new File(dir, etag + "." + info.type);
                 try (OutputStream os = new BufferedOutputStream(new FileOutputStream(output))) {
-                    info.bitmap.compress(Bitmap.CompressFormat.PNG, 90, os);
+                    info.bitmap.compress(Bitmap.CompressFormat.PNG, ImageHelper.DEFAULT_PNG_COMPRESSION, os);
                 } catch (IOException ex) {
                     Log.e(ex);
                 }
@@ -1167,7 +1167,7 @@ public class ContactInfo {
                     lookup.displayName = displayName;
                     all.put(email.toLowerCase(Locale.ROOT), lookup);
 
-                    if (!TextUtils.isEmpty(email)) {
+                    if (!TextUtils.isEmpty(email) && email.contains("@")) {
                         String ekey = getKey(email);
                         File file = new File(dir, ekey);
                         if (file.exists()) {

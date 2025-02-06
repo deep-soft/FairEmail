@@ -803,6 +803,10 @@
     <string name="title_advanced_answer_prompt">Solicitação de resposta</string>
     <string name="title_advanced_system_instructions">Instruções do sistema</string>
     <string name="title_advanced_default_prompt">Solicitação padrão</string>
+    <string name="title_advanced_ai">AI</string>
+    <string name="title_advanced_ai_input_system">Solicitação do sistema de entrada</string>
+    <string name="title_advanced_ai_input_body">Insira o texto da sua mensagem</string>
+    <string name="title_advanced_ai_input_reply">Insira o texto da mensagem respondida</string>
     <string name="title_advanced_entered_text">Texto inserido</string>
     <string name="title_advanced_sdcard">Eu quero usar um sdcard</string>
     <string name="title_advanced_watchdog">Verifique periodicamente se o FairEmail ainda está ativo</string>
@@ -921,6 +925,7 @@
     <string name="title_advanced_notify_car_hint">Conectado significa que algo está sendo projetado, como um mapa para navegação</string>
     <string name="title_advanced_notify_remove_hint">Novas notificações de mensagem serão sempre removidas ao serem arrastadas e ao marcar mensagens lidas</string>
     <string name="title_advanced_notify_manage_hint">Toque no nome do canal para definir as propriedades do canal</string>
+    <string name="title_advanced_notify_samsung_hint">Para gerenciar os canais de notificação, você pode precisar habilitar esta configuração do Android: Notificações, Configurações Avançadas, Gerenciar categorias de notificação para cada app</string>
     <string name="title_advanced_notify_manage_default_hint">Para definir o som padrão, etc</string>
     <string name="title_advanced_notify_manage_service_hint">Para desativar a notificação de \"monitorando\"</string>
     <string name="title_advanced_notify_separate_hint">Como faço para configurar notificações para contas, pastas e remetentes?</string>
@@ -1256,6 +1261,7 @@
     <string name="title_force_light">Forçar tema claro</string>
     <string name="title_rename">Renomear</string>
     <string name="title_share">Compartilhar</string>
+    <string name="title_analyze">Analisar</string>
     <string name="title_event">Adicionar ao calendário</string>
     <string name="title_pin">Adicionar atalho</string>
     <string name="title_pin_label">Título do atalho</string>
@@ -1371,7 +1377,7 @@
     <string name="title_attachment_saved">Anexo salvo</string>
     <string name="title_attachments_saved">Anexos salvos</string>
     <string name="title_attachments_incomplete">Alguns anexos ou imagens não foram baixados e não puderam ser adicionados</string>
-    <string name="title_report_remark" comment="title_report_remark&#10;Remark to explain what a non-delivery notification message is">Este relatório, um e-mail especialmente formatado, foi enviado por um servidor de e-mail porque uma mensagem enviada não pôde ser entregue ao destinatário, por exemplo, porque a caixa de correio está cheia ou porque o endereço de e-mail não existe mais.</string>
+    <string name="title_report_remark">Este relatório, um e-mail especialmente formatado, foi enviado por um servidor de e-mail porque uma mensagem enviada não pôde ser entregue ao destinatário, por exemplo, porque a caixa de correio está cheia ou porque o endereço de e-mail não existe mais.</string>
     <string name="title_ask_save">Salvar alterações?</string>
     <string name="title_ask_delete">Deletar mensagem permanentemente?</string>
     <string name="title_ask_delete_accept">Entendo que deletar mensagens permanentemente é irreversível</string>
@@ -1664,6 +1670,7 @@
     <string name="title_sort_on_starred_unread">Com estrela, não lido</string>
     <string name="title_sort_on_priority">Prioridade</string>
     <string name="title_sort_on_sender">Remetente</string>
+    <string name="title_sort_on_sender_name">Nome do remetente</string>
     <string name="title_sort_on_subject">Assunto</string>
     <string name="title_sort_on_size">Tamanho</string>
     <string name="title_sort_on_attachments">Anexos</string>
@@ -1821,6 +1828,7 @@
     <string name="title_rule_select_sound">Selecionar som</string>
     <string name="title_rule_select_sound_ringtone">Toque de telefone</string>
     <string name="title_rule_select_sound_audio">Arquivo de áudio</string>
+    <string name="title_rule_loop_sound">Som do loop</string>
     <string name="title_rule_use_as_alarm">Usar como alarme</string>
     <string name="title_rule_alarm_hint">Isso ignorará as regras de \"não perturbe\"</string>
     <string name="title_rule_alarm_duration">Duração máxima do alarme (segundos)</string>

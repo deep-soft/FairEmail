@@ -78,7 +78,6 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.Group;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceManager;
 import androidx.work.WorkManager;
 
@@ -2375,11 +2374,15 @@ public class FragmentOptionsMisc extends FragmentBase implements SharedPreferenc
                                     key.startsWith("oauth.") ||
                                     (key.startsWith("announcement.") && cbGeneral.isChecked()) ||
                                     (key.endsWith(".confirm_link") && cbLinks.isChecked()) ||
+                                    ("confirm_links".equals(key) && cbLinks.isChecked()) ||
                                     (key.endsWith(".link_view") && cbLinks.isChecked()) ||
                                     (key.endsWith(".link_sanitize") && cbLinks.isChecked()) ||
                                     (key.endsWith(".confirm_files") && cbFiles.isChecked()) ||
+                                    ("confirm_files".equals(key) && cbFiles.isChecked()) ||
                                     (key.endsWith(".show_images") && cbImages.isChecked()) ||
-                                    (key.endsWith(".show_full") && cbFull.isChecked())) {
+                                    ("confirm_images".equals(key) && cbImages.isChecked()) ||
+                                    (key.endsWith(".show_full") && cbFull.isChecked()) ||
+                                    ("confirm_html".equals(key) && cbFull.isChecked())) {
                                 Log.i("Removing option=" + key);
                                 editor.remove(key);
                             }
@@ -2603,7 +2606,7 @@ public class FragmentOptionsMisc extends FragmentBase implements SharedPreferenc
             etNativeArcWhitelist.setText(prefs.getString("native_arc_whitelist", null));
             swStrictAlignment.setEnabled(swNativeDkim.isEnabled() && swNativeDkim.isChecked());
             swStrictAlignment.setChecked(prefs.getBoolean("strict_alignment", false));
-            swSvg.setChecked(prefs.getBoolean("svg", !Helper.isPlayStoreInstall()));
+            swSvg.setChecked(prefs.getBoolean("svg", true));
             swWebp.setChecked(prefs.getBoolean("webp", true));
             swAnimate.setChecked(prefs.getBoolean("animate_images", true));
             swPreviewHidden.setChecked(prefs.getBoolean("preview_hidden", true));
@@ -2617,7 +2620,7 @@ public class FragmentOptionsMisc extends FragmentBase implements SharedPreferenc
             swTldFlags.setChecked(prefs.getBoolean("tld_flags", false));
             swJsonLd.setChecked(prefs.getBoolean("json_ld", false));
             swDupMsgId.setChecked(prefs.getBoolean("dup_msgids", false));
-            swThreadByRef.setChecked(prefs.getBoolean("thread_byref", true));
+            swThreadByRef.setChecked(prefs.getBoolean("thread_byref", !Helper.isPlayStoreInstall()));
             swSaveUserFlags.setChecked(prefs.getBoolean("save_user_flags", false));
             swMdn.setChecked(prefs.getBoolean("mdn", swExperiments.isChecked()));
             swAppChooser.setChecked(prefs.getBoolean("app_chooser", false));

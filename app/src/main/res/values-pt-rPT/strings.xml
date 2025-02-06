@@ -805,6 +805,10 @@
     <string name="title_advanced_answer_prompt">Solicitação de resposta</string>
     <string name="title_advanced_system_instructions">Instruções do sistema</string>
     <string name="title_advanced_default_prompt">Solicitação padrão</string>
+    <string name="title_advanced_ai">IA</string>
+    <string name="title_advanced_ai_input_system">Introduzir pedido ao sistema</string>
+    <string name="title_advanced_ai_input_body">Introduzir o texto da mensagem</string>
+    <string name="title_advanced_ai_input_reply">Introduzir o texto da mensagem a que respondeu</string>
     <string name="title_advanced_entered_text">Texto introduzido</string>
     <string name="title_advanced_sdcard">Quero utilizar um cartão SD</string>
     <string name="title_advanced_watchdog">Verificar periodicamente se o FairEmail ainda está ativo</string>
@@ -922,6 +926,7 @@
     <string name="title_advanced_notify_car_hint">Ligado significa que algo está a ser projectado, tal como um mapa para navegação</string>
     <string name="title_advanced_notify_remove_hint">Novas notificações de mensagens serão sempre removidas ao serem arrastadas e ao serem marcadas como lidas</string>
     <string name="title_advanced_notify_manage_hint">Toque no nome do canal para definir as propriedades do canal</string>
+    <string name="title_advanced_notify_samsung_hint">Para gerir os canais de notificação, você pode precisar ativar esta configuração do Android: Notificações, Configurações Avançadas, Gerir categorias de notificação para cada app</string>
     <string name="title_advanced_notify_manage_default_hint">Para definir o som padrão, etc</string>
     <string name="title_advanced_notify_manage_service_hint">Para desactivar a notificação \'a monitorizar\'</string>
     <string name="title_advanced_notify_separate_hint">Como faço para configurar notificações para contas, pastas e remetentes?</string>
@@ -1258,6 +1263,7 @@ Portanto, este problema só pode ser resolvido pelo seu provedor de e-mail - a i
     <string name="title_force_light">Forçar o tema claro</string>
     <string name="title_rename">Renomear</string>
     <string name="title_share">Partilhar</string>
+    <string name="title_analyze">Analisar</string>
     <string name="title_event">Adicionar ao calendário</string>
     <string name="title_pin">Adicionar atalho</string>
     <string name="title_pin_label">Título do atalho</string>
@@ -1373,7 +1379,7 @@ Portanto, este problema só pode ser resolvido pelo seu provedor de e-mail - a i
     <string name="title_attachment_saved">Anexo guardado</string>
     <string name="title_attachments_saved">Anexos guardados</string>
     <string name="title_attachments_incomplete">Alguns anexos ou imagens não foram transferidos e não puderam ser adicionados</string>
-    <string name="title_report_remark" comment="title_report_remark&#10;Remark to explain what a non-delivery notification message is">Este relatório, um e-mail especialmente formatado, foi enviado por um servidor de e-mail porque uma mensagem não pôde ser enviada para o destinatário, porque a caixa de correio está cheia, ou porque o endereço de e-mail não existe.</string>
+    <string name="title_report_remark">Este relatório, um e-mail especialmente formatado, foi enviado por um servidor de e-mail porque uma mensagem não pôde ser enviada para o destinatário, porque a caixa de correio está cheia, ou porque o endereço de e-mail não existe.</string>
     <string name="title_ask_save">Guardar as alterações?</string>
     <string name="title_ask_delete">Eliminar mensagem permanentemente?</string>
     <string name="title_ask_delete_accept">Entendo que a eliminação permanente de mensagens é irreversível</string>
@@ -1667,6 +1673,7 @@ Portanto, este problema só pode ser resolvido pelo seu provedor de e-mail - a i
     <string name="title_sort_on_starred_unread">Favorito, não lido</string>
     <string name="title_sort_on_priority">Prioridade</string>
     <string name="title_sort_on_sender">Remetente</string>
+    <string name="title_sort_on_sender_name">Nome do remetente</string>
     <string name="title_sort_on_subject">Assunto</string>
     <string name="title_sort_on_size">Tamanho</string>
     <string name="title_sort_on_attachments">Anexos</string>
@@ -1824,6 +1831,7 @@ Portanto, este problema só pode ser resolvido pelo seu provedor de e-mail - a i
     <string name="title_rule_select_sound">Selecionar som</string>
     <string name="title_rule_select_sound_ringtone">Toque</string>
     <string name="title_rule_select_sound_audio">Ficheiros de áudio</string>
+    <string name="title_rule_loop_sound">Som de repetição</string>
     <string name="title_rule_use_as_alarm">Utilizar como alarme</string>
     <string name="title_rule_alarm_hint">Isto irá ignorar as regras do \"não perturbe\"</string>
     <string name="title_rule_alarm_duration">Duração máxima do alarme (em segundos)</string>

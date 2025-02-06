@@ -1177,6 +1177,7 @@ public class HtmlHelper {
             if (!TextUtils.isEmpty(cite) && !cite.trim().startsWith("#"))
                 q.attr("href", cite);
             q.removeAttr("cite");
+            q.wrap("<span>\"<em></em>\"</span>");
         }
 
         // Citation
@@ -4090,8 +4091,10 @@ public class HtmlHelper {
             start.put(span, ssb.getSpanStart(span));
             end.put(span, ssb.getSpanEnd(span));
             flags.put(span, ssb.getSpanFlags(span));
-            ssb.removeSpan(span);
         }
+
+        ssb.clearSpans();
+
         for (int i = spans.length - 1; i >= 0; i--) {
             int s = start.get(spans[i]);
             int e = end.get(spans[i]);

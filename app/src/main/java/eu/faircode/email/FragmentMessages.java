@@ -167,7 +167,7 @@ import org.bouncycastle.cms.CMSProcessable;
 import org.bouncycastle.cms.CMSProcessableFile;
 import org.bouncycastle.cms.CMSSignedData;
 import org.bouncycastle.cms.CMSTypedData;
-import org.bouncycastle.cms.KeyTransRecipientId;
+import org.bouncycastle.cms.PKIXRecipientId;
 import org.bouncycastle.cms.RecipientInformation;
 import org.bouncycastle.cms.SignerId;
 import org.bouncycastle.cms.SignerInformation;
@@ -199,7 +199,6 @@ import java.math.BigInteger;
 import java.security.KeyStore;
 import java.security.Principal;
 import java.security.PrivateKey;
-import java.security.PublicKey;
 import java.security.cert.CertPathBuilder;
 import java.security.cert.CertPathBuilderResult;
 import java.security.cert.CertPathValidator;
@@ -213,7 +212,6 @@ import java.security.cert.PKIXBuilderParameters;
 import java.security.cert.PKIXCertPathValidatorResult;
 import java.security.cert.X509CertSelector;
 import java.security.cert.X509Certificate;
-import java.security.interfaces.RSAPublicKey;
 import java.text.Collator;
 import java.text.DateFormat;
 import java.text.NumberFormat;
@@ -2903,8 +2901,8 @@ public class FragmentMessages extends FragmentBase
             onReply(message, selected, anchor);
         }
 
-        public void startSearch(TextView view) {
-            FragmentMessages.this.startSearch(view);
+        public void startSearch(TextView view, String term) {
+            FragmentMessages.this.startSearch(view, term);
         }
 
         public void endSearch() {
@@ -8882,7 +8880,7 @@ public class FragmentMessages extends FragmentBase
         }
     }
 
-    private void startSearch(TextView view) {
+    private void startSearch(TextView view, String term) {
         searchView = view;
 
         searchView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
@@ -8898,10 +8896,13 @@ public class FragmentMessages extends FragmentBase
             }
         });
 
-        etSearch.setText(null);
+        etSearch.setText(term);
         etSearch.setVisibility(View.VISIBLE);
-        etSearch.requestFocus();
-        Helper.showKeyboard(etSearch);
+        if (term == null) {
+            etSearch.requestFocus();
+            Helper.showKeyboard(etSearch);
+        } else
+            performSearch(false);
     }
 
     private void endSearch() {
@@ -10347,7 +10348,8 @@ public class FragmentMessages extends FragmentBase
                             if (count < 0) {
                                 BigInteger serialno = chain[0].getSerialNumber();
                                 for (RecipientInformation recipientInfo : recipients) {
-                                    KeyTransRecipientId recipientId = (KeyTransRecipientId) recipientInfo.getRID();
+                                    // KeyTransRecipientId or KeyAgreeRecipientId
+                                    PKIXRecipientId recipientId = (PKIXRecipientId) recipientInfo.getRID();
                                     if (serialno != null && serialno.equals(recipientId.getSerialNumber())) {
                                         try {
                                             InputStream is = recipientInfo.getContentStream(recipient).getContentStream();
@@ -10955,8 +10957,17 @@ public class FragmentMessages extends FragmentBase
                     if (junk == null)
                         throw new IllegalArgumentException(context.getString(R.string.title_no_junk_folder));
 
-                    if (!message.folder.equals(junk.id))
+                    if (!message.folder.equals(junk.id)) {
                         EntityOperation.queue(context, message, EntityOperation.MOVE, junk.id, null, null, true);
+
+                        if (!Helper.isPlayStoreInstall()) {
+                            List<EntityMessage> similar = db.message().getMessagesBySender(message.folder, message.sender);
+                            if (similar != null)
+                                for (EntityMessage m : similar)
+                                    if (!message.id.equals(m.id))
+                                        EntityOperation.queue(context, m, EntityOperation.MOVE, junk.id, null, null, true);
+                        }
+                    }
 
                     if (block_domain) {
                         List<EntityRule> rules = EntityRule.blockSender(context, message, junk, block_domain);

@@ -583,12 +583,12 @@ See also [this FAQ](#faq16).
 
 &#x1F30E; [Google Translate](https://translate.google.com/translate?sl=en&u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq4)
 
-**Since version 1.2137:
+<!-- **Since version 1.2137:
 Due to [Google's Play Store policies](https://support.google.com/faqs/answer/6346016),
 it is no longer possible to support insecure connections to email servers with certificate issues
 for the version of FairEmail distributed in the Play Store.
 Therefore, this issue can only be resolved by your email provider,
-or by installing the GitHub version of the app (as an update) and enabling insecure connections in the account/identity settings.**
+or by installing the GitHub version of the app (as an update) and enabling insecure connections in the account/identity settings.** -->
 
 *... Untrusted ... not in certificate ...*<br />
 *... Invalid security certificate (Can't verify identity of server) ...*<br />
@@ -1298,11 +1298,11 @@ In the case of the error '*User is authenticated but not connected*', please see
 <br />
 
 >
-> &#x1F1EC;&#x1F1E7; In short: go to settings via the navigation menu (left side menu), tap the wizard button, select Outlook/Hotmail/Live and follow the steps.
+> &#x1F1EC;&#x1F1E7; In short: go to settings via the navigation menu (left side menu), tap the wizard button, select "*Outlook/Office 365 (OAuth)*" and follow the steps.
 >
-> &#x1F1E9;&#x1F1EA; Kurz gesagt: Gehen Sie über das Navigationsmenü (Menü auf der linken Seite) zu den Einstellungen, tippen Sie auf die Schaltfläche Assistent, wählen Sie Outlook/Hotmail/Live und folgen Sie den Schritten.
+> &#x1F1E9;&#x1F1EA; Kurz gesagt: Gehen Sie über das Navigationsmenü (Menü auf der linken Seite) zu den Einstellungen, tippen Sie auf die Schaltfläche Assistent, wählen Sie "*Outlook/Office 365 (OAuth)*" und folgen Sie den Schritten.
 >
-> &#x1F1EB;&#x1F1F7; En bref : allez dans les paramètres via le menu de navigation (menu de gauche), appuyez sur le bouton de l'assistant, sélectionnez Outlook/Hotmail/Live et suivez les étapes.
+> &#x1F1EB;&#x1F1F7; En bref : allez dans les paramètres via le menu de navigation (menu de gauche), appuyez sur le bouton de l'assistant, sélectionnez "*Outlook/Office 365 (OAuth)*" et suivez les étapes.
 >
 
 <br />
@@ -1315,7 +1315,7 @@ In the case of the error '*User is authenticated but not connected*', please see
 <br />
 
 >
-> tl;dr; go to settings via the navigation menu (left side menu), tap the wizard button, select Outlook/Hotmail/Live and follow the steps.
+> tl;dr; go to settings via the navigation menu (left side menu), tap the wizard button, select "*Outlook/Office 365 (OAuth)*" and follow the steps.
 >
 > <sub>If you don't use the account anymore, you can delete it via a button in the "extra" section at the bottom of the main settings screen.</sub>
 >
@@ -1361,7 +1361,7 @@ In the case of the error '*User is authenticated but not connected*', please see
 > How to fix:
 >
 > * Go to the *Settings* via the navigation menu (left side menu)
-> * Tap on the *Wizard* button and select *Outlook/Hotmail/Live (OAuth)* or *Office 365 (OAuth)*.
+> * Tap on the *Wizard* button and select "*Outlook/Office 365 (OAuth)*".
 > * Tick the checkbox to authenticate an existing account (else you'll create a new account!)
 > * Fill in the fields and follow the steps
 > * Repeat for each account
@@ -1369,7 +1369,7 @@ In the case of the error '*User is authenticated but not connected*', please see
 
 <br />
 
-An Outlook / Live / Hotmail account can be set up via the quick setup wizard and selecting *Outlook/Hotmail/Live (OAuth)* or *Office 365 (OAuth)*.
+An Outlook / Live / Hotmail account can be set up via the quick setup wizard and selecting "*Outlook/Office 365 (OAuth)*".
 
 **Important**: a personal and a business account can have the same email address, but have different mailboxes (folders). So, please make sure you select the right option.
 
@@ -1411,7 +1411,7 @@ The message text of larger messages is not being pre-fetched on metered connecti
 The message text will keep loading if there is no connection to the account, see also the next question,
 or if there other operations, like synchronizing messages, are being executed.
 
-You can check the account and folder list for the account and folder state (see the legend for the meaning of the icons)
+You can check the account and folder list for the account and folder state (see the legend in the navigation menu for the meaning of the icons)
 and the operation list accessible via the main navigation menu for pending operations (see [this FAQ](#faq3) for the meaning of the operations).
 
 If FairEmail is holding off because of prior connectivity issues, please see [this FAQ](#faq123), you can force synchronization via the three dots menu.
@@ -1846,6 +1846,15 @@ pm install -k --user 0 com.android.documentsui
 ```
 
 Alternatively, you might be able to enable the *Files* app again using the Android app settings.
+
+<br />
+
+In the case of the error *com.android.externalstorage has no access to content://...*,
+please enable this Android option for *com.android.externalstorage* and *com.android.sharedstorage*:
+
+*Settings* > *Privacy* > *Permission management* > *Files and media* > *See more apps that can access all files*
+
+<br />
 
 OneDrive doesn't support *view*, only *share*, which means that if you want to open an attachment in OneDrive you need to long press on an attachment.
 
@@ -2367,7 +2376,7 @@ when trying to decrypt a message with a public key. To fix this you'll need to i
 &#x1F30E; [Google Translate](https://translate.google.com/translate?sl=en&u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq46)
 
 If you see a 'spinner' at the top of the message list, the folder is still being synchronized with the remote server.
-You can see the progress of the synchronization in the folder list. See the legend about what the icons and numbers mean.
+You can see the progress of the synchronization in the folder list. See the legend in the navigation menu about what the icons and numbers mean.
 
 The speed of your device and internet connection and the number of days to synchronize messages determine how long synchronization will take.
 Note that you shouldn't set the number of days to synchronize messages to more than one day in most cases, see also [this FAQ](#faq39).
@@ -2890,9 +2899,12 @@ to be able to match [unfolded headers](https://tools.ietf.org/html/rfc2822#secti
 
 <br />
 
+<a name="expression_conditions"></a>
 **Expressions**
 
-Since version 1.2174 it is possible to use expression conditions, which is [experimental](#faq125) for now.
+Since version 1.2174 it is possible to use expression conditions like:
+
+```from contains "@example.com" && subject contains "Example"```
 
 Please [see here](https://ezylang.github.io/EvalEx/references/references.html) about which constants, operators and functions are available.
 
@@ -3011,6 +3023,8 @@ You can enable downloading message headers in the connection settings and check 
 Some common header conditions (regex):
 
 * *.&ast;To:.&ast;undisclosed-recipients.&ast;*
+* *.&ast;Cc:.&ast;test@example.com.&ast;*
+* *.&ast;Envelope-to:.&ast;test@example.com.&ast;*
 * *.&ast;Auto-Submitted:.&ast;* [RFC3834](https://tools.ietf.org/html/rfc3834)
 * *.&ast;List-Unsubscribe:.&ast;* [RFC3834](https://datatracker.ietf.org/doc/html/rfc2369)
 * *.&ast;Content-Type:.&ast;multipart/report.&ast;* [RFC3462](https://tools.ietf.org/html/rfc3462)
@@ -4280,12 +4294,6 @@ Composing messages using [Markdown](https://en.wikipedia.org/wiki/Markdown) can 
 
 <br />
 
-*Rule expression condition (1.2174+)*
-
-See [this FAQ](#faq71)
-
-<br />
-
 *Fast forward to (1.2226+)*
 
 Show (fast) *Forward to* in the answer menu, with addresses recently used for forwarding messages (if any).
@@ -4296,6 +4304,12 @@ You can show the answer menu by tapping on the answer button at the bottom right
 *Force light for reformatted message view (1.2254+)*
 
 Show force light menu item / button (when configured) to force a light theme for reformatted messages.
+
+<br />
+
+*Basic image editor (1.2257+)*
+
+Display a basic image editor when tapping an inserted image.
 
 <br />
 
@@ -5848,10 +5862,9 @@ OpenAI can only be used if configured and enabled.
 
 *Editor*
 
-Tap on the robot button in the top action bar of the message editor.
-If the text in the message editor is empty, the message being replied to will be answered (using the configured answer prompt),
-else the entered text will be sent, which could be a question or command.
-If you select entered text, it will be replaced by the answer.
+Tap the robot button in the top action bar of the message editor.
+A dialog box will appear (since version 1.2259).
+You can select the prompt and select whether to input the message you typed and/or the message you are replying to.
 
 For example: create a new draft and enter the text "*How far is the sun?*", and tap on the robot button in the top action bar.
 
@@ -5910,6 +5923,10 @@ It is possible to use **DeepInfra** too (since version 1.2132).
 * In the integration settings enter the URI https://api.deepinfra.com/v1/openai, an API key and the model name
 
 <br>
+
+<br>
+
+If you are looking for Google Gemini support, please see [this FAQ](#faq204).
 
 This feature is experimental and requires version 1.2053 or later for the GitHub version and version 1.2182 or later for the Play Store version.
 

@@ -282,6 +282,8 @@ public class FragmentOAuth extends FragmentBase {
                     ;
                 else if (browser.activityInfo.packageName.equals("org.mozilla.focus"))
                     ;
+                else if (browser.activityInfo.packageName.equals("com.duckduckgo.mobile.android"))
+                    ;
         } catch (Throwable ex) {
             Log.e(ex);
         }
@@ -365,6 +367,9 @@ public class FragmentOAuth extends FragmentBase {
 
     private void onAuthorize(boolean graph) {
         try {
+            if (!getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED))
+                return;
+
             if (askAccount) {
                 String name = etName.getText().toString().trim();
                 String email = etEmail.getText().toString().trim();
@@ -520,11 +525,14 @@ public class FragmentOAuth extends FragmentBase {
 
             @Override
             public boolean matches(@NonNull BrowserDescriptor descriptor) {
+
                 if (BuildConfig.DEBUG) {
-                    boolean edge = "org.mozilla.focus".equals(descriptor.packageName);
-                    Log.i("MMM " + descriptor.packageName + "=" + edge);
-                    return edge;
+                    boolean test = (descriptor.useCustomTab &&
+                            "com.duckduckgo.mobile.android".equals(descriptor.packageName));
+                    Log.i("MMM " + descriptor.packageName + ":" + descriptor.useCustomTab + "=" + test);
+                    return test;
                 }
+
                 boolean accept = !(SBROWSER.matches(descriptor) || SBROWSER_TAB.matches(descriptor));
 
                 if (descriptor.useCustomTab && !tabs)

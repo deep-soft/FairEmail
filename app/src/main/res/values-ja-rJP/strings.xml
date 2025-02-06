@@ -86,7 +86,7 @@
     </string>
     <string name="title_blocked_senders">ブロックした差出人</string>
     <string name="title_unblock_all">すべてブロック解除</string>
-    <string name="title_unblock_all_remark">送信者をブロックするリストとオプションをすべてリセットします</string>
+    <string name="title_unblock_all_remark">差出人をブロックするリストとオプションをすべてリセットします</string>
     <string name="title_unblock_all_hint">アプリは、メールサーバーによる迷惑メールフォルダーへのメッセージ移動を停止できません！</string>
     <plurals name="title_ask_block_sender">
         <item quantity="other">メッセージ %1$s 通の差出人をブロックしますか？</item>
@@ -791,6 +791,10 @@
     <string name="title_advanced_answer_prompt">返信プロンプト</string>
     <string name="title_advanced_system_instructions">システムへの指定</string>
     <string name="title_advanced_default_prompt">デフォルトのプロンプト</string>
+    <string name="title_advanced_ai">AI</string>
+    <string name="title_advanced_ai_input_system">システムプロンプトを入力</string>
+    <string name="title_advanced_ai_input_body">メッセージを入力</string>
+    <string name="title_advanced_ai_input_reply">返信されたメッセージを入力</string>
     <string name="title_advanced_entered_text">入力テキスト</string>
     <string name="title_advanced_sdcard">SD カードを使用できますか？</string>
     <string name="title_advanced_watchdog">FairEmail がアクティブか定期的に確認する</string>
@@ -908,6 +912,7 @@
     <string name="title_advanced_notify_car_hint">接続とは地図など何かが投影されている状態を意味します</string>
     <string name="title_advanced_notify_remove_hint">新着メッセージ通知はこの設定に関係なく、スワイプしたり、メッセージを既読にすると削除されます</string>
     <string name="title_advanced_notify_manage_hint">チャンネル名をタップして、チャンネルのプロパティを設定します</string>
+    <string name="title_advanced_notify_samsung_hint">通知チャンネルを管理するには、Android の設定で: 通知 > 詳細設定 > 各アプリの[通知カテゴリ]を管理 を有効にする必要がある場合があります</string>
     <string name="title_advanced_notify_manage_default_hint">デフォルトの音などを設定します</string>
     <string name="title_advanced_notify_manage_service_hint">「モニター」通知を無効にします</string>
     <string name="title_advanced_notify_separate_hint">アカウント、フォルダ、差出人の通知を設定するにはどうすればよいですか？</string>
@@ -920,7 +925,7 @@
     <string name="title_advanced_notify_no_grouping">この Android バージョンは通知のグループ化に対応していません</string>
     <string name="title_advanced_notify_no_channels">この Android バージョンは通知チャンネルに対応していません</string>
     <string name="title_advanced_fts_hint">有効にすると、検索パフォーマンスが向上しますが、バッテリー使用量とストレージ使用量も増加します</string>
-    <string name="title_advanced_english_hint">アプリが再起動されます</string>
+    <string name="title_advanced_english_hint">アプリが再起動します</string>
     <string name="title_advanced_experiments_hint">現在の実験機能リスト</string>
     <string name="title_advanced_protocol_hint">これにより、バッテリー使用量とストレージの使用量が大幅に増加します！</string>
     <string name="title_advanced_debug_hint">さまざまな場所でデバッグ情報が表示され、デザインが崩れます</string>
@@ -1244,6 +1249,7 @@
     <string name="title_force_light">ライトテーマを強制</string>
     <string name="title_rename">名前を変更</string>
     <string name="title_share">共有</string>
+    <string name="title_analyze">分析</string>
     <string name="title_event">カレンダーに追加</string>
     <string name="title_pin">ショートカットを追加</string>
     <string name="title_pin_label">ショートカットのタイトル</string>
@@ -1359,7 +1365,7 @@
     <string name="title_attachment_saved">添付ファイルを保存しました</string>
     <string name="title_attachments_saved">添付ファイルを保存しました</string>
     <string name="title_attachments_incomplete">一部の添付ファイルまたは画像がダウンロードされず、追加されませんでした</string>
-    <string name="title_report_remark" comment="title_report_remark&#10;Remark to explain what a non-delivery notification message is">このレポートは、宛先のメールボックスが満杯やアドレスが存在しない (しなくなった) ような、宛先にメッセージが配信できない場合にメールサーバーから送信される特別なフォーマットのメールです。</string>
+    <string name="title_report_remark">このレポートは、宛先のメールボックスが満杯やアドレスが存在しない (しなくなった) ような、宛先にメッセージが配信できない場合にメールサーバーから送信される特別なフォーマットのメールです。</string>
     <string name="title_ask_save">変更内容を保存しますか？</string>
     <string name="title_ask_delete">メッセージを完全に削除しますか？</string>
     <string name="title_ask_delete_accept">メッセージを完全に削除すると元に戻せませんが、本当によろしいですか？</string>
@@ -1653,6 +1659,7 @@
     <string name="title_sort_on_starred_unread">スター付き、未読</string>
     <string name="title_sort_on_priority">重要度</string>
     <string name="title_sort_on_sender">差出人</string>
+    <string name="title_sort_on_sender_name">差出人名</string>
     <string name="title_sort_on_subject">件名</string>
     <string name="title_sort_on_size">サイズ</string>
     <string name="title_sort_on_attachments">添付ファイル</string>
@@ -1810,6 +1817,7 @@
     <string name="title_rule_select_sound">音声を選択</string>
     <string name="title_rule_select_sound_ringtone">通知音</string>
     <string name="title_rule_select_sound_audio">音声ファイル</string>
+    <string name="title_rule_loop_sound">音声をループ</string>
     <string name="title_rule_use_as_alarm">アラームに設定</string>
     <string name="title_rule_alarm_hint">サイレントモードを無視します</string>
     <string name="title_rule_alarm_duration">自動消音時間 (秒)</string>

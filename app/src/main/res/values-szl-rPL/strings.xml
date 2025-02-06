@@ -831,6 +831,10 @@
     <string name="title_advanced_answer_prompt">Prośba o odpowiedź</string>
     <string name="title_advanced_system_instructions">Instrukcje systemowe</string>
     <string name="title_advanced_default_prompt">Komunikat domyślny</string>
+    <string name="title_advanced_ai">SI</string>
+    <string name="title_advanced_ai_input_system">Wiersz poleceń</string>
+    <string name="title_advanced_ai_input_body">Wprowadź tekst wiadomości</string>
+    <string name="title_advanced_ai_input_reply">Wprowadź tekst w odpowiedzi na wiadomość</string>
     <string name="title_advanced_entered_text">Wprowadzony tekst</string>
     <string name="title_advanced_sdcard">Chcę użyć karty SD</string>
     <string name="title_advanced_watchdog">Okresowo sprawdzaj, czy FairEmail jest nadal aktywny</string>
@@ -949,6 +953,7 @@
     <string name="title_advanced_notify_car_hint">Połączony oznacza, że coś jest wyświetlane, na przykład mapa do nawigacji</string>
     <string name="title_advanced_notify_remove_hint">Powiadomienia o nowych wiadomościach będą zawsze usuwane po przesunięciu i oznaczeniu wiadomości jako przeczytane</string>
     <string name="title_advanced_notify_manage_hint">Dotknij nazwę kanału, aby ustawić właściwości kanału</string>
+    <string name="title_advanced_notify_samsung_hint">Aby zarządzać kanałami powiadomień, może być konieczne włączenie tego ustawienia w systemie Android: Powiadomienia, Zaawansowane ustawienia, Zarządzaj kategoriami powiadomień dla każdej aplikacji</string>
     <string name="title_advanced_notify_manage_default_hint">Aby ustawić domyślny dźwięk, itp.</string>
     <string name="title_advanced_notify_manage_service_hint">Aby wyłączyć powiadomienie \"monitorowanie\"</string>
     <string name="title_advanced_notify_separate_hint">Jak skonfigurować powiadomienia dla kont, folderów i nadawców?</string>
@@ -1284,6 +1289,7 @@
     <string name="title_force_light">Wymuś jasny motyw</string>
     <string name="title_rename">Zmień nazwę</string>
     <string name="title_share">Udostępnij</string>
+    <string name="title_analyze">Analizuj</string>
     <string name="title_event">Dodaj do kalendarza</string>
     <string name="title_pin">Dodaj skrót</string>
     <string name="title_pin_label">Tytuł skrótu</string>
@@ -1399,7 +1405,7 @@
     <string name="title_attachment_saved">Załącznik zapisany</string>
     <string name="title_attachments_saved">Załączniki zapisane</string>
     <string name="title_attachments_incomplete">Niektóre załączniki lub obrazy nie zostały pobrane i nie można ich dodać</string>
-    <string name="title_report_remark" comment="title_report_remark&#10;Remark to explain what a non-delivery notification message is">Ten raport, specjalnie sformatowana wiadomość e-mail, został wysłany przez serwer poczty e-mail, ponieważ wysłana wiadomość nie mogła zostać dostarczona do odbiorcy, na przykład z powodu zapełnienia skrzynki pocztowej lub dlatego, że adres e-mail już nie istnieje.</string>
+    <string name="title_report_remark">Ten raport, specjalnie sformatowana wiadomość e-mail, został wysłany przez serwer poczty e-mail, ponieważ wysłana wiadomość nie mogła zostać dostarczona do odbiorcy, na przykład z powodu zapełnienia skrzynki pocztowej lub dlatego, że adres e-mail już nie istnieje.</string>
     <string name="title_ask_save">Zapisać zmiany?</string>
     <string name="title_ask_delete">Usunąć wiadomość bezpowrotnie?</string>
     <string name="title_ask_delete_accept">Rozumiem, że trwałe usuwanie wiadomości jest nieodwracalne</string>
@@ -1692,6 +1698,7 @@
     <string name="title_sort_on_starred_unread">Z gwiazdką, nieprzeczytane</string>
     <string name="title_sort_on_priority">Priorytet</string>
     <string name="title_sort_on_sender">Nadawca</string>
+    <string name="title_sort_on_sender_name">Nazwa nadawcy</string>
     <string name="title_sort_on_subject">Temat</string>
     <string name="title_sort_on_size">Rozmiar</string>
     <string name="title_sort_on_attachments">Załączniki</string>
@@ -1850,6 +1857,7 @@
     <string name="title_rule_select_sound">Wybierz dźwięk</string>
     <string name="title_rule_select_sound_ringtone">Dzwonek</string>
     <string name="title_rule_select_sound_audio">Plik audio</string>
+    <string name="title_rule_loop_sound">Zapętl dźwięk</string>
     <string name="title_rule_use_as_alarm">Użyj jako alarmu</string>
     <string name="title_rule_alarm_hint">To zignoruje zasady \"nie przeszkadzać\"</string>
     <string name="title_rule_alarm_duration">Maksymalny czas trwania alarmu (sekundy)</string>

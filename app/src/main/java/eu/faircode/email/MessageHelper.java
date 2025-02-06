@@ -32,6 +32,7 @@ import android.os.Build;
 import android.provider.CalendarContract;
 import android.provider.ContactsContract;
 import android.system.ErrnoException;
+import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
@@ -1940,7 +1941,7 @@ public class MessageHelper {
         }
 
         // Common reference
-        boolean thread_byref = prefs.getBoolean("thread_byref", true);
+        boolean thread_byref = prefs.getBoolean("thread_byref", !Helper.isPlayStoreInstall());
         if (thread == null && refs.size() > 0 && thread_byref) {
             // For example
             //   Message-ID: <organization/project/pull/nnn/issue_event/xxx@github.com>
@@ -2638,7 +2639,7 @@ public class MessageHelper {
 
             String length = kv.get("l");
             if (!TextUtils.isEmpty(length))
-                throw new IllegalArgumentException("Length l=" + length);
+                throw new IllegalArgumentException("Length l=" + length + " body=" + body.length());
 
             Log.i("DKIM body=" + body.replace("\r\n", "|"));
 
@@ -3194,6 +3195,7 @@ public class MessageHelper {
         // (qmail nnn invoked by uid nnn); 1 Jan 2022 00:00:00 -0000
         // Postfix: by <host name> (<name>, from userid nnn)
         if (header.matches(".*\\(qmail \\d+ invoked by uid \\d+\\).*") ||
+                header.matches(".*\\(nullmailer pid \\d+ invoked by uid \\d+\\).*") ||
                 header.matches(".*\\(.*, from userid \\d+\\).*")) {
             Log.i("--- phrase");
             return true;
@@ -3792,10 +3794,17 @@ public class MessageHelper {
     class PartHolder {
         Part part;
         ContentType contentType;
+        String filename;
 
         PartHolder(Part part, ContentType contentType) {
             this.part = part;
             this.contentType = contentType;
+        }
+
+        PartHolder(Part part, ContentType contentType, String filename) {
+            this.part = part;
+            this.contentType = contentType;
+            this.filename = filename;
         }
 
         boolean isPlainText() {
@@ -3811,7 +3820,10 @@ public class MessageHelper {
         }
 
         boolean isPatch() {
-            return "text/x-diff".equalsIgnoreCase(contentType.getBaseType()) ||
+            String ext = Helper.getExtension(filename);
+            return "diff".equalsIgnoreCase(ext) ||
+                    "patch".equalsIgnoreCase(ext) ||
+                    "text/x-diff".equalsIgnoreCase(contentType.getBaseType()) ||
                     "text/x-patch".equalsIgnoreCase(contentType.getBaseType());
         }
 
@@ -4239,7 +4251,10 @@ public class MessageHelper {
                         result = HtmlHelper.formatPlainText(result);
                     }
                 } else if (h.isPatch()) {
+                    String filename = h.part.getFileName();
                     result = (first ? "" : "<br><hr>") +
+                            (TextUtils.isEmpty(filename) ? "" :
+                                    "<div style =\"text-align: center;\">" + Html.escapeHtml(filename) + "</div><br>") +
                             "<pre style=\"font-family: monospace; font-size:small;\">" +
                             HtmlHelper.formatPlainText(result) +
                             "</pre>";
@@ -4518,6 +4533,11 @@ public class MessageHelper {
                             subsequence = decodeTNEF(context, epart.attachment, subsequence);
 
                     } catch (Throwable ex) {
+                        Log.w(ex);
+
+                        if (epart.attachment.id == null)
+                            continue;
+
                         db.attachment().setError(epart.attachment.id, Log.formatThrowable(ex));
                         db.attachment().setAvailable(epart.attachment.id, true); // unrecoverable
                     }
@@ -5382,10 +5402,13 @@ public class MessageHelper {
                         filename += ".html";
                 }
 
+                String ext = Helper.getExtension(filename);
                 if ("text/markdown".equalsIgnoreCase(ct) ||
                         "text/x-diff".equalsIgnoreCase(ct) ||
-                        "text/x-patch".equalsIgnoreCase(ct))
-                    parts.extra.add(new PartHolder(part, contentType));
+                        "text/x-patch".equalsIgnoreCase(ct) ||
+                        "diff".equalsIgnoreCase(ext) ||
+                        "patch".equalsIgnoreCase(ext))
+                    parts.extra.add(new PartHolder(part, contentType, filename));
 
                 if (Report.isDeliveryStatus(ct) ||
                         Report.isDispositionNotification(ct) ||

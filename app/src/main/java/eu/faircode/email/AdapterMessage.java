@@ -1111,6 +1111,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                 ibUnsubscribe.setOnClickListener(this);
                 ibRaw.setOnClickListener(this);
                 ibHtml.setOnClickListener(this);
+                ibHtml.setOnLongClickListener(this);
                 ibHeaders.setOnClickListener(this);
                 ibHeaders.setOnLongClickListener(this);
                 ibPrint.setOnClickListener(this);
@@ -1237,6 +1238,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                 ibUnsubscribe.setOnClickListener(null);
                 ibRaw.setOnClickListener(null);
                 ibHtml.setOnClickListener(null);
+                ibHtml.setOnLongClickListener(null);
                 ibHeaders.setOnClickListener(null);
                 ibHeaders.setOnLongClickListener(null);
                 ibPrint.setOnClickListener(null);
@@ -2067,7 +2069,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
             else if (split)
                 color = ColorUtils.setAlphaComponent(textColorHighlightInverse, 127);
             else if (flags_background && flagged && !expanded)
-                color = ColorUtils.setAlphaComponent(mcolor, 127);
+                color = ColorUtils.blendARGB(colorCardBackground, mcolor, 0.25f);
 
             card.setCardBackgroundColor(color);
 
@@ -3750,7 +3752,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
 
             boolean hide_attachments = properties.getValue("hide_attachments", message.id, hide_attachments_default);
             boolean show_inline = properties.getValue("inline", message.id);
-            boolean svg = prefs.getBoolean("svg", !Helper.isPlayStoreInstall());
+            boolean svg = prefs.getBoolean("svg", true);
             boolean webp = prefs.getBoolean("webp", true);
 
             Log.i("Hide attachments=" + hide_attachments + " Show inline=" + show_inline);
@@ -4642,7 +4644,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                     else
                         context.startActivity(new Intent(context, ActivityBilling.class));
                 } else if (id == R.id.ibSearchText) {
-                    onSearchText(message);
+                    onSearchText(message, searched);
                 } else if (id == R.id.ibSearch) {
                     onSearchContact(message, false);
                 } else if (id == R.id.ibTranslate) {
@@ -4913,6 +4915,9 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                 return true;
             } else if (id == R.id.ibVerify) {
                 onActionVerifyDecrypt(message, false, true);
+                return true;
+            } else if (id == R.id.ibHtml) {
+                onMenuAlt(message);
                 return true;
             } else if (id == R.id.ibMove) {
                 if (message.folderReadOnly)
@@ -6567,7 +6572,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                         onMenuManageKeywords(message);
                         return true;
                     } else if (itemId == R.id.menu_search_in_text) {
-                        onSearchText(message);
+                        onSearchText(message, searched);
                         return true;
                     } else if (itemId == R.id.menu_translate) {
                         onActionTranslate(message);
@@ -7522,8 +7527,8 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
             }
         }
 
-        private void onSearchText(TupleMessageEx message) {
-            properties.startSearch(tvBody);
+        private void onSearchText(TupleMessageEx message, String term) {
+            properties.startSearch(tvBody, term);
         }
 
         private void onMenuCreateRule(TupleMessageEx message) {
@@ -8203,12 +8208,16 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                 }
 
                 if (ibPriority.getVisibility() == View.VISIBLE) {
-                    result.add(context.getString(getPriority(message)));
+                    int resid = getPriority(message);
+                    if (resid > 0)
+                        result.add(context.getString(resid));
                     ibPriority.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
                 }
 
                 if (ibSensitivity.getVisibility() == View.VISIBLE) {
-                    result.add(context.getString(getSensitivity(message)));
+                    int resid = getSensitivity(message);
+                    if (resid > 0)
+                        result.add(context.getString(resid));
                     ibSensitivity.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
                 }
 
@@ -8243,12 +8252,16 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                 tvTime.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
 
                 if (ibSigned.getVisibility() == View.VISIBLE) {
-                    result.add(context.getString(R.string.title_legend_signed) + " " + context.getString(getSigned(message)));
+                    int resid = getSigned(message);
+                    if (resid > 0)
+                        result.add(context.getString(R.string.title_legend_signed) + " " + context.getString(resid));
                     ibSigned.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
                 }
 
                 if (ibEncrypted.getVisibility() == View.VISIBLE) {
-                    result.add(context.getString(R.string.title_legend_encrypted) + " " + context.getString(getEncrypted(message)));
+                    int resid = getEncrypted(message);
+                    if (resid > 0)
+                        result.add(context.getString(R.string.title_legend_encrypted) + " " + context.getString(resid));
                     ibEncrypted.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
                 }
 
@@ -9471,7 +9484,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
 
         void reply(TupleMessageEx message, CharSequence selected, View anchor);
 
-        void startSearch(TextView view);
+        void startSearch(TextView view, String term);
 
         void endSearch();
 

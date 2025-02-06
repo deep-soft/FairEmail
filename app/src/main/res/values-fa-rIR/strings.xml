@@ -632,6 +632,10 @@
     <string name="title_advanced_multi_modal">چند وجهی</string>
     <string name="title_advanced_summarize_prompt">خلاصه کردن</string>
     <string name="title_advanced_system_instructions">دستورالعمل‌های سیستم</string>
+    <string name="title_advanced_ai">هوش مصنوعی</string>
+    <string name="title_advanced_ai_input_system">نحوه پاسخ‌دهی</string>
+    <string name="title_advanced_ai_input_body">وارد کردن متن پیام شما</string>
+    <string name="title_advanced_ai_input_reply">وارد کردن متن پیام وارده</string>
     <string name="title_advanced_entered_text">متن وارد شده</string>
     <string name="title_advanced_watchdog">بطور دوره ای بررسی کن که آیا FairEmail هنوز فعال است یا خیر</string>
     <string name="title_advanced_experiments">امتحان ویژگی‌های آزمایشی</string>
@@ -885,6 +889,7 @@
     <string name="title_create_rule">ساخت قانون &#8230;</string>
     <string name="title_rename">تغییر نام</string>
     <string name="title_share">اشتراک گذاری</string>
+    <string name="title_analyze">تجزیه و تحلیل</string>
     <string name="title_event">افزودن به تقویم</string>
     <string name="title_pin">افزودن میانبر</string>
     <string name="title_print">چاپ</string>
@@ -964,7 +969,7 @@
     <string name="title_raw_saved">پیام خام ذخیره شد</string>
     <string name="title_attachment_saved">پیوست ذخیره شد</string>
     <string name="title_attachments_saved">پیوست ها ذخیره شدند</string>
-    <string name="title_report_remark" comment="title_report_remark&#10;Remark to explain what a non-delivery notification message is">این گزارش، یک ایمیل با فرمت خاص، به این دلیل توسط یک سرور ایمیل ارسال شده است که یک پیام فرستاده شده نمی‌تواند به گیرنده تحویل داده شود، به عنوان مثال برای اینکه صندوق پستی پر است، یا زیرا نشانی ایمیل (دیگر) وجود ندارد.</string>
+    <string name="title_report_remark">این گزارش، یک ایمیل با فرمت خاص، به این دلیل توسط یک سرور ایمیل ارسال شده است که یک پیام فرستاده شده نمی‌تواند به گیرنده تحویل داده شود، به عنوان مثال برای اینکه صندوق پستی پر است، یا زیرا نشانی ایمیل (دیگر) وجود ندارد.</string>
     <string name="title_ask_save">تغییرات ذخیره شود؟</string>
     <string name="title_ask_delete">پیام به صورت همیشگی حذف شود؟</string>
     <string name="title_ask_delete_answer">الگوی پاسخ به صورت همیشگی حذف شود؟</string>
@@ -1168,6 +1173,7 @@
     <string name="title_sort_on_starred_unread">ستاره‌دار، خوانده نشده</string>
     <string name="title_sort_on_priority">اولويت</string>
     <string name="title_sort_on_sender">فرستنده</string>
+    <string name="title_sort_on_sender_name">نام فرستنده</string>
     <string name="title_sort_on_subject">موضوع</string>
     <string name="title_sort_on_size">اندازه</string>
     <string name="title_sort_on_attachments">پیوست‎ها</string>

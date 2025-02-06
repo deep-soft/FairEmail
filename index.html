@@ -528,7 +528,12 @@
 <p><br /></p>
 <p><a name="faq4"></a> <strong>(4) How can I use an invalid security certificate / empty password / plain text connection?</strong></p>
 <p>🌎 <a href="https://translate.google.com/translate?sl=en&amp;u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq4">Google Translate</a></p>
-<p><strong>Since version 1.2137: Due to <a href="https://support.google.com/faqs/answer/6346016">Google’s Play Store policies</a>, it is no longer possible to support insecure connections to email servers with certificate issues for the version of FairEmail distributed in the Play Store. Therefore, this issue can only be resolved by your email provider, or by installing the GitHub version of the app (as an update) and enabling insecure connections in the account/identity settings.</strong></p>
+<!-- **Since version 1.2137:
+Due to [Google's Play Store policies](https://support.google.com/faqs/answer/6346016),
+it is no longer possible to support insecure connections to email servers with certificate issues
+for the version of FairEmail distributed in the Play Store.
+Therefore, this issue can only be resolved by your email provider,
+or by installing the GitHub version of the app (as an update) and enabling insecure connections in the account/identity settings.** -->
 <p><em>… Untrusted … not in certificate …</em><br /> <em>… Invalid security certificate (Can’t verify identity of server) …</em><br /> <em>… Chain validation failed … timestamp check failed … Certificate expired at …</em><br /></p>
 <p>This can be caused by using an incorrect host name, so first double-check the host name in the advanced identity/account settings (tap <em>Manual setup and account options</em>). Please see the documentation of the email provider about the right host name. Sometimes the right host name is in the error message.</p>
 <p>You should try to fix this by contacting your provider or by getting a valid security certificate because invalid security certificates are insecure and allow <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">man-in-the-middle attacks</a>. If money is an obstacle, you can get free security certificates from <a href="https://letsencrypt.org">Let’s Encrypt</a>.</p>
@@ -850,9 +855,9 @@ keyword:&lt;keyword&gt;</code></pre>
 </blockquote>
 <p><br /></p>
 <blockquote>
-<p>🇬🇧 In short: go to settings via the navigation menu (left side menu), tap the wizard button, select Outlook/Hotmail/Live and follow the steps.</p>
-<p>🇩🇪 Kurz gesagt: Gehen Sie über das Navigationsmenü (Menü auf der linken Seite) zu den Einstellungen, tippen Sie auf die Schaltfläche Assistent, wählen Sie Outlook/Hotmail/Live und folgen Sie den Schritten.</p>
-<p>🇫🇷 En bref : allez dans les paramètres via le menu de navigation (menu de gauche), appuyez sur le bouton de l’assistant, sélectionnez Outlook/Hotmail/Live et suivez les étapes.</p>
+<p>🇬🇧 In short: go to settings via the navigation menu (left side menu), tap the wizard button, select “<em>Outlook/Office 365 (OAuth)</em>” and follow the steps.</p>
+<p>🇩🇪 Kurz gesagt: Gehen Sie über das Navigationsmenü (Menü auf der linken Seite) zu den Einstellungen, tippen Sie auf die Schaltfläche Assistent, wählen Sie “<em>Outlook/Office 365 (OAuth)</em>” und folgen Sie den Schritten.</p>
+<p>🇫🇷 En bref : allez dans les paramètres via le menu de navigation (menu de gauche), appuyez sur le bouton de l’assistant, sélectionnez “<em>Outlook/Office 365 (OAuth)</em>” et suivez les étapes.</p>
 </blockquote>
 <p><br /></p>
 <blockquote>
@@ -861,7 +866,7 @@ keyword:&lt;keyword&gt;</code></pre>
 </blockquote>
 <p><br /></p>
 <blockquote>
-<p>tl;dr; go to settings via the navigation menu (left side menu), tap the wizard button, select Outlook/Hotmail/Live and follow the steps.</p>
+<p>tl;dr; go to settings via the navigation menu (left side menu), tap the wizard button, select “<em>Outlook/Office 365 (OAuth)</em>” and follow the steps.</p>
 <p><sub>If you don’t use the account anymore, you can delete it via a button in the “extra” section at the bottom of the main settings screen.</sub></p>
 </blockquote>
 <p><br /></p>
@@ -894,14 +899,14 @@ keyword:&lt;keyword&gt;</code></pre>
 <p>How to fix:</p>
 <ul>
 <li>Go to the <em>Settings</em> via the navigation menu (left side menu)</li>
-<li>Tap on the <em>Wizard</em> button and select <em>Outlook/Hotmail/Live (OAuth)</em> or <em>Office 365 (OAuth)</em>.</li>
+<li>Tap on the <em>Wizard</em> button and select “<em>Outlook/Office 365 (OAuth)</em>”.</li>
 <li>Tick the checkbox to authenticate an existing account (else you’ll create a new account!)</li>
 <li>Fill in the fields and follow the steps</li>
 <li>Repeat for each account</li>
 </ul>
 </blockquote>
 <p><br /></p>
-<p>An Outlook / Live / Hotmail account can be set up via the quick setup wizard and selecting <em>Outlook/Hotmail/Live (OAuth)</em> or <em>Office 365 (OAuth)</em>.</p>
+<p>An Outlook / Live / Hotmail account can be set up via the quick setup wizard and selecting “<em>Outlook/Office 365 (OAuth)</em>”.</p>
 <p><strong>Important</strong>: a personal and a business account can have the same email address, but have different mailboxes (folders). So, please make sure you select the right option.</p>
 <p>Microsoft said “<em>We have turned off SMTP AUTH for millions of tenants not using it</em>”, which can result in this error message:</p>
 <pre><code>535 5.7.139 Authentication unsuccessful, SmtpClientAuthentication is disabled for the Tenant.
@@ -917,7 +922,7 @@ Visit https://aka.ms/smtp_auth_disabled for more information.</code></pre>
 <p><a name="faq15"></a> <strong>(15) Why does the message text keep loading?</strong></p>
 <p>🌎 <a href="https://translate.google.com/translate?sl=en&amp;u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq15">Google Translate</a></p>
 <p>The message header and message body are fetched separately from the server. The message text of larger messages is not being pre-fetched on metered connections and will be fetched on demand on expanding a message. The message text will keep loading if there is no connection to the account, see also the next question, or if there other operations, like synchronizing messages, are being executed.</p>
-<p>You can check the account and folder list for the account and folder state (see the legend for the meaning of the icons) and the operation list accessible via the main navigation menu for pending operations (see <a href="#faq3">this FAQ</a> for the meaning of the operations).</p>
+<p>You can check the account and folder list for the account and folder state (see the legend in the navigation menu for the meaning of the icons) and the operation list accessible via the main navigation menu for pending operations (see <a href="#faq3">this FAQ</a> for the meaning of the operations).</p>
 <p>If FairEmail is holding off because of prior connectivity issues, please see <a href="#faq123">this FAQ</a>, you can force synchronization via the three dots menu.</p>
 <p>In the receive settings you can set the maximum size for automatically downloading of messages on metered connections.</p>
 <p>Mobile connections are almost always metered and some (paid) Wi-Fi hotspots are too.</p>
@@ -1112,6 +1117,10 @@ Visit https://aka.ms/smtp_auth_disabled for more information.</code></pre>
 <p>You can enable the storage access framework (again) with this adb command:</p>
 <pre><code>pm install -k --user 0 com.android.documentsui</code></pre>
 <p>Alternatively, you might be able to enable the <em>Files</em> app again using the Android app settings.</p>
+<p><br /></p>
+<p>In the case of the error <em>com.android.externalstorage has no access to content://…</em>, please enable this Android option for <em>com.android.externalstorage</em> and <em>com.android.sharedstorage</em>:</p>
+<p><em>Settings</em> &gt; <em>Privacy</em> &gt; <em>Permission management</em> &gt; <em>Files and media</em> &gt; <em>See more apps that can access all files</em></p>
+<p><br /></p>
 <p>OneDrive doesn’t support <em>view</em>, only <em>share</em>, which means that if you want to open an attachment in OneDrive you need to long press on an attachment.</p>
 <p><br /></p>
 <p><a name="faq26"></a> <strong>(26) Can I help to translate FairEmail in my own language?</strong></p>
@@ -1335,7 +1344,7 @@ X-Google-Original-From: Somebody &lt;somebody+extra@example.org&gt;</code></pre>
 <p><br /></p>
 <p><a name="faq46"></a> <strong>(46) Why does the message list keep refreshing?</strong></p>
 <p>🌎 <a href="https://translate.google.com/translate?sl=en&amp;u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq46">Google Translate</a></p>
-<p>If you see a ‘spinner’ at the top of the message list, the folder is still being synchronized with the remote server. You can see the progress of the synchronization in the folder list. See the legend about what the icons and numbers mean.</p>
+<p>If you see a ‘spinner’ at the top of the message list, the folder is still being synchronized with the remote server. You can see the progress of the synchronization in the folder list. See the legend in the navigation menu about what the icons and numbers mean.</p>
 <p>The speed of your device and internet connection and the number of days to synchronize messages determine how long synchronization will take. Note that you shouldn’t set the number of days to synchronize messages to more than one day in most cases, see also <a href="#faq39">this FAQ</a>.</p>
 <p><br /></p>
 <p><a name="faq47"></a> <strong>(47) How do I solve the error ‘No primary account or no drafts folder’?</strong></p>
@@ -1573,8 +1582,9 @@ X-Google-Original-From: Somebody &lt;somebody+extra@example.org&gt;</code></pre>
 <pre><code>.*alice@example\.org.*|.*bob@example\.org.*|.*carol@example\.org.*</code></pre>
 <p>Note that <a href="https://developer.android.com/reference/java/util/regex/Pattern#DOTALL">dot all mode</a> is enabled to be able to match <a href="https://tools.ietf.org/html/rfc2822#section-3.2.3">unfolded headers</a>.</p>
 <p><br /></p>
-<p><strong>Expressions</strong></p>
-<p>Since version 1.2174 it is possible to use expression conditions, which is <a href="#faq125">experimental</a> for now.</p>
+<p><a name="expression_conditions"></a> <strong>Expressions</strong></p>
+<p>Since version 1.2174 it is possible to use expression conditions like:</p>
+<p><code>from contains "@example.com" &amp;&amp; subject contains "Example"</code></p>
 <p>Please <a href="https://ezylang.github.io/EvalEx/references/references.html">see here</a> about which constants, operators and functions are available.</p>
 <p>The following extra variables are available:</p>
 <ul>
@@ -1657,6 +1667,8 @@ $year$</code></pre>
 <p>Some common header conditions (regex):</p>
 <ul>
 <li><em>.*To:.*undisclosed-recipients.*</em></li>
+<li><em>.*Cc:.*test@example.com.*</em></li>
+<li><em>.*Envelope-to:.*test@example.com.*</em></li>
 <li><em>.*Auto-Submitted:.*</em> <a href="https://tools.ietf.org/html/rfc3834">RFC3834</a></li>
 <li><em>.*List-Unsubscribe:.*</em> <a href="https://datatracker.ietf.org/doc/html/rfc2369">RFC3834</a></li>
 <li><em>.*Content-Type:.*multipart/report.*</em> <a href="https://tools.ietf.org/html/rfc3462">RFC3462</a></li>
@@ -2226,14 +2238,14 @@ $NotDisplayed</code></pre>
 <p><em>Markdown (1.2061+)</em></p>
 <p>Composing messages using <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> can be enabled via the three-dots overflow menu of the message editor.</p>
 <p><br /></p>
-<p><em>Rule expression condition (1.2174+)</em></p>
-<p>See <a href="#faq71">this FAQ</a></p>
-<p><br /></p>
 <p><em>Fast forward to (1.2226+)</em></p>
 <p>Show (fast) <em>Forward to</em> in the answer menu, with addresses recently used for forwarding messages (if any). You can show the answer menu by tapping on the answer button at the bottom right of an opened/expanded message.</p>
 <p><br /></p>
 <p><em>Force light for reformatted message view (1.2254+)</em></p>
 <p>Show force light menu item / button (when configured) to force a light theme for reformatted messages.</p>
+<p><br /></p>
+<p><em>Basic image editor (1.2257+)</em></p>
+<p>Display a basic image editor when tapping an inserted image.</p>
 <p><br /></p>
 <p><a name="faq126"></a> <strong>(126) Can message previews be sent to my smartwatch?</strong></p>
 <p>🌎 <a href="https://translate.google.com/translate?sl=en&amp;u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq126">Google Translate</a></p>
@@ -2936,7 +2948,7 @@ adb install /path/to/FairEmail-xxx.apk</code></pre>
 <p><br></p>
 <p><strong>Usage</strong></p>
 <p><em>Editor</em></p>
-<p>Tap on the robot button in the top action bar of the message editor. If the text in the message editor is empty, the message being replied to will be answered (using the configured answer prompt), else the entered text will be sent, which could be a question or command. If you select entered text, it will be replaced by the answer.</p>
+<p>Tap the robot button in the top action bar of the message editor. A dialog box will appear (since version 1.2259). You can select the prompt and select whether to input the message you typed and/or the message you are replying to.</p>
 <p>For example: create a new draft and enter the text “<em>How far is the sun?</em>”, and tap on the robot button in the top action bar.</p>
 <p>Since version 1.2191 it is possible to define AI templates, which you can select after tapping on the robot icon.</p>
 <p><br></p>
@@ -2968,6 +2980,8 @@ adb install /path/to/FairEmail-xxx.apk</code></pre>
 <li>In the integration settings enter the URI https://api.deepinfra.com/v1/openai, an API key and the model name</li>
 </ul>
 <p><br></p>
+<p><br></p>
+<p>If you are looking for Google Gemini support, please see <a href="#faq204">this FAQ</a>.</p>
 <p>This feature is experimental and requires version 1.2053 or later for the GitHub version and version 1.2182 or later for the Play Store version.</p>
 <p><br></p>
 <p><a name="faq191"></a> <strong>(191) How do I download and keep older messages on my device?</strong></p>

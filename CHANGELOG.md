@@ -4,8 +4,6 @@
 
 ### Notices
 
-Happy new Year &#x1F386;
-
 Google requires FairEmail to undergo an annual [CASA](https://appdefensealliance.dev/casa) security audit,
 which must be conducted by an authorized assessor (this year [TAC Security](https://casa.tacsecurity.com/site/home)).
 Besides being time-consuming, this is no longer free as of this year.
@@ -31,6 +29,50 @@ For support you can use [the contact form](https://contact.faircode.eu/?product=
 <br>
 
 ### [Barsboldia](https://en.wikipedia.org/wiki/Barsboldia)
+
+### 1.2262 2025-01-30
+
+* Fixed deleting sent messages in some cases
+
+### 1.2261 2025-01-30
+
+* Released [expression conditions](https://m66b.github.io/FairEmail/#expression_conditions) as non-experimental
+* Small improvements and minor bug fixes
+* Updated [AndroidX](https://developer.android.com/jetpack/androidx/versions/all-channel)
+* Updated [Public Suffix List](https://github.com/publicsuffix/list)
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2260 2025-01-23
+
+* Disabled viewport height limitation
+* Small improvements and minor bug fixes
+* Updated libraries, including [EvalEx](https://github.com/ezylang/EvalEx)
+* Updated [Public Suffix List](https://github.com/publicsuffix/list)
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2259 2025-01-16
+
+* Added resize to basic image editor
+* Added dialog box for message editor AI actions
+* Added loop sound option to play sound rule actions
+* Updated build tools
+* Small improvements and minor bug fixes
+* Updated [AndroidX](https://developer.android.com/jetpack/androidx/versions/all-channel)
+* Updated [Public Suffix List](https://github.com/publicsuffix/list)
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2258 2025-01-08 *
+
+* Fixed S/MIME decrypt in some cases
+* Small improvements and minor bug fixes
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2257 2025-01-07
+
+* Added sort on sender name (Android 14+ only)
+* Added basic image editor (slowly tap twice on an inserted image in the message editor)
+* Small improvements and minor bug fixes
+* Updated [translations](https://crowdin.com/project/open-source-email)
 
 ### 1.2256 2025-01-01 *
 
