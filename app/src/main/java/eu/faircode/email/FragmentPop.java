@@ -307,6 +307,14 @@ public class FragmentPop extends FragmentBase {
             }
         });
 
+        btnAvatar.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                avatar = null;
+                return true;
+            }
+        });
+
         Helper.linkPro(tvAvatarPro);
 
         grpCalendar.setVisibility(BuildConfig.PLAY_STORE_RELEASE ? View.GONE : View.VISIBLE);
@@ -1234,7 +1242,7 @@ public class FragmentPop extends FragmentBase {
 
         EntityFolder delete = new EntityFolder();
         delete.id = EntityMessage.SWIPE_ACTION_DELETE;
-        delete.name = getString(R.string.title_delete_permanently);
+        delete.name = getString(R.string.title_trash);
         folders.add(delete);
 
         return folders;

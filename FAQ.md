@@ -34,7 +34,7 @@ Please [see here](https://github.com/M66B/FairEmail/tree/master/tutorials) for t
 
 ## Index
 
-* [Authorizing accounts](#authorizing-accounts)
+* [Configuring accounts](#authorizing-accounts)
 * [How to ...?](#howto)
 * [Known problems](#known-problems)
 * [Planned features](#planned-features)
@@ -43,7 +43,7 @@ Please [see here](https://github.com/M66B/FairEmail/tree/master/tutorials) for t
 
 <br />
 
-<h2><a name="authorizing-accounts"></a>Authorizing accounts</h2>
+<h2><a name="authorizing-accounts"></a>Configuring accounts</h2>
 
 &#x1F30E; [Google Translate](https://translate.google.com/translate?sl=en&u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23authorizing-accounts)
 
@@ -79,7 +79,8 @@ For authorizing:
 * Yandex: please check if [IMAP is enabled](https://yandex.com/support/mail/mail-clients/others.html)
 * Comcast/Xfinity: please check if [third party email access](https://www.xfinity.com/support/articles/third-party-email-access) is enabled
 
-Please see [here](#faq22) for common error messages and solutions.
+Please see [this FAQ](#faq22) for common error messages and solutions,
+and please see [this FAQ](#faq207) in case of '*Authentication failed*' or similar.
 
 Related questions:
 
@@ -88,7 +89,7 @@ Related questions:
 
 <br />
 
-<a name="howto">
+<a name="howto"></a>
 
 ## How to ...?
 
@@ -435,6 +436,7 @@ Anything on this list is in random order and *might* be added in the near future
 * [(204) How do I use Gemini?](#faq204)
 * [(205) How do I check the integrity of an APK file?](#faq205)
 * [(206) How can I move or copy messages from one account to another?](#faq206)
+* [(207) What does 'Authentication failed' mean?](#faq207)
 
 [I have another question.](#get-support)
 
@@ -486,6 +488,9 @@ The following permissions are needed to show the count of unread messages as a b
 * *com.huawei.android.launcher.permission.CHANGE_BADGE*
 * *com.huawei.android.launcher.permission.READ_SETTINGS*
 * *com.huawei.android.launcher.permission.WRITE_SETTINGS*
+* *com.hihonor.android.launcher.permission.CHANGE_BADGE*
+* *com.hihonor.android.launcher.permission.READ_SETTINGS*
+* *com.hihonor.android.launcher.permission.WRITE_SETTINGS*
 * *android.permission.READ_APP_BADGE*
 * *com.oppo.launcher.permission.READ_SETTINGS*
 * *com.oppo.launcher.permission.WRITE_SETTINGS*
@@ -884,6 +889,8 @@ tap on *Manual setup and account options*, tap on *Identities*, long press the m
 For more options, you can copy the main identity by long pressing on it, and change the email address and perhaps the (display) name.
 You should not change the username!
 
+Note that you can select the default sending address via the three-dots overflow menu at the top right of the message editor (not the start screen!).
+
 **Important**: In the case of an Outlook account, you should first authenticate the account again with the "Office 365" wizard. You don't need to remove the account for this.
 
 **In many cases, an alias address must first be verified via the website of the mail provider**
@@ -1123,6 +1130,12 @@ Your certificate > zero or more intermediate certificates > CA (root) certificat
 
 Note that a certificate chain will always be invalid when no anchor certificate can be found in the Android key store,
 which is fundamental to S/MIME certificate validation.
+This means that your private key should include all intermediate certificates (but not the root certificate).
+This command might be useful for that:
+
+```
+openssl pkcs12 -export -in certificatechain.crt -inkey private.key -out certificate.pfx
+```
 
 Please see [here](https://support.google.com/pixelphone/answer/2844832?hl=en) how you can import certificates into the Android key store.
 
@@ -2906,7 +2919,13 @@ Since version 1.2174 it is possible to use expression conditions like:
 
 ```from contains "@example.com" && subject contains "Example"```
 
+```subject contains "This" || subject contains "That"```
+
+Note that there is a separate input field for expression conditions. You can use newlines for more clarity.
+
 Please [see here](https://ezylang.github.io/EvalEx/references/references.html) about which constants, operators and functions are available.
+Commonly used are && (=and) and || (=or).
+
 
 The following extra variables are available:
 
@@ -2996,9 +3015,16 @@ $day$ (since version 1.2030)
 $week$
 $month$
 $year$
+$user$ (since version 1.2265)
+$extra$ (since version 1.2265)
 $domain$
 $group$ (since version 1.2030)
 ```
+
+$user$ is the domain name of the 'from' email address,
+and $domain$ is the domain name of the 'from' email address: *user@domain*.
+
+$extra$ is the part after the plus sign if the username: *user+extra$example.org*.
 
 $group$ will be replaced with the contact group name of the sender, provided that the related contact is assigned to one contact group only.
 Note that the Android contact provider isn't very fast, so using this placeholder can slow down fetching messages.
@@ -3562,6 +3588,9 @@ Servers generally have more memory and computing power, so they are much better 
 Also, you'll want spam filtered for all your email clients, possibly including web email, not just for one email client on one device.
 Moreover, email servers have access to information, like the IP address, etc. of the connecting server, which an email client has no access to.
 Furthermore, an email server can inspect all messages of all email accounts, while an email client can inspect messages in your email account only.
+
+Spammers today use large spam networks with many servers and e-mail addresses and AI to create messages that slip through spam filters.
+This means that only powerful servers running a neural network fed with many messages can filter spam properly. A smartphone simply cannot do that anymore.
 
 If you are receiving a significant amount of spam, the first thing you should do is consider switching to another email provider.
 Some email servers excell at filtering spam, and others are really bad at it.
@@ -4341,8 +4370,8 @@ If you use a Samsung smartwatch with the Galaxy smartwatch (Samsung Gear) app, y
 when the setting *Notifications*, *Apps installed in the future* is turned off in this app.
 
 Some companion apps ignore [local only](https://developer.android.com/training/wearables/notifications/bridger#non-bridged) notifications,
-causing the summary notification (*nnn new messages*) to be bridged.
-Unfortunately, it is not possible to workaround this problem.
+causing (only) the summary notification (*nnn new messages*) to be bridged.
+You can try to disable the option *Group notifications* in the notification settings tab page to workaround this.
 
 Some smartwatches do not display notifications with non-[ASCII](https://en.wikipedia.org/wiki/ASCII) characters,
 in which can you can enable the option *ASCII text only* in the display settings tab page.
@@ -4912,6 +4941,9 @@ You can also long press the person-add icon at the end of the to/cc/bcc/field.
 
 You can define contact groups with the Android contacts app, please see [here](https://support.google.com/contacts/answer/30970) for instructions.
 
+Please be aware that your email provider might block a message to many recipients.
+If you want to send newsletters to many people, you should use a transaction email service.
+
 <br />
 
 <a name="faq153"></a>
@@ -5358,6 +5390,11 @@ Creating a local folder only and storing messages on your device only is a bad i
 because losing or breaking your device would mean losing your messages.
 Imagine you've put a lot of time organizing your messages, and you need to reinstall the app on another device, only to discover all the work you did was a waste of time.
 Therefore, this isn't supportable.
+
+An alternative is to use keywords, which is possible since version 1.2263, but please be aware that keywords can't be stored on the email server with POP3, only on the device.
+You can search on keywords via "*More options*" in the search dialog box, and save the search via a button in the top action bar,
+which basically means you can have virtual folders in the navigation menu.
+Keywords can be added and messages can be hidden (in the inbox) automatically with rules, see [this FAQ](#faq71).
 
 Please note that FairEmail doesn't store a copy of your messages in the cloud for privacy reasons.
 
@@ -6171,6 +6208,8 @@ Note that DNSSEC and DANE are available in the GitHub version only.
 <a name="faq203"></a>
 **(203) Where is my sent message?**
 
+&#x1F30E; [Google Translate](https://translate.google.com/translate?sl=en&u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq203)
+
 When you write a message, it will be stored in the draft messages folder.
 
 When you send a message, it will be in the outbox first and later in the sent messages folder.
@@ -6192,6 +6231,8 @@ Basically, an outgoing message is either in the draft messages folder, the outbo
 
 <a name="faq204"></a>
 **(204) How do I use Gemini?**
+
+&#x1F30E; [Google Translate](https://translate.google.com/translate?sl=en&u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq204)
 
 Gemini can only be used if configured and enabled.
 
@@ -6222,6 +6263,8 @@ This feature is experimental and requires version 1.2171 or later for the GitHub
 <a name="faq205"></a>
 **(205) How do I check the integrity of an APK file?**
 
+&#x1F30E; [Google Translate](https://translate.google.com/translate?sl=en&u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq205)
+
 "*Artifact attestations enable you to create unfalsifiable provenance and integrity guarantees for the software you build.*
 *In turn, people who consume your software can verify where and how your software was built.*"
 
@@ -6245,12 +6288,46 @@ Attestation of APK files is available from version 1.2209.
 <a name="faq206"></a>
 **(206) How can I move or copy messages from one account to another?**
 
+&#x1F30E; [Google Translate](https://translate.google.com/translate?sl=en&u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq206)
+
 There are two options for this:
 
 1. Long press a message in the message list to select it, tap the three-dot button that appears, scroll to the bottom of the pop-up menu and select the target account.
 2. Long press the move-to button just above the message text to select the target account first.
 
 To copy a message to another account, long press the target folder.
+
+<br>
+
+<a name="faq207"></a>
+**(207) What does 'Authentication failed' mean?**
+
+&#x1F30E; [Google Translate](https://translate.google.com/translate?sl=en&u=https%3A%2F%2Fm66b.github.io%2FFairEmail%2F%23faq207)
+
+Basically, '*Authentication failed*', or similar, means that the email server of your email provider doesn't accept the login (anymore).
+
+The first thing you should check whether you can still login via the website of the email provider.
+If you can't login via the website of the email provider, you'll need to contact the email provider for support.
+In any case, in that situation, no email app can login either.
+
+The obvious reason is that the username (generally the email address, but not always) or the password is incorrect.
+There are other possible causes too, like connecting from a suspicious network (according to the email provider), connecting from abroad, or using a VPN.
+Some email providers are more critical than other email provider regarding accepting connections.
+
+If you are using a VPN, please turn it off, or make an exception for FairEmail.
+With a VPN you share a network address with many other people, possibly not all behaving nicely.
+If an email server detects 'unwanted' behavior, like somebody trying to send spam messages,
+an email server often automatically blocks network addresses as a protection measure.
+
+You can try to switch to Wi-Fi or mobile data because this will result in using another (local) network address.
+Turning flight mode on for a while and turning it back off will mostly result in another network address being assigned.
+So, this is worth trying as well.
+
+Email providers like Google, Microsoft, and Yahoo/AOL require [OAuth](https://en.wikipedia.org/wiki/OAuth) for logging in,
+which means it is not possible to configure an account manually, and that you *must* use the quick setup wizard to configure an account.
+
+Some email providers use account-specific host (server) names.
+So, please take care you use the correct host name when manually configuring an account.
 
 <br>
 

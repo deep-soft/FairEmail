@@ -2,33 +2,63 @@
 
 &#x1F30E; [Google Translate](https://translate.google.com/translate?sl=en&u=https%3A%2F%2Fgithub.com%2FM66B%2FFairEmail%2Fblob%2Fmaster%2FCHANGELOG.md)
 
-### Notices
+### [Ceratonykus](https://en.wikipedia.org/wiki/Ceratonykus)
 
-Google requires FairEmail to undergo an annual [CASA](https://appdefensealliance.dev/casa) security audit,
-which must be conducted by an authorized assessor (this year [TAC Security](https://casa.tacsecurity.com/site/home)).
-Besides being time-consuming, this is no longer free as of this year.
-This is one of the reasons why the app cannot be completely free, meaning some features must be paid for in order to pay for an annual security audit.
-To be clear, nothing will be changed for now.
+### Next version
 
-The security audit revealed no problems, so Google accounts [can continue to be used](https://support.google.com/cloud/answer/13464325) as usual next year.
+* Targeting Android 16 Baklava
+* Added optional TTS button
+* Added TTS notification action
+* Small improvements and minor bug fixes
+* Updated [AndroidX](https://developer.android.com/jetpack/androidx/versions/all-channel)
+* Updated [Public Suffix List](https://github.com/publicsuffix/list)
+* Updated [translations](https://crowdin.com/project/open-source-email)
 
-<br>
+### 1.2268 2025-03-14
 
-People keep asking me to add new, often exotic, features to the app, to whom I often say "no", and other people complain about too many features.
-Both groups of people leave bad reviews for this, which is frustrating, also because there are already enough bad reviews for the wrong reasons
-(email server problems, which unfortunately happen too often, etc.).
-The main problem is that more features now make more people unhappy than happy.
-Therefore, [the rules for new features](https://m66b.github.io/FairEmail/#get-support) will be strictly followed from today.
+* Fixed delayed marking read
+* Small improvements and minor bug fixes
+* Updated [translations](https://crowdin.com/project/open-source-email)
 
-No worries, the app will [continue to be maintained](https://github.com/M66B/FairEmail/commits/) and supported as usual.
+### 1.2267 2025-03-12
 
-<br>
+* Reverted to [ShortcutBadger](https://github.com/leolin310148/ShortcutBadger)
+* Small improvements and minor bug fixes
+* Updated [translations](https://crowdin.com/project/open-source-email)
 
-For support you can use [the contact form](https://contact.faircode.eu/?product=fairemailsupport).
+### 1.2266 2025-03-11
 
-<br>
+* Fixed all reported issues
+* Small improvements and minor bug fixes
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2265 2025-03-07
+
+* Fixed all reported issues
+* Switched to [ShortcutBadgerX](https://github.com/kibotu/ShortcutBadgerX)
+* Small improvements and minor bug fixes
+* Updated build tools (Android Studio, gradle)
+* Updated [Public Suffix List](https://github.com/publicsuffix/list)
+* Updated [translations](https://crowdin.com/project/open-source-email)
 
 ### [Barsboldia](https://en.wikipedia.org/wiki/Barsboldia)
+
+### 1.2264 2025-03-03
+
+* Fixed saving drafts on the server in some circumstances
+* Fixed VPN-only account option not being applied always
+* Added mark-read option to hide rule action
+* Small improvements and minor bug fixes
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2263 2025-03-01
+
+* Fixed all reported bugs
+* Added S/MIME encrypt-only
+* Small improvements and minor bug fixes
+* Updated [AndroidX](https://developer.android.com/jetpack/androidx/versions/all-channel)
+* Updated [Public Suffix List](https://github.com/publicsuffix/list)
+* Updated [translations](https://crowdin.com/project/open-source-email)
 
 ### 1.2262 2025-01-30
 
@@ -3589,3 +3619,35 @@ For support you can use [the contact form](https://contact.faircode.eu/?product=
 ### 1.1719
 
 * Added tap on folder name to go to folder (conversation/message view only)
+
+### Notices
+
+You may have noticed that fewer new features have been added recently and therefore fewer new (test) versions have been released.
+This is a result of saying “no” more often to new features that do not enhance the overall usability of the app (see below).
+What is not very motivating is that a number of people who consider themselves more important than other people have left bad reviews for this.
+I am not giving up, but this is just not nice, also considering that it is not a commercial project.
+On a positive note, a number of people contacted me to encourage me, for which many thanks!
+
+<br>
+
+Google requires FairEmail to undergo an annual [CASA](https://appdefensealliance.dev/casa) security audit,
+which must be conducted by an authorized assessor (this year [TAC Security](https://casa.tacsecurity.com/site/home)).
+Besides being time-consuming, this is no longer free as of this year.
+This is one of the reasons why the app cannot be completely free, meaning some features must be paid for in order to pay for an annual security audit.
+To be clear, nothing will be changed for now.
+
+The security audit revealed no problems, so Google accounts [can continue to be used](https://support.google.com/cloud/answer/13464325) as usual next year.
+
+<br>
+
+People keep asking me to add new, often exotic, features to the app, to whom I often say "no", and other people complain about too many features.
+Both groups of people leave bad reviews for this, which is frustrating, also because there are already enough bad reviews for the wrong reasons
+(email server problems, which unfortunately happen too often, etc.).
+The main problem is that more features now make more people unhappy than happy.
+Therefore, [the rules for new features](https://m66b.github.io/FairEmail/#get-support) will be strictly followed from today.
+
+No worries, the app will [continue to be maintained](https://github.com/M66B/FairEmail/commits/) and supported as usual.
+
+<br>
+
+For support you can use [the contact form](https://contact.faircode.eu/?product=fairemailsupport).

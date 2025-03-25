@@ -159,6 +159,7 @@ public class HtmlHelper {
     private static final int MAX_FORMAT_TEXT_SIZE = 100 * 1024; // characters
     private static final int SMALL_IMAGE_SIZE = 5; // pixels
     private static final int TRACKING_PIXEL_SURFACE = 25; // pixels
+    private static final int TRACKING_INDICATOR_SIZE = 18; // pixels
     private static final float[] HEADING_SIZES = {1.5f, 1.4f, 1.3f, 1.2f, 1.1f, 1f};
     private static final String LINE = "----------------------------------------";
     private static final String W3NS = /* http/https */ "://www.w3.org/";
@@ -1456,8 +1457,7 @@ public class HtmlHelper {
             }
 
             // Remove spacer, etc
-            if (!show_images && !(inline_images && isInline) &&
-                    TextUtils.isEmpty(img.attr("x-tracking"))) {
+            if (!show_images && !(inline_images && isInline) && TextUtils.isEmpty(tracking)) {
                 Integer width = Helper.parseInt(img.attr("width").trim());
                 Integer height = Helper.parseInt(img.attr("height").trim());
                 if (width != null && height != null) {
@@ -1912,17 +1912,23 @@ public class HtmlHelper {
             for (int i = 0; i < _media.getLength(); i++) {
                 String type = _media.mediaQuery(i).getMedia();
 
+                boolean hasMinWidth = false;
                 boolean hasMaxWidth = false;
                 List<Property> props = _media.mediaQuery(i).getProperties();
                 if (props != null)
                     for (Property prop : props) {
+                        if ("min-width".equals(prop.getName()) ||
+                                "min-device-width".equals(prop.getName())) {
+                            hasMinWidth = true;
+                            break;
+                        }
                         if ("max-width".equals(prop.getName()) ||
                                 "max-device-width".equals(prop.getName())) {
                             hasMaxWidth = true;
                             break;
                         }
                     }
-                if (!hasMaxWidth)
+                if (!hasMinWidth && !hasMaxWidth)
                     if ("all".equals(type) || "screen".equals(type) || _media.mediaQuery(i).isNot()) {
                         Log.i("Using media=" + media.getMediaText());
                         return true;
@@ -2435,11 +2441,14 @@ public class HtmlHelper {
 
             if (isTrackingPixel(img) || isTrackingHost(context, host, disconnect_images)) {
                 uris.add(uri);
+                String px = Integer.toString(TRACKING_INDICATOR_SIZE);
                 img.attr("src", sb.toString());
                 img.attr("alt", context.getString(R.string.title_legend_tracking_pixel));
-                img.attr("height", "24");
-                img.attr("width", "24");
-                img.attr("style", "display:block !important; width:24px !important; height:24px !important;");
+                img.attr("height", px);
+                img.attr("width", px);
+                img.attr("style", "display:block !important;" +
+                        " width:" + px + "px !important;" +
+                        " height:" + px + "px !important;");
                 img.attr("x-tracking", src);
             }
         }

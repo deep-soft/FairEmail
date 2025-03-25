@@ -30,6 +30,15 @@ For support you can use the contact form.
 
 Barsboldia
 
+Next version
+
+* Fixed all reported bugs
+* Added S/MIME encrypt-only
+* Small improvements and minor bug fixes
+* Updated AndroidX
+* Updated Public Suffix List
+* Updated translations
+
 1.2262 2025-01-30
 
 * Fixed deleting sent messages in some cases

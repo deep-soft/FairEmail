@@ -419,6 +419,12 @@
     <string name="title_advanced_hint_remark">
         The options are categorized by tab, divided into sections, organized by appearance or use, and searchable.
     </string>
+    <string name="title_advanced_hint_options">
+        You will not need most of the options and since some options are quite specific,
+        it is understandable if the functioning of not all options is not immediately clear.
+        Please do not leave a bad review for just the number of options or for not understanding all the options right away.
+        All options are useful for more than a few people, but maybe not for you (yet).
+    </string>
     <string name="title_advanced_hint_setup">You can configure an account by tapping the wizard button on the main configuration screen.</string>
 
     <string name="title_advanced_section_main">Main</string>
@@ -455,6 +461,7 @@
     <string name="title_advanced_gmail_thread">Gmail message grouping style for Gmail accounts</string>
     <string name="title_advanced_outlook_thread" translatable="false">Use Outlook thread index</string>
     <string name="title_advanced_subject_threading">Group messages by sender and subject</string>
+    <string name="title_advanced_outlook_categories">Synchronize Outlook categories</string>
     <string name="title_advanced_sync_folders">Synchronize folder list</string>
     <string name="title_advanced_sync_folders_poll">Actively synchronize folder list</string>
     <string name="title_advanced_sync_shared_folders">Synchronize shared folder lists</string>
@@ -471,6 +478,7 @@
     <string name="title_advanced_blocklist_warning">Block lists aren\'t perfect and may block more than just spam!</string>
 
     <string name="title_advanced_keyboard">Show keyboard by default</string>
+    <string name="title_advanced_keyboard_margin">Add a margin above the keyboard</string>
     <string name="title_advanced_keyboard_no_fullscreen">Prevent fullscreen keyboard</string>
     <string name="title_advanced_suggest_names">Use names and email addresses</string>
     <string name="title_advanced_suggest_local">Suggest locally stored contacts</string>
@@ -597,6 +605,7 @@
     <string name="title_advanced_nav_hide_message">You can enable the options again in the display settings</string>
     <string name="title_advanced_nav_last_sync">Show the last sync time in the navigation menu</string>
     <string name="title_advanced_nav_message_count">Show number of locally stored messages in the navigation menu</string>
+    <string name="title_advanced_nav_unseen">Show number of unread messages in the navigation menu</string>
     <string name="title_advanced_nav_unseen_drafts">Show number of unread drafts in the navigation menu</string>
     <string name="title_advanced_nav_pinned_count">Show the number of unread messages in the pinned navigation menu</string>
     <string name="title_advanced_show_unexposed">Show a star for accounts/folders with newly received unread messages</string>
@@ -748,6 +757,7 @@
     <string name="title_advanced_reset_importance">Reset importance on moving messages</string>
     <string name="title_advanced_star_snoozed">Automatically add star on snoozing messages</string>
     <string name="title_advanced_star_unsnoozed">Automatically remove star on unsnoozing messages</string>
+    <string name="title_advanced_important_unsnoozed">Automatically make unsnoozing messages important</string>
     <string name="title_advanced_auto_important">Automatically make starred messages important</string>
     <string name="title_advanced_cancel_snooze">Cancel snooze on moving messages</string>
     <string name="title_advanced_auto_block_sender">Automatically block the sender when reporting spam</string>
@@ -775,6 +785,7 @@
     <string name="title_advanced_notify_suppress_in_call">Delay notifications while on a call</string>
     <string name="title_advanced_notify_suppress_in_car">Delay notifications while Android Auto is connected</string>
     <string name="title_advanced_notify_summary">Show summary notification only</string>
+    <string name="title_advanced_notify_subject">Show subject in notifications</string>
     <string name="title_advanced_notify_preview">Show message preview in notifications</string>
     <string name="title_advanced_notify_preview_all">Preview all text</string>
     <string name="title_advanced_notify_preview_only">Show notifications with a preview text only</string>
@@ -804,6 +815,7 @@
     <string name="title_advanced_notify_screen_on">Briefly turn on the screen for new message notifications</string>
     <string name="title_advanced_notifications_background">Use background service to synchronize messages</string>
     <string name="title_advanced_notifications_background_hint">A background service can be stopped by Android at any time, but doesn\'t require a status bar notification</string>
+    <string name="title_advanced_rate_limit">Limit notification sounds of new messages to once per:</string>
     <string name="title_advanced_alert_once" translatable="false">MIUI notification sound workaround</string>
     <string name="title_advanced_tiles" translatable="false">Add quick settings tiles</string>
 
@@ -895,6 +907,7 @@
     <string name="title_advanced_class_min_difference">Minimum class difference: %1$s %%</string>
     <string name="title_advanced_show_filtered">Show a filter icon when rules were applied</string>
     <string name="title_advanced_haptic_feedback">Haptic feedback on important actions</string>
+    <string name="title_advanced_haptic_feedback_swipe">Haptic feedback when swiping left/right</string>
     <string name="title_advanced_language">Language</string>
     <string name="title_advanced_language_system">System</string>
     <string name="title_advanced_integrations_hint">The cloud services below are not part of the app. Any payments will go directly to the cloud service and not to the app developer.</string>
@@ -1067,6 +1080,7 @@
     <string name="title_advanced_sync_kept_hint">This will transfer extra data and consume extra battery power, especially if a lot of messages are stored on the device</string>
     <string name="title_advanced_gmail_thread_hint">This only applies to newly received messages and can break existing groups</string>
     <string name="title_advanced_subject_threading_hint">Only messages received in the last %1$d hours</string>
+    <string name="title_advanced_outlook_categories_hint">Outlook categories can only be fetched and cannot refresh automatically due to Outlook IMAP server limitations</string>
     <string name="title_advanced_sync_folders_hint">Disabling this will reduce data and battery usage somewhat, but will disable updating the list of folders too</string>
     <string name="title_advanced_poll_folders_hint">Periodically synchronize the folder list in addition to after connecting to an account</string>
     <string name="title_advanced_check_authentication_hint">This will check the results of DKIM, SPF and DMARC authentication as performed by the email server</string>
@@ -1521,6 +1535,7 @@
     <string name="title_filters_active">One or more filters active</string>
     <string name="title_duplicate_in">Duplicate message in %1$s</string>
     <string name="title_trashed_from">Trashed message from %1$s</string>
+    <string name="title_sent_to">Sent message to %1$s</string>
 
     <string name="title_subject_reply">Re: %1$s</string>
     <string name="title_subject_forward">Fwd: %1$s</string>
@@ -1579,6 +1594,7 @@
     <string name="title_raw_send_message">Message</string>
     <string name="title_raw_send_thread">Conversation</string>
     <string name="title_manage_keywords">Manage keywords</string>
+    <string name="title_manage_keywords_pop">With POP3, keywords cannot be stored on the email server!</string>
     <string name="title_manage_labels">Manage Gmail labels</string>
     <string name="title_add_keyword">Add keyword</string>
     <string name="title_show_inline">Show inline attachments</string>
@@ -2032,6 +2048,7 @@
     <string name="title_filter_hidden">Hidden</string>
     <string name="title_filter_deleted">Deleted</string>
     <string name="title_filter_duplicates">Duplicates</string>
+    <string name="title_filter_sent">Sent</string>
     <string name="title_filter_trash">Trashed</string>
 
     <string name="title_compact">Compact view</string>
@@ -2835,6 +2852,7 @@
         <item>PGP encrypt-only</item>
         <item>PGP sign+encrypt</item>
         <item>S/MIME sign-only</item>
+        <item>S/MIME encrypt-only</item>
         <item>S/MIME sign+encrypt</item>
     </string-array>
 
@@ -2844,6 +2862,7 @@
         <item>5</item>
         <item>1</item>
         <item>4</item>
+        <item>6</item>
         <item>3</item>
     </integer-array>
 

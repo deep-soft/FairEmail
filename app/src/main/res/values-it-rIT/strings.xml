@@ -347,6 +347,11 @@
     </string>
     <string name="title_advanced_hint_remark">        Le opzioni sono categorizzate dalla scheda, divise in sezioni, organizzate per aspetto o uso e ricercabili.
     </string>
+    <string name="title_advanced_hint_options">        La maggior parte delle opzioni non sono necessarie. Poiché alcune sono abbastanza specifiche,
+        è comprensibile se il loro funzionamento non sia immediatamente chiaro.
+        Si prega di non lasciare una brutta recensione per il gran numero di opzioni o per non averle comprese tutte.
+        Tutte le opzioni sono utili solo per poche persone, e forse non per te (o non ancora).
+    </string>
     <string name="title_advanced_hint_setup">È possibile configurare un account toccando il pulsante della procedura guidata nella schermata di configurazione principale.</string>
     <string name="title_advanced_section_main">Principale</string>
     <string name="title_advanced_section_synchronize">Ricezione</string>
@@ -379,6 +384,7 @@
     <string name="title_advanced_kept_removed">Verifica se i vecchi messaggi sono stati rimossi dal server</string>
     <string name="title_advanced_gmail_thread">Stile di raggruppamento dei messaggi di Gmail per gli account Gmail</string>
     <string name="title_advanced_subject_threading">Raggruppa i messaggi per mittente e oggetto</string>
+    <string name="title_advanced_outlook_categories">Sincronizza le categorie di Outlook</string>
     <string name="title_advanced_sync_folders">Sincronizza l\'elenco delle cartelle</string>
     <string name="title_advanced_sync_folders_poll">Sincronizza attivamente l\'elenco delle cartelle</string>
     <string name="title_advanced_sync_shared_folders">Sincronizza gli elenchi delle cartelle condivise</string>
@@ -394,6 +400,7 @@
     <string name="title_advanced_tune_keep_alive">Regola automaticamente l\'intervallo di keep-alive</string>
     <string name="title_advanced_blocklist_warning">Le blacklist non sono perfette e potrebbero bloccare altro oltre allo spam!</string>
     <string name="title_advanced_keyboard">Mostra la tastiera in modo predefinito</string>
+    <string name="title_advanced_keyboard_margin">Aggiungi un margine sopra la tastiera</string>
     <string name="title_advanced_keyboard_no_fullscreen">Impedisci la tastiera a schermo intero</string>
     <string name="title_advanced_suggest_names">Usa nomi e indirizzi email</string>
     <string name="title_advanced_suggest_local">Suggerisci contatti memorizzati localmente</string>
@@ -509,19 +516,20 @@
     <string name="title_advanced_nav_hide_message">È possibile abilitare nuovamente le opzioni nelle impostazioni di visualizzazione</string>
     <string name="title_advanced_nav_last_sync">Mostra l\'ora dell\'ultima sincronizzazione nel menu di navigazione</string>
     <string name="title_advanced_nav_message_count">Mostra il numero di messaggi memorizzati localmente nel menu di navigazione</string>
+    <string name="title_advanced_nav_unseen">Mostra il numero di messaggi da leggere nel menu di navigazione</string>
     <string name="title_advanced_nav_unseen_drafts">Mostra il numero di bozze da leggere nel menu di navigazione</string>
     <string name="title_advanced_nav_pinned_count">Mostra il numero di messaggi da leggere nel menu di navigazione fissato</string>
     <string name="title_advanced_show_unexposed">Mostra una stella per gli account e le cartelle con nuovi messaggi da leggere</string>
     <string name="title_advanced_startup">Mostra sulla schermata iniziale</string>
     <string name="title_advanced_cards">Usa lo stile a tessera invece dello stile tabulare</string>
     <string name="title_advanced_category">La categoria dell\'account è configurabile nelle opzioni avanzate dell\'account tramite la schermata delle impostazioni principali</string>
-    <string name="title_advanced_cards_beige">Usa lo sfondo beige usando lo stile a tessera (solo per temi chiari)</string>
-    <string name="title_advanced_tabular_background">Usa il colore della tessera come colore di sfondo quando si usa lo stile tabulare</string>
-    <string name="title_advanced_cards_shadow">Usa l\'ombreggiatura per i messaggi da leggere usando lo stile a tessera</string>
+    <string name="title_advanced_cards_beige">Usa lo sfondo beige quando è attivo lo stile a tessera (solo per temi chiari)</string>
+    <string name="title_advanced_tabular_background">Usa il colore della tessera come colore di sfondo quando è attivo lo stile tabulare</string>
+    <string name="title_advanced_cards_shadow">Usa l\'ombreggiatura per i messaggi da leggere quando è attivo lo stile a tessera</string>
     <string name="title_advanced_cards_shadow_border">Mostra un bordo</string>
     <string name="title_advanced_cards_shadow_highlight">Usa il colore di evidenziazione invece del colore di accento</string>
-    <string name="title_advanced_tabular_dividers">Usa le linee divisorie usando lo stile tabulare</string>
-    <string name="title_advanced_tabular_unread_bg">Usa un colore di sfondo grigio per i messaggi da leggere, quando lo stile a tabella è attivo</string>
+    <string name="title_advanced_tabular_dividers">Usa le linee divisorie quando è attivo lo stile tabulare</string>
+    <string name="title_advanced_tabular_unread_bg">Usa un colore di sfondo grigio per i messaggi da leggere, quando è attivo lo stile a tabella</string>
     <string name="title_advanced_date_header">Raggruppa per data</string>
     <string name="title_advanced_date_week">Raggruppa per settimana invece che per giorno</string>
     <string name="title_advanced_date_fixed">Mostra l\'intestazione a data fissa in cima</string>
@@ -654,6 +662,7 @@
     <string name="title_advanced_reset_importance">Ripristina l\'importanza allo spostamento dei messaggi</string>
     <string name="title_advanced_star_snoozed">Aggiungi automaticamente la stella posticipando i messaggi</string>
     <string name="title_advanced_star_unsnoozed">Rimuovi automaticamente la stella dai messaggi alla fine della posticipazione</string>
+    <string name="title_advanced_important_unsnoozed">Rendi automaticamente importanti i messaggi alla fine della posticipazione</string>
     <string name="title_advanced_auto_important">Rendi automaticamente importanti i messaggi con stella</string>
     <string name="title_advanced_cancel_snooze">Annulla la posticipazione allo spostamento dei messaggi</string>
     <string name="title_advanced_auto_block_sender">Blocca automaticamente il mittente alla segnalazione di spam</string>
@@ -679,6 +688,7 @@
     <string name="title_advanced_notify_suppress_in_call">Posticipa le notifiche durante una chiamata</string>
     <string name="title_advanced_notify_suppress_in_car">Posticipa le notifiche mentre Android Auto è connesso</string>
     <string name="title_advanced_notify_summary">Mostra solo le notifiche del riepilogo</string>
+    <string name="title_advanced_notify_subject" comment="title_advanced_notify_subject&#10;Title for option switch in the notification settings tab page">Mostra l\'oggetto nelle notifiche</string>
     <string name="title_advanced_notify_preview">Mostra l\'anteprima del messaggio nelle notifiche</string>
     <string name="title_advanced_notify_preview_all">Visualizza tutto il testo</string>
     <string name="title_advanced_notify_preview_only">Mostra solo le notifiche con un testo d\'anteprima</string>
@@ -701,13 +711,14 @@
     <string name="title_advanced_notify_subtext">Mostra il nome dell\'account o della cartella come testo secondario</string>
     <string name="title_advanced_wearable_preview">Invia agli indossabili solo le notifiche con un\'anteprima del messaggio</string>
     <string name="title_advanced_notify_messaging">Usa il formato di notifica di Android «stile messaggistica»</string>
-    <string name="title_advanced_biometrics_notify">Mostra il contenuto della notifica quando si usa l\'autenticazione biometrica</string>
+    <string name="title_advanced_biometrics_notify">Mostra il contenuto della notifica quando è attiva l\'autenticazione biometrica</string>
     <string name="title_advanced_notify_open_folder">Apri la cartella all\'apertura di un nuovo messaggio</string>
     <string name="title_advanced_light">Usa il LED di notifica</string>
     <string name="title_advanced_sound">Seleziona il suono di notifica</string>
     <string name="title_advanced_notify_screen_on">Accendi brevemente lo schermo per le notifiche dei nuovi messaggi</string>
     <string name="title_advanced_notifications_background">Usa il servizio in background per sincronizzare i messaggi</string>
     <string name="title_advanced_notifications_background_hint">Un servizio in background è interrompibile in qualsiasi momento da Android, ma non richiede una notifica della barra di stato</string>
+    <string name="title_advanced_rate_limit">Limita i suoni di notifica dei nuovi messaggi a una volta per:</string>
     <string name="title_advanced_confirm_links">Conferma l\'apertura dei link</string>
     <string name="title_advanced_confirm_files">Conferma la visualizzazione dei file</string>
     <string name="title_advanced_sanitize_links">Rimuovi sempre i parametri di monitoraggio</string>
@@ -781,6 +792,7 @@
     <string name="title_advanced_class_min_difference">Differenza minima di classe: %1$s %%</string>
     <string name="title_advanced_show_filtered">Mostra l\'icona di un filtro quando sono state applicate le regole</string>
     <string name="title_advanced_haptic_feedback">Feedback aptico sulle azioni importanti</string>
+    <string name="title_advanced_haptic_feedback_swipe">Feedback aptico quando si scorre a sinistra o destra</string>
     <string name="title_advanced_language">Lingua</string>
     <string name="title_advanced_language_system">Sistema</string>
     <string name="title_advanced_integrations_hint">I servizi cloud qui sotto non fanno parte dell\'app. Tutti i pagamenti andranno direttamente al servizio cloud e non allo sviluppatore dell\'app.</string>
@@ -844,6 +856,7 @@
     <string name="title_advanced_sync_kept_hint">Questo trasferirà dati aggiuntivi e consumerà energia extra della batteria, specialmente se sono memorizzati molti messaggi sul dispositivo</string>
     <string name="title_advanced_gmail_thread_hint">Ciò si applica solo ai messaggi appena ricevuti e può corrompere i gruppi esistenti</string>
     <string name="title_advanced_subject_threading_hint">Solo i messaggi ricevuti nelle ultime %1$d ore</string>
+    <string name="title_advanced_outlook_categories_hint">È possibile recuperare le categorie di Outlook ma non possono essere aggiornate in modo automatico a causa delle limitazioni del server IMAP di Outlook</string>
     <string name="title_advanced_sync_folders_hint">La disattivazione di questa opzione ridurrà in qualche modo l\'uso dei dati e della batteria, ma disattiverà anche l\'aggiornamento dell\'elenco delle cartelle</string>
     <string name="title_advanced_poll_folders_hint">Dopo la connessione a un account, sincronizza periodicamente anche l\'elenco delle cartelle</string>
     <string name="title_advanced_check_authentication_hint">Verranno controllati i risultati dell\'autenticazione DKIM, SPF e DMARC come eseguiti dal server email</string>
@@ -927,7 +940,7 @@
     <string name="title_advanced_notify_car_hint">Connesso indica che qualcosa è in proiezione, come una mappa per la navigazione</string>
     <string name="title_advanced_notify_remove_hint">Le notifiche dei nuovi messaggi saranno sempre rimosse scorrendo via e contrassegnando i messaggi come letti</string>
     <string name="title_advanced_notify_manage_hint">Toccare sul nome del canale per impostare le proprietà del canale</string>
-    <string name="title_advanced_notify_samsung_hint">Per gestire i canali di notifica, potrebbe essere necessario impostarli da sistema. Puoi farlo da Impostazioni → Notifiche → Avanzate (o simile), oppure da Impostazioni → App / Gestione app → FairEmail → Notifiche</string>
+    <string name="title_advanced_notify_samsung_hint">Per gestire i canali di notifica, potrebbe essere necessario abilitare questa impostazione Android: Notifiche, Impostazioni avanzate, Gestione delle categorie di notifiche per ogni app</string>
     <string name="title_advanced_notify_manage_default_hint">Per impostare il suono predefinito, etc.</string>
     <string name="title_advanced_notify_manage_service_hint">Per disabilitare la notifica di monitoraggio</string>
     <string name="title_advanced_notify_separate_hint">Come configurare le notifiche per gli account, le cartelle e i mittenti?</string>
@@ -1230,6 +1243,7 @@
     <string name="title_filters_active">Uno o più filtri attivi</string>
     <string name="title_duplicate_in">Duplica messaggio in %1$s</string>
     <string name="title_trashed_from">Messaggio cestinato da %1$s</string>
+    <string name="title_sent_to">Messaggio inviato a %1$s</string>
     <string name="title_subject_reply">Re: %1$s</string>
     <string name="title_subject_forward">Fwd: %1$s</string>
     <string name="title_subject_reply_alt">Re: %1$s</string>
@@ -1281,6 +1295,7 @@
     <string name="title_raw_send_message">Messaggio</string>
     <string name="title_raw_send_thread">Conversazione</string>
     <string name="title_manage_keywords">Gestione delle parole chiave</string>
+    <string name="title_manage_keywords_pop">Con POP3 le parole chiave non possono essere memorizzate sul server di posta elettronica!</string>
     <string name="title_manage_labels">Gestione delle etichette di Gmail</string>
     <string name="title_add_keyword">Aggiungi parola chiave</string>
     <string name="title_show_inline">Mostra allegati in linea</string>
@@ -1691,6 +1706,7 @@
     <string name="title_filter_hidden">Nascosti</string>
     <string name="title_filter_deleted">Eliminati</string>
     <string name="title_filter_duplicates">Duplicati</string>
+    <string name="title_filter_sent">Inviata</string>
     <string name="title_filter_trash">Cestinato</string>
     <string name="title_compact">Vista compatta</string>
     <string name="title_zoom">Dimensione testo</string>
@@ -2316,6 +2332,7 @@
         <item>Solo cifratura PGP</item>
         <item>Firma e cifratura PGP</item>
         <item>Solo firma S/MIME</item>
+        <item>Solo cifratura S/MIME</item>
         <item>Firma e cifratura S/MIME</item>
     </string-array>
     <string-array name="sizeNames">
