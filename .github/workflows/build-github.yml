@@ -89,7 +89,7 @@ jobs:
           grep -i "compileSdk" "app/build.gradle" || true;
           echo "... done";
           sed -ibak 's|compileSdk |compileSdkVersion |' "app/build.gradle";
-          sed -ibk2 's|            dimension "all"|            dimension "all"\n            compileSdkVersion 34|' "app/build.gradle";
+          sed -ibk2 's|            dimension "all"|            dimension "all"\n            compileSdkVersion 34\n            compileSdk = 34|' "app/build.gradle";
           echo "compileSdk ... ";
           grep -i "compileSdk" "app/build.gradle" || true;
           echo "... done";
