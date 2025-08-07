@@ -1,4 +1,4 @@
-# 2024-01-28 21:10
+# 2025-08-07 15:40
 # build-github.yml
 name: FairEmail - github
 
@@ -176,8 +176,8 @@ jobs:
           java-version: '17'
           cache: gradle
 
-      - name: gradle build (v3)
-        uses: deep-soft/gradle-build-action@v3
+#      - name: gradle build (v3)
+#        uses: deep-soft/gradle-build-action@v3
 
       - name: gradle  Assemble github Release
         run: ./gradlew assembleGithubRelease 
