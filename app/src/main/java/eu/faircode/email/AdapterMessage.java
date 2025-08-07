@@ -2402,6 +2402,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                     boolean full = properties.getValue("full", message.id);
                     boolean dark = Helper.isDarkTheme(context);
                     boolean force_light = properties.getValue("force_light", message.id);
+                    boolean tts = properties.getValue("tts", message.id, false);
 
                     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
                     boolean expand_all = prefs.getBoolean("expand_all", false);
@@ -2464,6 +2465,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                     ibSearch.setVisibility(tools && !outbox && button_search && (froms > 0 || tos > 0) ? View.VISIBLE : View.GONE);
                     ibTranslate.setVisibility(tools && !outbox && button_translate && DeepL.isAvailable(context) && message.content ? View.VISIBLE : View.GONE);
                     ibTts.setVisibility(tools && !outbox && button_tts && message.content && !Helper.isPlayStoreInstall() ? View.VISIBLE : View.GONE);
+                    ibTts.setImageResource(tts ? R.drawable.twotone_stop_24 : R.drawable.twotone_play_arrow_24);
                     ibSummarize.setVisibility(tools && !outbox && button_summarize && AI.isAvailable(context) && message.content ? View.VISIBLE : View.GONE);
                     ibFullScreen.setVisibility(tools && full && button_full_screen && message.content ? View.VISIBLE : View.GONE);
                     ibForceLight.setVisibility(tools && (full || experiments) && dark && button_force_light && message.content ? View.VISIBLE : View.GONE);
@@ -4094,7 +4096,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                                     CalendarHelper.insert(context, icalendar, event,
                                             CalendarContract.Events.STATUS_CONFIRMED, account, message);
                                 else if (action == R.id.btnCalendarDecline)
-                                    CalendarHelper.delete(context, event, message);
+                                    CalendarHelper.delete(context, icalendar, event, account, message);
                                 else if (action == R.id.btnCalendarMaybe)
                                     CalendarHelper.insert(context, icalendar, event,
                                             CalendarContract.Events.STATUS_TENTATIVE, account, message);
@@ -4663,7 +4665,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                 } else if (id == R.id.ibTts) {
                     onActionTts(message);
                 } else if (id == R.id.ibSummarize) {
-                    onActionSummarize(message, ibSummarize);
+                    onActionSummarize(message, ibSummarize, null);
                 } else if (id == R.id.ibFullScreen)
                     onActionOpenFull(message);
                 else if (id == R.id.ibForceLight) {
@@ -4868,9 +4870,12 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                 onMenuShareHtml(message);
                 return true;
             } else if (id == R.id.ibSummarize) {
-                context.startActivity(new Intent(context, ActivitySetup.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                        .putExtra("tab", "integrations"));
+                Bundle args = new Bundle();
+                args.putLong("id", message.id);
+                FragmentDialogBase fragment = new FragmentDialogPrompt();
+                fragment.setArguments(args);
+                fragment.setTargetFragment(parentFragment, FragmentMessages.REQUEST_PROMPT);
+                fragment.show(parentFragment.getParentFragmentManager(), "prompt");
                 return true;
             } else if (id == R.id.ibFull) {
                 boolean full = properties.getValue("full", message.id);
@@ -6590,7 +6595,7 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
                         onActionTranslate(message);
                         return true;
                     } else if (itemId == R.id.menu_summarize) {
-                        onActionSummarize(message, null);
+                        onActionSummarize(message, null, null);
                         return true;
                     } else if (itemId == R.id.menu_force_light) {
                         onActionForceLight(message);
@@ -7504,10 +7509,11 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
         }
 
         private void onActionTts(TupleMessageEx message) {
-            boolean tts = properties.getValue("tts", message.id, false);
-            properties.setValue("tts", message.id, !tts);
+            boolean tts = !properties.getValue("tts", message.id, false);
+            properties.setValue("tts", message.id, tts);
+            ibTts.setImageResource(tts ? R.drawable.twotone_stop_24 : R.drawable.twotone_play_arrow_24);
 
-            if (tts) {
+            if (!tts) {
                 Intent intent = new Intent(context, ServiceTTS.class)
                         .setAction("tts:" + message.id)
                         .putExtra(ServiceTTS.EXTRA_FLUSH, true)
@@ -7561,8 +7567,8 @@ public class AdapterMessage extends RecyclerView.Adapter<AdapterMessage.ViewHold
             }.execute(context, owner, args, "tts");
         }
 
-        private void onActionSummarize(TupleMessageEx message, View anchor) {
-            FragmentDialogSummarize.summarize(message, parentFragment.getParentFragmentManager(), anchor, owner);
+        private void onActionSummarize(TupleMessageEx message, View anchor, String prompt) {
+            FragmentDialogSummarize.summarize(message, parentFragment.getParentFragmentManager(), anchor, owner, prompt);
         }
 
         private void onActionForceLight(TupleMessageEx message) {

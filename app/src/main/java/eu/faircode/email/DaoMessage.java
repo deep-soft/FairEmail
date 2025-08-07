@@ -91,6 +91,8 @@ public interface DaoMessage {
             " AND (NOT (:filter_seen AND NOT :filter_unflagged) OR SUM(1 - message.ui_seen) > 0)" +
             " AND (NOT (:filter_unflagged AND NOT :filter_seen) OR COUNT(message.id) - SUM(1 - message.ui_flagged) > 0)" +
             " AND (NOT (:filter_seen AND :filter_unflagged) OR SUM(1 - message.ui_seen) > 0 OR COUNT(message.id) - SUM(1 - message.ui_flagged) > 0)" +
+            " AND (NOT :filter_unseen OR SUM(1 - message.ui_seen) = 0)" +
+            " AND (NOT :filter_flagged OR COUNT(message.id) - SUM(1 - message.ui_flagged) = 0)" +
             " AND (NOT :filter_unknown OR SUM(message.avatar IS NOT NULL AND message.sender <> identity.email) > 0)" +
             " AND (NOT :filter_snoozed OR message.ui_snoozed IS NULL OR " + is_drafts + ")" +
             " AND (NOT :filter_deleted OR NOT message.ui_deleted)" +
@@ -119,7 +121,7 @@ public interface DaoMessage {
             String type, String category,
             boolean threading, boolean group_category,
             String sort1, String sort2, boolean ascending,
-            boolean filter_seen, boolean filter_unflagged, boolean filter_unknown, boolean filter_snoozed, boolean filter_deleted, String filter_language,
+            boolean filter_seen, boolean filter_unseen, boolean filter_flagged, boolean filter_unflagged, boolean filter_unknown, boolean filter_snoozed, boolean filter_deleted, String filter_language,
             boolean found,
             boolean debug);
 
@@ -169,6 +171,8 @@ public interface DaoMessage {
             " AND (NOT (:filter_seen AND NOT :filter_unflagged) OR SUM(1 - message.ui_seen) > 0 OR " + is_outbox + ")" +
             " AND (NOT (:filter_unflagged AND NOT :filter_seen) OR COUNT(message.id) - SUM(1 - message.ui_flagged) > 0 OR " + is_outbox + ")" +
             " AND (NOT (:filter_seen AND :filter_unflagged) OR SUM(1 - message.ui_seen) > 0 OR COUNT(message.id) - SUM(1 - message.ui_flagged) > 0 OR " + is_outbox + ")" +
+            " AND (NOT :filter_unseen  OR SUM(1 - message.ui_seen) = 0 OR " + is_outbox + ")" +
+            " AND (NOT :filter_flagged OR COUNT(message.id) - SUM(1 - message.ui_flagged) = 0 OR " + is_outbox + ")" +
             " AND (NOT :filter_unknown OR SUM(message.avatar IS NOT NULL AND message.sender <> identity.email) > 0" +
             "   OR " + is_outbox + " OR " + is_drafts + " OR " + is_sent + ")" +
             " AND (NOT :filter_snoozed OR message.ui_snoozed IS NULL OR " + is_outbox + " OR " + is_drafts + ")" +
@@ -196,7 +200,7 @@ public interface DaoMessage {
     DataSource.Factory<Integer, TupleMessageEx> pagedFolder(
             long folder, boolean threading,
             String sort1, String sort2, boolean ascending,
-            boolean filter_seen, boolean filter_unflagged, boolean filter_unknown, boolean filter_snoozed, boolean filter_deleted, String filter_language,
+            boolean filter_seen, boolean filter_unseen, boolean filter_flagged, boolean filter_unflagged, boolean filter_unknown, boolean filter_snoozed, boolean filter_deleted, String filter_language,
             boolean found,
             boolean debug);
 
@@ -352,7 +356,9 @@ public interface DaoMessage {
     @Query("SELECT identity, COUNT(*) AS count" +
             " FROM message" +
             " WHERE folder = :folder" +
-            " GROUP BY identity")
+            " AND NOT ui_hide" +
+            " GROUP BY identity" +
+            " ORDER BY COUNT(*) DESC")
     List<TupleIdentityCount> getIdentitiesByFolder(long folder);
 
     @Transaction
@@ -1149,6 +1155,8 @@ public interface DaoMessage {
             " AND (NOT (:filter_seen AND NOT :filter_unflagged) OR SUM(1 - message.ui_seen) > 0)" +
             " AND (NOT (:filter_unflagged AND NOT :filter_seen) OR COUNT(message.id) - SUM(1 - message.ui_flagged) > 0)" +
             " AND (NOT (:filter_seen AND :filter_unflagged) OR SUM(1 - message.ui_seen) > 0 OR COUNT(message.id) - SUM(1 - message.ui_flagged) > 0)" +
+            " AND (NOT :filter_unseen OR SUM(1 - message.ui_seen) = 0)" +
+            " AND (NOT :filter_flagged OR COUNT(message.id) - SUM(1 - message.ui_flagged) = 0)" +
             " AND (NOT :filter_unknown OR SUM(message.avatar IS NOT NULL AND message.sender <> identity.email) > 0)" +
             " AND (NOT :filter_snoozed OR message.ui_snoozed IS NULL OR " + is_drafts + ")" +
             " AND (NOT :filter_deleted OR NOT message.ui_deleted)" +
@@ -1178,7 +1186,7 @@ public interface DaoMessage {
             String type, String category,
             boolean threading, boolean group_category,
             String sort1, String sort2, boolean ascending,
-            boolean filter_seen, boolean filter_unflagged, boolean filter_unknown, boolean filter_snoozed, boolean filter_deleted, String filter_language,
+            boolean filter_seen, boolean filter_unseen, boolean filter_flagged, boolean filter_unflagged, boolean filter_unknown, boolean filter_snoozed, boolean filter_deleted, String filter_language,
             boolean found,
             boolean debug);
 
@@ -1228,6 +1236,8 @@ public interface DaoMessage {
             " AND (NOT (:filter_seen AND NOT :filter_unflagged) OR SUM(1 - message.ui_seen) > 0 OR " + is_outbox + ")" +
             " AND (NOT (:filter_unflagged AND NOT :filter_seen) OR COUNT(message.id) - SUM(1 - message.ui_flagged) > 0 OR " + is_outbox + ")" +
             " AND (NOT (:filter_seen AND :filter_unflagged) OR SUM(1 - message.ui_seen) > 0 OR COUNT(message.id) - SUM(1 - message.ui_flagged) > 0 OR " + is_outbox + ")" +
+            " AND (NOT :filter_unseen OR SUM(1 - message.ui_seen) = 0 OR " + is_outbox + ")" +
+            " AND (NOT :filter_flagged OR COUNT(message.id) - SUM(1 - message.ui_flagged) = 0 OR " + is_outbox + ")" +
             " AND (NOT :filter_unknown OR SUM(message.avatar IS NOT NULL AND message.sender <> identity.email) > 0" +
             "   OR " + is_outbox + " OR " + is_drafts + " OR " + is_sent + ")" +
             " AND (NOT :filter_snoozed OR message.ui_snoozed IS NULL OR " + is_outbox + " OR " + is_drafts + ")" +
@@ -1256,7 +1266,7 @@ public interface DaoMessage {
     DataSource.Factory<Integer, TupleMessageEx> pagedFolderJson(
             long folder, boolean threading,
             String sort1, String sort2, boolean ascending,
-            boolean filter_seen, boolean filter_unflagged, boolean filter_unknown, boolean filter_snoozed, boolean filter_deleted, String filter_language,
+            boolean filter_seen, boolean filter_unseen, boolean filter_flagged, boolean filter_unflagged, boolean filter_unknown, boolean filter_snoozed, boolean filter_deleted, String filter_language,
             boolean found,
             boolean debug);
 }

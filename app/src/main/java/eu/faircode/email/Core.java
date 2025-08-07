@@ -1863,7 +1863,7 @@ class Core {
         }
 
         try {
-            if (account.isGmail() && gmail_delete_all) {
+            if (perform_expunge && account.isGmail() && gmail_delete_all) {
                 EntityFolder trash = db.folder().getFolderByType(account.id, EntityFolder.TRASH);
                 if (trash != null) {
                     Map<String, Long> folders = new HashMap<>();
@@ -2992,7 +2992,10 @@ class Core {
                 try {
                     db.beginTransaction();
 
-                    folder = db.folder().getFolderByName(account.id, fullName);
+                    if (EntityFolder.INBOX.equals(type)) // Case insensitive
+                        folder = db.folder().getFolderByNameAndType(account.id, fullName, type);
+                    else
+                        folder = db.folder().getFolderByName(account.id, fullName);
                     if (folder == null) {
                         EntityFolder parent = null;
                         char separator = ifolder.first.getSeparator();
@@ -3345,7 +3348,6 @@ class Core {
         boolean sync_quick_pop = prefs.getBoolean("sync_quick_pop", true);
         boolean notify_known = prefs.getBoolean("notify_known", false);
         boolean native_dkim = prefs.getBoolean("native_dkim", false);
-        boolean strict_alignment = prefs.getBoolean("strict_alignment", false);
         boolean download_eml = prefs.getBoolean("download_eml", false);
         boolean download_plain = prefs.getBoolean("download_plain", false);
         boolean check_blocklist = prefs.getBoolean("check_blocklist", false);

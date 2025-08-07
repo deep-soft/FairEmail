@@ -185,6 +185,7 @@ import org.openintents.openpgp.OpenPgpSignatureResult;
 import org.openintents.openpgp.util.OpenPgpApi;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -456,6 +457,7 @@ public class FragmentMessages extends FragmentBase
     static final int REQUEST_EDIT_SUBJECT = 30;
     private static final int REQUEST_ANSWER_SETTINGS = 31;
     private static final int REQUEST_DESELECT = 32;
+    static final int REQUEST_PROMPT = 33;
 
     static final String ACTION_STORE_RAW = BuildConfig.APPLICATION_ID + ".STORE_RAW";
     static final String ACTION_VERIFYDECRYPT = BuildConfig.APPLICATION_ID + ".VERIFYDECRYPT";
@@ -1396,7 +1398,7 @@ public class FragmentMessages extends FragmentBase
             public void onClick(View v) {
                 String name = getFilter(v.getContext(), "seen", viewType, type);
                 boolean filter = prefs.getBoolean(name, true);
-                onMenuFilter(name, !filter);
+                onMenuFilter("seen", viewType, type, !filter);
             }
         });
 
@@ -1405,7 +1407,7 @@ public class FragmentMessages extends FragmentBase
             public void onClick(View v) {
                 String name = getFilter(v.getContext(), "unflagged", viewType, type);
                 boolean filter = prefs.getBoolean(name, true);
-                onMenuFilter(name, !filter);
+                onMenuFilter("unflagged", viewType, type, !filter);
             }
         });
 
@@ -1414,7 +1416,7 @@ public class FragmentMessages extends FragmentBase
             public void onClick(View v) {
                 String name = getFilter(v.getContext(), "snoozed", viewType, type);
                 boolean filter = prefs.getBoolean(name, true);
-                onMenuFilter(name, !filter);
+                onMenuFilter("snoozed", viewType, type, !filter);
             }
         });
 
@@ -1660,7 +1662,7 @@ public class FragmentMessages extends FragmentBase
                 if (result == null || result.single == null || !result.single.content)
                     return;
 
-                FragmentDialogSummarize.summarize(result.single, getParentFragmentManager(), ibSummarize, getViewLifecycleOwner());
+                FragmentDialogSummarize.summarize(result.single, getParentFragmentManager(), ibSummarize, getViewLifecycleOwner(), null);
             }
         });
 
@@ -3818,7 +3820,7 @@ public class FragmentMessages extends FragmentBase
         private void onSwipeSummarize(final @NonNull TupleMessageEx message) {
             final Context context = getContext();
             if (AI.isAvailable(context))
-                FragmentDialogSummarize.summarize(message, getParentFragmentManager(), null, getViewLifecycleOwner());
+                FragmentDialogSummarize.summarize(message, getParentFragmentManager(), null, getViewLifecycleOwner(), null);
             else
                 context.startActivity(new Intent(context, ActivitySetup.class)
                         .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK)
@@ -6401,6 +6403,8 @@ public class FragmentMessages extends FragmentBase
             String sort = prefs.getString(getSort(context, viewType, type), "time");
             boolean ascending = prefs.getBoolean(getSortOrder(context, viewType, type), outbox);
             boolean filter_seen = prefs.getBoolean(getFilter(context, "seen", viewType, type), false);
+            boolean filter_unseen = prefs.getBoolean(getFilter(context, "unseen", viewType, type), false);
+            boolean filter_flagged = prefs.getBoolean(getFilter(context, "flagged", viewType, type), false);
             boolean filter_unflagged = prefs.getBoolean(getFilter(context, "unflagged", viewType, type), false);
             boolean filter_unknown = prefs.getBoolean(getFilter(context, "unknown", viewType, type), false);
             boolean filter_snoozed = prefs.getBoolean(getFilter(context, "snoozed", viewType, type), true);
@@ -6423,7 +6427,9 @@ public class FragmentMessages extends FragmentBase
                     (viewType == AdapterMessage.ViewType.UNIFIED ||
                             (viewType == AdapterMessage.ViewType.FOLDER && !outbox));
 
-            boolean filter_active = (filter_seen || filter_unflagged || filter_unknown ||
+            boolean filter_active = (filter_seen || filter_unseen ||
+                    filter_flagged || filter_unflagged ||
+                    filter_unknown ||
                     (language_detection && !TextUtils.isEmpty(filter_language)));
             int filterColor = Helper.resolveColor(context, androidx.appcompat.R.attr.colorAccent);
             float filterLighten = 0.7f - (float) ColorUtils.calculateLuminance(filterColor);
@@ -6506,6 +6512,8 @@ public class FragmentMessages extends FragmentBase
 
             menu.findItem(R.id.menu_filter).setVisible(viewType != AdapterMessage.ViewType.SEARCH && !outbox);
             menu.findItem(R.id.menu_filter_seen).setVisible(folder);
+            menu.findItem(R.id.menu_filter_unseen).setVisible(folder);
+            menu.findItem(R.id.menu_filter_flagged).setVisible(folder);
             menu.findItem(R.id.menu_filter_unflagged).setVisible(folder);
             menu.findItem(R.id.menu_filter_unknown).setVisible(folder && !drafts && !sent);
             menu.findItem(R.id.menu_filter_snoozed).setVisible(folder && !drafts);
@@ -6515,6 +6523,8 @@ public class FragmentMessages extends FragmentBase
             menu.findItem(R.id.menu_filter_trash).setVisible(viewType == AdapterMessage.ViewType.THREAD);
 
             menu.findItem(R.id.menu_filter_seen).setChecked(filter_seen);
+            menu.findItem(R.id.menu_filter_unseen).setChecked(filter_unseen);
+            menu.findItem(R.id.menu_filter_flagged).setChecked(filter_flagged);
             menu.findItem(R.id.menu_filter_unflagged).setChecked(filter_unflagged);
             menu.findItem(R.id.menu_filter_unknown).setChecked(filter_unknown);
             menu.findItem(R.id.menu_filter_snoozed).setChecked(filter_snoozed);
@@ -6594,8 +6604,8 @@ public class FragmentMessages extends FragmentBase
             ibUnflagged.setImageResource(filter_unflagged ? R.drawable.twotone_star_border_24 : R.drawable.baseline_star_24);
             ibSnoozed.setImageResource(filter_snoozed ? R.drawable.twotone_visibility_off_24 : R.drawable.twotone_visibility_24);
 
-            ibSeen.setImageTintList(ColorStateList.valueOf(filter_seen ? colorAccent : colorControlNormal));
-            ibUnflagged.setImageTintList(ColorStateList.valueOf(filter_unflagged ? colorAccent : colorControlNormal));
+            ibSeen.setImageTintList(ColorStateList.valueOf(filter_seen || filter_unseen ? colorAccent : colorControlNormal));
+            ibUnflagged.setImageTintList(ColorStateList.valueOf(filter_flagged || filter_unflagged ? colorAccent : colorControlNormal));
             ibSnoozed.setImageTintList(ColorStateList.valueOf(filter_snoozed ? colorControlNormal : colorAccent));
 
             ibSeen.setVisibility(quick_filter && folder ? View.VISIBLE : View.GONE);
@@ -6678,19 +6688,25 @@ public class FragmentMessages extends FragmentBase
             onMenuAscending(!item.isChecked());
             return true;
         } else if (itemId == R.id.menu_filter_seen) {
-            onMenuFilter(getFilter(getContext(), "seen", viewType, type), !item.isChecked());
+            onMenuFilter("seen", viewType, type, !item.isChecked());
+            return true;
+        } else if (itemId == R.id.menu_filter_unseen) {
+            onMenuFilter("unseen", viewType, type, !item.isChecked());
+            return true;
+        } else if (itemId == R.id.menu_filter_flagged) {
+            onMenuFilter("flagged", viewType, type, !item.isChecked());
             return true;
         } else if (itemId == R.id.menu_filter_unflagged) {
-            onMenuFilter(getFilter(getContext(), "unflagged", viewType, type), !item.isChecked());
+            onMenuFilter("unflagged", viewType, type, !item.isChecked());
             return true;
         } else if (itemId == R.id.menu_filter_unknown) {
-            onMenuFilter(getFilter(getContext(), "unknown", viewType, type), !item.isChecked());
+            onMenuFilter("unknown", viewType, type, !item.isChecked());
             return true;
         } else if (itemId == R.id.menu_filter_snoozed) {
-            onMenuFilter(getFilter(getContext(), "snoozed", viewType, type), !item.isChecked());
+            onMenuFilter("snoozed", viewType, type, !item.isChecked());
             return true;
         } else if (itemId == R.id.menu_filter_deleted) {
-            onMenuFilter(getFilter(getContext(), "deleted", viewType, type), !item.isChecked());
+            onMenuFilter("deleted", viewType, type, !item.isChecked());
             return true;
         } else if (itemId == R.id.menu_filter_language) {
             onMenuFilterLanguage();
@@ -6880,9 +6896,25 @@ public class FragmentMessages extends FragmentBase
         loadMessages(true);
     }
 
-    private void onMenuFilter(String name, boolean filter) {
+    private void onMenuFilter(String name, AdapterMessage.ViewType viewType, String type, boolean filter) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-        prefs.edit().putBoolean(name, filter).apply();
+        prefs.edit().putBoolean(getFilter(getContext(), name, viewType, type), filter).apply();
+        if ("seen".equals(name)) {
+            String altName = getFilter(getContext(), "unseen", viewType, type);
+            prefs.edit().putBoolean(altName, false).apply();
+        }
+        if ("unseen".equals(name)) {
+            String altName = getFilter(getContext(), "seen", viewType, type);
+            prefs.edit().putBoolean(altName, false).apply();
+        }
+        if ("flagged".equals(name)) {
+            String altName = getFilter(getContext(), "unflagged", viewType, type);
+            prefs.edit().putBoolean(altName, false).apply();
+        }
+        if ("unflagged".equals(name)) {
+            String altName = getFilter(getContext(), "flagged", viewType, type);
+            prefs.edit().putBoolean(altName, false).apply();
+        }
         invalidateOptionsMenu();
         if (selectionTracker != null)
             selectionTracker.clearSelection();
@@ -9366,6 +9398,9 @@ public class FragmentMessages extends FragmentBase
                 long id = Long.parseLong(utteranceId.substring("tts:".length()));
                 Log.i("TTS completed id=" + id);
                 iProperties.setValue("tts", id, false);
+                int pos = adapter.getPositionForKey(id);
+                if (pos != NO_POSITION)
+                    adapter.notifyItemChanged(pos);
             } catch (Throwable ex) {
                 Log.e(ex);
             }
@@ -9627,6 +9662,10 @@ public class FragmentMessages extends FragmentBase
                 case REQUEST_DESELECT:
                     if (selectionTracker != null)
                         selectionTracker.clearSelection();
+                    break;
+                case REQUEST_PROMPT:
+                    if (resultCode == RESULT_OK)
+                        onActionSummarize(data.getBundleExtra("args"));
                     break;
             }
         } catch (Throwable ex) {
@@ -10356,6 +10395,18 @@ public class FragmentMessages extends FragmentBase
                                 ? "Signature could not be verified"
                                 : "Certificates and signatures do not match");
 
+                    if (sdata && result != null) {
+                        String fingerprint = EntityCertificate.getFingerprintSha256(result);
+                        List<String> emails = EntityCertificate.getEmailAddresses(result);
+                        for (String email : emails) {
+                            EntityCertificate record = db.certificate().getCertificate(fingerprint, email);
+                            if (record == null) {
+                                args.putBoolean("signed_data", true);
+                                break;
+                            }
+                        }
+                    }
+
                     if (is != null)
                         decodeMessage(context, is, message, args);
                 } else {
@@ -10482,6 +10533,7 @@ public class FragmentMessages extends FragmentBase
                             Date time = (Date) args.getSerializable("time");
                             boolean known = args.getBoolean("known");
                             boolean valid = args.getBoolean("valid");
+                            boolean signed_data = args.getBoolean("signed_data");
                             String reason = args.getString("reason");
                             String algo = args.getString("algo");
                             String algooid = args.getString("algooid");
@@ -10501,10 +10553,10 @@ public class FragmentMessages extends FragmentBase
                                     break;
                                 }
 
-                            if (!info && known && !record.isExpired(time) && match && valid)
+                            if (!info && known && !record.isExpired(time) && match && valid && !signed_data)
                                 Helper.setSnackbarOptions(Snackbar.make(view, R.string.title_signature_valid, Snackbar.LENGTH_LONG))
                                         .show();
-                            else if (!auto) {
+                            else if (!auto || signed_data) {
                                 Context context = getContext();
                                 LayoutInflater inflator = LayoutInflater.from(context);
                                 View dview = inflator.inflate(R.layout.dialog_certificate, null);
@@ -10767,6 +10819,14 @@ public class FragmentMessages extends FragmentBase
                     db.message().setMessageRevision(message.id, protect_subject == null ? 1 : -1);
                     db.message().setMessageStored(message.id, new Date().getTime());
                     db.message().setMessageFts(message.id, false);
+
+                    if (BuildConfig.DEBUG || debug) {
+                        File raw = message.getRawFile(context);
+                        try (OutputStream os = new BufferedOutputStream(new FileOutputStream(raw))) {
+                            imessage.writeTo(os);
+                        }
+                        db.message().setMessageRaw(message.id, true);
+                    }
 
                     if (alias != null && !duplicate && message.identity != null) {
                         EntityIdentity identity = db.identity().getIdentity(message.identity);
@@ -11156,6 +11216,29 @@ public class FragmentMessages extends FragmentBase
                 Log.unexpectedError(getParentFragmentManager(), ex);
             }
         }.execute(this, args, "edit:subject");
+    }
+
+    private void onActionSummarize(Bundle args) {
+        new SimpleTask<EntityMessage>() {
+            @Override
+            protected EntityMessage onExecute(Context context, Bundle args) throws Throwable {
+                long id = args.getLong("id");
+                DB db = DB.getInstance(context);
+                return db.message().getMessage(id);
+            }
+
+            @Override
+            protected void onExecuted(Bundle args, EntityMessage message) {
+                if (message == null)
+                    return;
+                FragmentDialogSummarize.summarize(message, getParentFragmentManager(), null, getViewLifecycleOwner(), args.getString("prompt"));
+            }
+
+            @Override
+            protected void onException(Bundle args, Throwable ex) {
+                Log.unexpectedError(getParentFragmentManager(), ex);
+            }
+        }.execute(this, args, "prompt");
     }
 
     private void onMoveAskAcross(final ArrayList<MessageTarget> result) {

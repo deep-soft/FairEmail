@@ -860,7 +860,7 @@
         The encryption method can be selected before sending in the send options dialog box (long press the send button).
     </string>
     <string name="title_advanced_sign_default">Sign by default</string>
-    <string name="title_advanced_encrypt_default">Encrypt by default</string>
+    <string name="title_advanced_encrypt_default">Sign and encrypt by default</string>
     <string name="title_advanced_encrypt_auto">Automatically encrypt when all recipients\' keys are available</string>
     <string name="title_advanced_encrypt_reply">Automatically encrypt when replying to an encrypted message</string>
     <string name="title_advanced_auto_verify">Automatically verify signed messages</string>
@@ -1173,7 +1173,7 @@
     <string name="title_advanced_notify_remove_hint">New message notifications will always be removed on being swiped away and on marking messages read</string>
     <string name="title_advanced_notify_manage_hint">Tap on the channel name to set the channel properties</string>
     <string name="title_advanced_notify_samsung_hint">To manage notification channels, you may need to enable this Android setting: Notification, Advanced settings, Manage notification categories for each app</string>
-    <string name="title_advanced_notify_manage_default_hint">To set the default sound, etc.</string>
+    <string name="title_advanced_notify_manage_default_hint">To set the default sound, configure DND (do not disturb), etc.</string>
     <string name="title_advanced_notify_manage_service_hint">To disable the \'monitoring\' notification</string>
     <string name="title_advanced_notify_separate_hint">How do I configure notifications for accounts, folders and senders?</string>
     <string name="title_advanced_notify_preview_all_hint">For wearables that can show the full text (up to 5,000 characters)</string>
@@ -2045,6 +2045,8 @@
 
     <string name="title_filter">Filter out</string>
     <string name="title_filter_seen">Read</string>
+    <string name="title_filter_unseen">Unread</string>
+    <string name="title_filter_flagged">Starred</string>
     <string name="title_filter_unflagged">Unstarred</string>
     <string name="title_filter_unknown">Unknown senders</string>
     <string name="title_filter_hidden">Hidden</string>

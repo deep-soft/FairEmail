@@ -28,6 +28,53 @@ For support you can use [the contact form](https://contact.faircode.eu/?product=
 
 ### [Ceratonykus](https://en.wikipedia.org/wiki/Ceratonykus)
 
+### Next version (Work in progress)
+
+### 1.2289 2025-08-02
+
+* Fixed all reported bugs
+* Small improvements and minor bug fixes
+* Updated [Brave's debounce list](https://github.com/brave/brave-browser/wiki/Debouncing)
+* Updated [AndroidX](https://developer.android.com/jetpack/androidx/versions/all-channel)
+* Updated [Public Suffix List](https://github.com/publicsuffix/list)
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2288 2025-07-21
+
+* Fixed status bar color in some cases
+* Updated [Public Suffix List](https://github.com/publicsuffix/list)
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2287 2025-07-17
+
+* Resolved all reported bugs
+* Small improvements and minor bug fixes
+* Updated [S/MIME root certificates](https://wiki.mozilla.org/CA/Included_Certificates)
+* Updated [Public Suffix List](https://github.com/publicsuffix/list)
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2286 2025-07-04 *
+
+* Fixed workaround for multiple inboxes
+
+### 1.2285 2025-07-04
+
+* Fixed workaround for incorrectly shared files
+
+### 1.2284 2025-07-02
+
+* Added filtering out unread / starred messages
+* Added workaround for incorrectly shared files (Xiaomi gallery)
+* Small improvements and minor bug fixes
+* Updated [Public Suffix List](https://github.com/publicsuffix/list)
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
+### 1.2283 2025-06-21 *
+
+* Disabled Certficate Transparency because Google broke it. 'Thanks' for all the 1-star ratings :-(
+* Small improvements and minor bug fixes
+* Updated [translations](https://crowdin.com/project/open-source-email)
+
 ### 1.2282 2025-06-20
 
 * Small improvements and minor bug fixes
