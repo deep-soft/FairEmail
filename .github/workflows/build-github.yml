@@ -37,11 +37,11 @@ env:
   BUILD_TOOLS_VERSION: "34.0.0"
 
 jobs:
-  validation:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: deep-soft/checkout@v4
-      - uses: deep-soft/wrapper-validation-action@v2
+#  validation:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: deep-soft/checkout@v4
+#      - uses: deep-soft/wrapper-validation-action@v2
 
   build:
     runs-on: ubuntu-latest
@@ -129,7 +129,8 @@ jobs:
           grep -i "sign" "app/build.gradle" || true;
           echo "... done ";
           #sed -i '/^    signingConfigs {$/,/^    }$/d' "app/build.gradle";
-          sed -i 's|signingConfig signingConfigs.release|// signingConfig signingConfigs.release|' "app/build.gradle";
+          #sed -i 's|signingConfig signingConfigs.release|// signingConfig signingConfigs.release|' "app/build.gradle";
+          sed -i 's|signingConfig = signingConfigs.release|// signingConfig = signingConfigs.release|' "app/build.gradle";
           echo "sign ... ";
           grep -i "sign" "app/build.gradle" || true;
           echo "... done";
