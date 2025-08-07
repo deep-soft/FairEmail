@@ -121,14 +121,14 @@ jobs:
           echo " ... app/build.gradle";
 
 # signingConfig signingConfigs.release
-      - name: skip sign v2
+      - name: skip sign v3
         shell: bash
         run: |
           #set -x;
           echo "sign ... ";
           grep -i "sign" "app/build.gradle" || true;
           echo "... done ";
-          sed -i '/^    signingConfigs {$/,/^    }$/d' "app/build.gradle";
+          #sed -i '/^    signingConfigs {$/,/^    }$/d' "app/build.gradle";
           sed -i 's|signingConfig signingConfigs.release|// signingConfig signingConfigs.release|' "app/build.gradle";
           echo "sign ... ";
           grep -i "sign" "app/build.gradle" || true;
