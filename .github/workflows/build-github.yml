@@ -48,6 +48,9 @@ jobs:
     steps:
       - name: Checkout source code
         uses: deep-soft/checkout@v4
+        with:
+          #ref: ${{ github.event.inputs.branch }}
+          ref: master
 
       - name: Get ref, set build version
         continue-on-error: true
@@ -177,7 +180,7 @@ jobs:
         uses: deep-soft/gradle-build-action@v3
 
       - name: gradle  Assemble github Release
-        run: ./gradlew assemblegithubRelease
+        run: ./gradlew assembleGithubRelease 
 
 # Search in /usr/local/lib/android/sdk/build-tools/
       - name: List android/sdk/build-tools/
